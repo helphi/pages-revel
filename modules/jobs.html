@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Schedules Jobs | Revel - A Web Application Framework for Go!</title>
-<link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> 
-<link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+<link rel="icon" href="/pages-revel/img/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/pages-revel/img/favicon.png" type="image/png" />
 
 <link href="/pages-revel/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="/pages-revel/js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
@@ -50,7 +50,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <div id="main-logo"><a ddclass="navbar-brand" href="/">Revel</a>
+            <div id="main-logo"><a ddclass="navbar-brand" href="/pages-revel/">Revel</a>
             </div>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
@@ -186,7 +186,7 @@ enables performing tasks asynchronously, outside of the request flow.</p>
 <p>The <a href="https://godoc.org/github.com/revel/modules/jobs/app/jobs"><code class="highlighter-rouge">Jobs</code></a> module
 is optional <strong>not</strong> enabled by default.</p>
 
-<p>To activate add <code class="highlighter-rouge">module.jobs</code> to the <a href="/manual/appconf.html">app.conf</a> file:</p>
+<p>To activate add <code class="highlighter-rouge">module.jobs</code> to the <a href="/pages-revel/manual/appconf.html">app.conf</a> file:</p>
 
 <div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">module.jobs</span> <span class="p">=</span> <span class="s">github.com/revel/modules/jobs</span>
 </code></pre></div></div>
@@ -198,13 +198,13 @@ is optional <strong>not</strong> enabled by default.</p>
 
 <h2 id="options">Options</h2>
 
-<p>There are some <a href="/manual/appconf.html#jobs">configuration settings</a> that place some limitations
+<p>There are some <a href="/pages-revel/manual/appconf.html#jobs">configuration settings</a> that place some limitations
 job and its run, explained below with default values:</p>
 
 <ul>
-  <li><a href="/manual/appconf.html#jobspool"><code class="highlighter-rouge">jobs.pool = 10</code></a> - The number of jobs allowed to run simultaneously/concurrently</li>
-  <li><a href="/manual/appconf.html#jobsselfconcurrent"><code class="highlighter-rouge">jobs.selfconcurrent = false</code></a> - Allow a job to run only if previous instances are done</li>
-  <li><a href="/manual/appconf#jobsacceptproxyaddress"><code class="highlighter-rouge">jobs.acceptproxyaddress = false</code></a> - Accept <code class="highlighter-rouge">X-Forwarded-For</code> header value (which is spoofable) to allow or deny status page access</li>
+  <li><a href="/pages-revel/manual/appconf.html#jobspool"><code class="highlighter-rouge">jobs.pool = 10</code></a> - The number of jobs allowed to run simultaneously/concurrently</li>
+  <li><a href="/pages-revel/manual/appconf.html#jobsselfconcurrent"><code class="highlighter-rouge">jobs.selfconcurrent = false</code></a> - Allow a job to run only if previous instances are done</li>
+  <li><a href="/pages-revel/manual/appconf#jobsacceptproxyaddress"><code class="highlighter-rouge">jobs.acceptproxyaddress = false</code></a> - Accept <code class="highlighter-rouge">X-Forwarded-For</code> header value (which is spoofable) to allow or deny status page access</li>
 </ul>
 
 <h2 id="implementing-jobs">Implementing Jobs</h2>
@@ -285,7 +285,7 @@ registered any time after <code class="highlighter-rouge">OnAppStart</code>.</p>
 
 <h2 id="named-schedules">Named Schedules</h2>
 
-<p>You can <a href="/manual/appconf.html#jobs">define cron schedules</a> in your app’s <a href="/manual/appconf.html"><code class="highlighter-rouge">app.conf</code></a> and reference them anywhere for easy reuse.</p>
+<p>You can <a href="/pages-revel/manual/appconf.html#jobs">define cron schedules</a> in your app’s <a href="/pages-revel/manual/appconf.html"><code class="highlighter-rouge">app.conf</code></a> and reference them anywhere for easy reuse.</p>
 
 <p>Simply define your <strong>named cron schedule</strong>:</p>
 

@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>The 'Hello World' app | Revel - A Web Application Framework for Go!</title>
-<link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> 
-<link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+<link rel="icon" href="/pages-revel/img/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/pages-revel/img/favicon.png" type="image/png" />
 
 <link href="/pages-revel/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="/pages-revel/js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
@@ -50,7 +50,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <div id="main-logo"><a ddclass="navbar-brand" href="/">Revel</a>
+            <div id="main-logo"><a ddclass="navbar-brand" href="/pages-revel/">Revel</a>
             </div>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
@@ -172,11 +172,11 @@ included <code class="highlighter-rouge">flash.html</code> template:</p>
 
 <p>Refresh the page to see our work.</p>
 
-<p><img src="/img/AlohaForm.png" alt="The Say Hello form" /></p>
+<p><img src="/pages-revel/img/AlohaForm.png" alt="The Say Hello form" /></p>
 
 <p>Enter some data and submit the form.</p>
 
-<p><img src="/img/HelloRouteNotFound.png" alt="Route not found" /></p>
+<p><img src="/pages-revel/img/HelloRouteNotFound.png" alt="Route not found" /></p>
 
 <p>That makes sense.  Add the method to <strong>app/controllers/app.go</strong>:</p>
 
@@ -191,7 +191,7 @@ included <code class="highlighter-rouge">flash.html</code> template:</p>
 {{template "header.html" .}}
 
 &lt;h1&gt;Hello {{.myName}}&lt;/h1&gt;
-&lt;a href="/"&gt;Back to form&lt;/a&gt;
+&lt;a href="/pages-revel/"&gt;Back to form&lt;/a&gt;
 
 {{template "footer.html" .}}</code></pre></figure>
 
@@ -201,12 +201,12 @@ included <code class="highlighter-rouge">flash.html</code> template:</p>
 
 <p>Refresh the page, and you should see a greeting:</p>
 
-<p><img src="/img/HelloRevel.png" alt="Hello revel" /></p>
+<p><img src="/pages-revel/img/HelloRevel.png" alt="Hello revel" /></p>
 
 <p>Lastly, let’s add some validation.  The name should be required, and at least
 three characters.</p>
 
-<p>To do this, let’s use the <a href="/manual/validation.html">validation module</a>.  Edit
+<p>To do this, let’s use the <a href="/pages-revel/manual/validation.html">validation module</a>.  Edit
 your method in <strong>app/controllers/app.go</strong>:</p>
 
 <figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">App</span><span class="p">)</span><span class="x"> </span><span class="n">Hello</span><span class="p">(</span><span class="n">myName</span><span class="x"> </span><span class="kt">string</span><span class="p">)</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
@@ -224,7 +224,7 @@ your method in <strong>app/controllers/app.go</strong>:</p>
 
 <p>Now it will send the user back to <code class="highlighter-rouge">Index()</code> if they have not entered a valid
 name. Their name and the validation error are kept in the
-<a href="/manual/sessionflash.html#flash">Flash</a>, which is a temporary cookie.</p>
+<a href="/pages-revel/manual/sessionflash.html#flash">Flash</a>, which is a temporary cookie.</p>
 
 <p>The provided <code class="highlighter-rouge">flash.html</code> template will show any errors or flash messages:</p>
 
@@ -261,15 +261,15 @@ re-submitting.  Amend the form you had added to your <strong>app/views/App/Index
 
 <p>Now when we submit a single letter as our name:</p>
 
-<p><img src="/img/HelloNameNotLongEnough.png" alt="Example error" /></p>
+<p><img src="/pages-revel/img/HelloNameNotLongEnough.png" alt="Example error" /></p>
 
 <p>Success, we got an appropriate error and our input was saved for us to edit.</p>
 
 <hr />
 
 <ul>
-  <li>Read more in the <a href="/manual/concepts.html">manual</a></li>
-  <li>Look at the <a href="/examples/">example</a> applications</li>
+  <li>Read more in the <a href="/pages-revel/manual/concepts.html">manual</a></li>
+  <li>Look at the <a href="/pages-revel/examples/">example</a> applications</li>
 </ul>
 
                     

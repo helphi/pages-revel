@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Go Template Engine | Revel - A Web Application Framework for Go!</title>
-<link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> 
-<link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+<link rel="icon" href="/pages-revel/img/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/pages-revel/img/favicon.png" type="image/png" />
 
 <link href="/pages-revel/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="/pages-revel/js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
@@ -50,7 +50,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <div id="main-logo"><a ddclass="navbar-brand" href="/">Revel</a>
+            <div id="main-logo"><a ddclass="navbar-brand" href="/pages-revel/">Revel</a>
             </div>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
@@ -150,7 +150,7 @@
             
                 
                 
-                    <li><a href="/modules/static.html">Static Content</a></li>
+                    <li><a href="/pages-revel/modules/static.html">Static Content</a></li>
                 
             
                 
@@ -230,7 +230,7 @@
             
                 
                 
-                    <li><a href="/modules/testing.html">Testing</a></li>
+                    <li><a href="/pages-revel/modules/testing.html">Testing</a></li>
                 
             
         
@@ -340,7 +340,7 @@ engines will need to supply there own implementation.</p>
 <figure class="highlight"><pre><code class="language-htmldjango" data-lang="htmldjango">{{append . "moreScripts" "js/jquery-ui-1.7.2.custom.min.js"}}
 
 {{range .moreStyles}}
-    &lt;link rel="stylesheet" type="text/css" href="/public/{{.}}"&gt;
+    &lt;link rel="stylesheet" type="text/css" href="/pages-revel/public/{{.}}"&gt;
 {{end}}</code></pre></figure>
 
 <p><a name="checkbox"></a></p>
@@ -550,8 +550,8 @@ Click &lt;a href="{{url "Products.ShowProduct" 123}}"&gt;here&lt;/a&gt; for more
 
 <h2 id="examples">Examples</h2>
 
-<p>The <a href="/examples/index.html">sample applications</a> try to demonstrate effective use of
-Go Templates.  In particular, please take a look at <a href="/examples/booking.html">Booking app</a> templates:</p>
+<p>The <a href="/pages-revel/examples/index.html">sample applications</a> try to demonstrate effective use of
+Go Templates.  In particular, please take a look at <a href="/pages-revel/examples/booking.html">Booking app</a> templates:</p>
 
 <ul>
   <li><a href="https://github.com/revel/examples/blob/master/booking/app/views/header.html"><code class="highlighter-rouge">examples/booking/app/views/header.html</code></a></li>
@@ -567,15 +567,15 @@ the template itself.</p>
     &lt;head&gt;
     &lt;title&gt;{{.title}}&lt;/title&gt;
     &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"&gt;
-    &lt;link rel="stylesheet" type="text/css" media="screen" href="/public/css/main.css"&gt;
-    &lt;link rel="shortcut icon" type="image/png" href="/public/img/favicon.png"&gt;
+    &lt;link rel="stylesheet" type="text/css" media="screen" href="/pages-revel/public/css/main.css"&gt;
+    &lt;link rel="shortcut icon" type="image/png" href="/pages-revel/public/img/favicon.png"&gt;
     {{range .moreStyles}}
-        &lt;link rel="stylesheet" type="text/css" href="/public/{{.}}"&gt;
+        &lt;link rel="stylesheet" type="text/css" href="/pages-revel/public/{{.}}"&gt;
     {{end}}
-    &lt;script src="/public/js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"&gt;&lt;/script&gt;
-    &lt;script src="/public/js/sessvars.js" type="text/javascript" charset="utf-8"&gt;&lt;/script&gt;
+    &lt;script src="/pages-revel/public/js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"&gt;&lt;/script&gt;
+    &lt;script src="/pages-revel/public/js/sessvars.js" type="text/javascript" charset="utf-8"&gt;&lt;/script&gt;
     {{range .moreScripts}}
-        &lt;script src="/public/{{.}}" type="text/javascript" charset="utf-8"&gt;&lt;/script&gt;
+        &lt;script src="/pages-revel/public/{{.}}" type="text/javascript" charset="utf-8"&gt;&lt;/script&gt;
     {{end}}
     &lt;/head&gt;</code></pre></figure>
 

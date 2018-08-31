@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>The Request Flow | Revel - A Web Application Framework for Go!</title>
-<link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> 
-<link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+<link rel="icon" href="/pages-revel/img/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/pages-revel/img/favicon.png" type="image/png" />
 
 <link href="/pages-revel/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="/pages-revel/js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
@@ -50,7 +50,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <div id="main-logo"><a ddclass="navbar-brand" href="/">Revel</a>
+            <div id="main-logo"><a ddclass="navbar-brand" href="/pages-revel/">Revel</a>
             </div>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
@@ -163,13 +163,13 @@ to <code class="highlighter-rouge">http://localhost:9000/</code> resulting in th
 
 <h2 id="routes">Routes</h2>
 
-<p>The first thing that Revel does is check the <code class="highlighter-rouge">conf/routes</code> file (see <a href="/manual/routing.html">routing</a>):</p>
+<p>The first thing that Revel does is check the <code class="highlighter-rouge">conf/routes</code> file (see <a href="/pages-revel/manual/routing.html">routing</a>):</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET     /     App.Index
 </code></pre></div></div>
 
 <p>This tells Revel to invoke the <strong><code class="highlighter-rouge">Index</code></strong> method of the <strong><code class="highlighter-rouge">App</code></strong>
-<a href="/manual/controllers.html">controller</a> when it receives a http <strong><code class="highlighter-rouge">GET</code></strong> request to <strong><code class="highlighter-rouge">/</code></strong>.</p>
+<a href="/pages-revel/manual/controllers.html">controller</a> when it receives a http <strong><code class="highlighter-rouge">GET</code></strong> request to <strong><code class="highlighter-rouge">/</code></strong>.</p>
 
 <h2 id="controller-methods">Controller Methods</h2>
 
@@ -187,18 +187,18 @@ to <code class="highlighter-rouge">http://localhost:9000/</code> resulting in th
 </span><span class="p">}</span><span class="x">
 </span></code></pre></div></div>
 
-<p>All <a href="/manual/controllers.html">controllers</a> must be a <code class="highlighter-rouge">struct</code> that embeds a <a href="https://godoc.org/github.com/revel/revel#Controller"><code class="highlighter-rouge">*revel.Controller</code></a>
+<p>All <a href="/pages-revel/manual/controllers.html">controllers</a> must be a <code class="highlighter-rouge">struct</code> that embeds a <a href="https://godoc.org/github.com/revel/revel#Controller"><code class="highlighter-rouge">*revel.Controller</code></a>
 in the first slot. Any method on a controller that is
-exported and returns a <a href="/manual/results.html"><code class="highlighter-rouge">revel.Result</code></a> may be used as 
+exported and returns a <a href="/pages-revel/manual/results.html"><code class="highlighter-rouge">revel.Result</code></a> may be used as 
 part of an <strong>Action</strong>, in the above example <strong>App.Index</strong> is the <strong>Action</strong>.</p>
 
-<p>The Revel controller provides many useful methods for generating <a href="/manual/results.html">Results</a>. In
+<p>The Revel controller provides many useful methods for generating <a href="/pages-revel/manual/results.html">Results</a>. In
 this example, it calls <a href="https://godoc.org/github.com/revel/revel#Controller.Render"><code class="highlighter-rouge">Render()</code></a>,
-which tells Revel to find and render a <a href="/manual/templates.html">template</a> as the response with http <code class="highlighter-rouge">200 OK</code>.</p>
+which tells Revel to find and render a <a href="/pages-revel/manual/templates.html">template</a> as the response with http <code class="highlighter-rouge">200 OK</code>.</p>
 
 <h2 id="templates">Templates</h2>
 
-<p><a href="/manual/templates.html">Templates</a> are  in the <strong>app/views</strong> directory. When an explicit
+<p><a href="/pages-revel/manual/templates.html">Templates</a> are  in the <strong>app/views</strong> directory. When an explicit
 template name is not specified, Revel looks for a template matching the controller/method.
 In this case, Revel finds the <strong>app/views/App/Index.html</strong> file, and
 renders it as a <a href="http://www.golang.org/pkg/html/template">Go template</a>.</p>
@@ -226,15 +226,15 @@ renders it as a <a href="http://www.golang.org/pkg/html/template">Go template</a
 {{template "footer.html" .}}</code></pre></figure>
 
 <p>Beyond the functions provided by the Go templates package, Revel adds
-<a href="/manual/templates.html#functions">a few helpful ones</a> also.</p>
+<a href="/pages-revel/manual/templates.html#functions">a few helpful ones</a> also.</p>
 
 <p>The template above : -</p>
 
 <ol>
-  <li>Adds a new <strong>title</strong> variable to the render context with <a href="/manual/templates.html#set">set</a>.</li>
+  <li>Adds a new <strong>title</strong> variable to the render context with <a href="/pages-revel/manual/templates.html#set">set</a>.</li>
   <li>Includes the <strong>header.html</strong> template, which uses the <strong>title</strong> variable.</li>
   <li>Displays a welcome message.</li>
-  <li>Includes the <strong>flash.html</strong> template, which shows any <a href="/manual/sessionflash.html#flash">flashed</a> messages.</li>
+  <li>Includes the <strong>flash.html</strong> template, which shows any <a href="/pages-revel/manual/sessionflash.html#flash">flashed</a> messages.</li>
   <li>Includes the <strong>footer.html</strong>.</li>
 </ol>
 
@@ -247,26 +247,26 @@ renders it as a <a href="http://www.golang.org/pkg/html/template">Go template</a
     &lt;title&gt;{{.title}}&lt;/title&gt;
     &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
-    &lt;link rel="stylesheet" type="text/css" href="/public/css/bootstrap-3.3.6.min.css"&gt;
-    &lt;link rel="shortcut icon" type="image/png" href="/public/img/favicon.png"&gt;
-    &lt;script src="/public/js/jquery-2.2.4.min.js"&gt;&lt;/script&gt;
-    &lt;script src="/public/js/bootstrap-3.3.6.min.js"&gt;&lt;/script&gt;
+    &lt;link rel="stylesheet" type="text/css" href="/pages-revel/public/css/bootstrap-3.3.6.min.css"&gt;
+    &lt;link rel="shortcut icon" type="image/png" href="/pages-revel/public/img/favicon.png"&gt;
+    &lt;script src="/pages-revel/public/js/jquery-2.2.4.min.js"&gt;&lt;/script&gt;
+    &lt;script src="/pages-revel/public/js/bootstrap-3.3.6.min.js"&gt;&lt;/script&gt;
     {{range .moreStyles}}
-      &lt;link rel="stylesheet" type="text/css" href="/public/{{.}}"&gt;
+      &lt;link rel="stylesheet" type="text/css" href="/pages-revel/public/{{.}}"&gt;
     {{end}}
     {{range .moreScripts}}
-      &lt;script src="/public/{{.}}" type="text/javascript" charset="utf-8"&gt;&lt;/script&gt;
+      &lt;script src="/pages-revel/public/{{.}}" type="text/javascript" charset="utf-8"&gt;&lt;/script&gt;
     {{end}}
   &lt;/head&gt;
   &lt;body&gt;</code></pre></figure>
 
-<p>You can see the <a href="/manual/templates.html#set">set</a> <code class="highlighter-rouge">.title</code> being used, and also see that it accepts JS and CSS
+<p>You can see the <a href="/pages-revel/manual/templates.html#set">set</a> <code class="highlighter-rouge">.title</code> being used, and also see that it accepts JS and CSS
 files included from calling templates in the <strong>moreStyles</strong> and <strong>moreScripts</strong>
 variables.</p>
 
 <h2 id="hot-reload">Hot-reload</h2>
 
-<p>Revel has <a href="/manual/appconf.html#watchers"><code class="highlighter-rouge">watchers</code></a> that check for changes to files and recompiles as part of the development cycle.</p>
+<p>Revel has <a href="/pages-revel/manual/appconf.html#watchers"><code class="highlighter-rouge">watchers</code></a> that check for changes to files and recompiles as part of the development cycle.</p>
 
 <p>To demonstrate this, change the welcome message.  In <strong>Index.html</strong>, change</p>
 
@@ -279,7 +279,7 @@ variables.</p>
 <p>Refresh the browser, and you should see the change immediately!  Revel noticed
 that your template changed and reloaded it.</p>
 
-<p>Revel watches  - see <a href="/manual/appconf.html#watchers">config</a>):</p>
+<p>Revel watches  - see <a href="/pages-revel/manual/appconf.html#watchers">config</a>):</p>
 
 <ul>
   <li>All go code under <strong>app/</strong></li>
@@ -300,7 +300,7 @@ latest change in code.  Try it right now: open <strong>app/controllers/app.go</s
 
 <p>Refresh the page and Revel will display a helpful error message:</p>
 
-<p><img src="/img/helpfulerror.png" alt="A helpful error message" /></p>
+<p><img src="/pages-revel/img/helpfulerror.png" alt="A helpful error message" /></p>
 
 <p>Lastly, let’s pass some data into the template.</p>
 
@@ -323,7 +323,7 @@ latest change in code.  Try it right now: open <strong>app/controllers/app.go</s
 
 <p>Refresh the browser and to see a Hawaiian greeting.</p>
 
-<p><img src="/img/AlohaWorld.png" alt="A Hawaiian greeting" /></p>
+<p><img src="/pages-revel/img/AlohaWorld.png" alt="A Hawaiian greeting" /></p>
 
 <p><a href="firstapp.html" class="btn btn-sm btn-success" role="button">Next <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a> <a href="firstapp.html">Create the ‘Hello World’ application</a></p>
 

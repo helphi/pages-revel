@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Static File Server | Revel - A Web Application Framework for Go!</title>
-<link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> 
-<link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+<link rel="icon" href="/pages-revel/img/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/pages-revel/img/favicon.png" type="image/png" />
 
 <link href="/pages-revel/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="/pages-revel/js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
@@ -50,7 +50,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <div id="main-logo"><a ddclass="navbar-brand" href="/">Revel</a>
+            <div id="main-logo"><a ddclass="navbar-brand" href="/pages-revel/">Revel</a>
             </div>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
@@ -183,7 +183,7 @@ controller.  <a href="https://godoc.org/github.com/revel/modules/static/app/cont
 is optional <strong>is</strong> enabled by default.</p>
 
 <p>By default when you create a new project the following
-configuration options are set in the <a href="/manual/appconf.html">app.conf</a> file:</p>
+configuration options are set in the <a href="/pages-revel/manual/appconf.html">app.conf</a> file:</p>
 
 <div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">module.static</span> <span class="p">=</span> <span class="s">github.com/revel/modules/static</span>
 </code></pre></div></div>
@@ -194,7 +194,7 @@ configuration options are set in the <a href="/manual/appconf.html">app.conf</a>
 	GET    /favicon.ico                 Static.Serve("public","img/favicon.png")
 </code></pre></div></div>
 
-<p>As defined in the <a href="/manual/routing.html">route</a> manual the syntax used for defining
+<p>As defined in the <a href="/pages-revel/manual/routing.html">route</a> manual the syntax used for defining
 a route is <code class="highlighter-rouge">Controller.Action(prefix,filepath)</code>. So the word <code class="highlighter-rouge">public</code>
 has nothing to do with visibility, it follows the default
 directory <a href="organization.html">organization</a></p>

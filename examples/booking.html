@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Booking | Revel - A Web Application Framework for Go!</title>
-<link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> 
-<link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+<link rel="icon" href="/pages-revel/img/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/pages-revel/img/favicon.png" type="image/png" />
 
 <link href="/pages-revel/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="/pages-revel/js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
@@ -50,7 +50,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <div id="main-logo"><a ddclass="navbar-brand" href="/">Revel</a>
+            <div id="main-logo"><a ddclass="navbar-brand" href="/pages-revel/">Revel</a>
             </div>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
@@ -177,8 +177,8 @@
 <ul>
   <li>Using an SQL (SQLite) database and configuring the Revel DB module.</li>
   <li>Using the third party <a href="https://github.com/go-gorp/gorp">GORP</a> <em>ORM-ish</em> library</li>
-  <li><a href="/manual/interceptors.html">Interceptors</a> for checking that a user is logged in.</li>
-  <li>Using <a href="/manual/validation">validation</a> and displaying inline errors</li>
+  <li><a href="/pages-revel/manual/interceptors.html">Interceptors</a> for checking that a user is logged in.</li>
+  <li>Using <a href="/pages-revel/manual/validation">validation</a> and displaying inline errors</li>
 </ul>
 
 <p><a class="btn btn-success btn-sm" href="https://github.com/revel/examples/tree/master/booking" role="button"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Browse Source</a></p>
@@ -238,7 +238,7 @@ User, Booking, and Hotel tables, and insert some test records.</li>
 <h2 id="interceptors">Interceptors</h2>
 
 <p><a href="https://github.com/revel/examples/blob/master/booking/app/controllers/init.go"><code class="highlighter-rouge">app/controllers/init.go</code></a> 
-registers the <a href="/manual/interceptors.html">interceptors</a> that run before every method (<a href="https://godoc.org/github.com/revel/revel#InterceptorMethod">InterceptorMethod</a>):</p>
+registers the <a href="/pages-revel/manual/interceptors.html">interceptors</a> that run before every method (<a href="https://godoc.org/github.com/revel/revel#InterceptorMethod">InterceptorMethod</a>):</p>
 
 <figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">func</span><span class="x"> </span><span class="n">init</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
 	</span><span class="n">revel</span><span class="o">.</span><span class="n">OnAppStart</span><span class="p">(</span><span class="n">Init</span><span class="p">)</span><span class="x">
@@ -292,7 +292,7 @@ the validation context under the key “booking.CheckInDate”.</p>
 
 <p>Subsequently, the
 <a href="https://github.com/revel/examples/blob/master/booking/app/views/Hotels/Book.html">Hotels/Book.html</a>
-template can easily access them using the <a href="/manual/templates.html#field"><code class="highlighter-rouge">field</code></a> helper:</p>
+template can easily access them using the <a href="/pages-revel/manual/templates.html#field"><code class="highlighter-rouge">field</code></a> helper:</p>
 
 <figure class="highlight"><pre><code class="language-htmldjango" data-lang="htmldjango">{{with $field := field "booking.CheckInDate" .}}
 &lt;p class="{{$field.ErrorClass}}"&gt;
@@ -302,7 +302,7 @@ template can easily access them using the <a href="/manual/templates.html#field"
 ss&lt;/p&gt;
 {{end}}</code></pre></figure>
 
-<p>The <a href="/manual/templates.html#field"><code class="highlighter-rouge">field</code></a> template helper looks for errors in the validation context, using
+<p>The <a href="/pages-revel/manual/templates.html#field"><code class="highlighter-rouge">field</code></a> template helper looks for errors in the validation context, using
 the field name as the key.</p>
 
                     

@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Organization | Revel - A Web Application Framework for Go!</title>
-<link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> 
-<link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+<link rel="icon" href="/pages-revel/img/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/pages-revel/img/favicon.png" type="image/png" />
 
 <link href="/pages-revel/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="/pages-revel/js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
@@ -50,7 +50,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <div id="main-logo"><a ddclass="navbar-brand" href="/">Revel</a>
+            <div id="main-logo"><a ddclass="navbar-brand" href="/pages-revel/">Revel</a>
             </div>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
@@ -150,7 +150,7 @@
             
                 
                 
-                    <li><a href="/modules/static.html">Static Content</a></li>
+                    <li><a href="/pages-revel/modules/static.html">Static Content</a></li>
                 
             
                 
@@ -230,7 +230,7 @@
             
                 
                 
-                    <li><a href="/modules/testing.html">Testing</a></li>
+                    <li><a href="/pages-revel/modules/testing.html">Testing</a></li>
                 
             
         
@@ -307,14 +307,14 @@ domain entities and services.</p>
                     </ul>
                   </li>
                   <li><code class="highlighter-rouge">models/</code>          - app domain models</li>
-                  <li><code class="highlighter-rouge">jobs/</code>            - app domain <a href="/modules/jobs.html">jobs</a></li>
+                  <li><code class="highlighter-rouge">jobs/</code>            - app domain <a href="/pages-revel/modules/jobs.html">jobs</a></li>
                   <li><code class="highlighter-rouge">services/</code>        - app domain services</li>
                   <li><code class="highlighter-rouge">routes/</code>          - <a href="routing.html#ReverseRouting">reverse routes</a> (generated code)</li>
                   <li><code class="highlighter-rouge">views/</code>           - <a href="templates.html">templates</a></li>
                   <li><code class="highlighter-rouge">tmp/</code>             - app main file, generated code</li>
                 </ul>
               </li>
-              <li><code class="highlighter-rouge">tests/</code>           -  <a href="/modules/testing.html">test suites</a></li>
+              <li><code class="highlighter-rouge">tests/</code>           -  <a href="/pages-revel/modules/testing.html">test suites</a></li>
               <li><code class="highlighter-rouge">conf/</code>            - configuration files
                 <ul>
                   <li><code class="highlighter-rouge">app.conf</code>       - <a href="appconf.html">main configuration</a> file</li>
@@ -322,7 +322,7 @@ domain entities and services.</p>
                 </ul>
               </li>
               <li><code class="highlighter-rouge">messages/</code>        - i18n <a href="i18n-messages.html">message</a> files</li>
-              <li><code class="highlighter-rouge">public/</code>          - <a href="/modules/static.html">static/public assets</a>
+              <li><code class="highlighter-rouge">public/</code>          - <a href="/pages-revel/modules/static.html">static/public assets</a>
                 <ul>
                   <li><code class="highlighter-rouge">css/</code>           - stylesheet files</li>
                   <li><code class="highlighter-rouge">js/</code>            - javascript files</li>
@@ -347,12 +347,12 @@ domain entities and services.</p>
 </ul>
 
 <p>Beyond that, the application may organize its code however it wishes.  Revel
-will <a href="/manual/appconf.html#watch">watch</a> all directories under <code class="highlighter-rouge">app/</code> and rebuild when it
+will <a href="/pages-revel/manual/appconf.html#watch">watch</a> all directories under <code class="highlighter-rouge">app/</code> and rebuild when it
 notices any changes.  Any dependencies outside of <code class="highlighter-rouge">app/</code> will not be watched for
 changes, it is the developer’s responsibility to recompile when necessary.</p>
 
 <p>Additionally, Revel will import any packages within <code class="highlighter-rouge">app/</code> (or imported
-<a href="/modules/index.html">modules</a>) that contain <code class="highlighter-rouge">init()</code> functions on startup, to ensure
+<a href="/pages-revel/modules/index.html">modules</a>) that contain <code class="highlighter-rouge">init()</code> functions on startup, to ensure
 that all of the developer’s code is initialized.</p>
 
 <p>The <code class="highlighter-rouge">app/init.go</code> file is a conventional location to register all of the
