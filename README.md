@@ -13,7 +13,7 @@ sed -i "s#{{ page.root }}#/pages-revel#g" _includes/*.html
 sed -i "s#{{ page.root }}#/pages-revel#g" _layouts/*.html
 jekyll build
 wget https://code.jquery.com/jquery-2.1.3.min.js -P _site/js/
-sed -i "s#//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js#/pages-revel/js/jquery-2.1.3.min.js#g" _site/index.html
+find _site -type f -name "*.html" -exec sed -i "s#//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js#/pages-revel/js/jquery-2.1.3.min.js#g" {} \;
 rm -rf _site/README.md
 cd ../
 mv revel.github.io/_site/* ./
