@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Namespace | Revel - A Web Application Framework for Go!</title>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="/css/jekyll-github.css" rel="stylesheet">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="/js/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+<link href="/css/revel.17.css" rel="stylesheet">
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35042202-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+    
+    
+
+    
+<nav class="navbar navbar-inverse ">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div id="main-logo"><a ddclass="navbar-brand" href="/">Revel</a>
+            </div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                                
+                <li >
+                    <a href="/tutorial/index.html"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Tutorial</a></li>
+                
+                <li class="active">
+                    <a href="/manual/index.html"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Manual</a></li>
+                    
+                <li >
+                    <a href="/modules/index.html"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Modules</a></li>
+                    
+                    
+                <li >
+                    <a href="/examples/index.html"><span class="glyphicon glyphicon-sound-stereo" aria-hidden="true"></span> Examples</a></li>
+                
+                <li >
+                    <a href="/quickref/index.html"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> Quick Ref</a></li>
+                    
+                    
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Project <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://github.com/revel/" target="github"><span class="glyphicon glyphicon-object-align-horizontal" aria-hidden="true"></span> Revel project @ github</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel</li>
+                            <li><a href="https://godoc.org/github.com/revel/revel" target="godoc"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> godoc</a></li>
+                            <li><a href="https://github.com/revel/revel" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/revel/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel command</li>
+                            <li><a href="https://github.com/revel/cmd" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/cmd/issues" target="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Modules</li>
+                        <li><a href="https://github.com/revel/modules" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Example Apps</li>
+                        <li><a href="https://github.com/revel/examples" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">revel.github.io</li>
+                        <li><a href="https://github.com/revel/revel.github.io" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li><a href="https://github.com/revel/revel.github.io/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Support <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://gitter.im/revel/community" target="_blank">Chat on gitter.im</a></li>
+                        <li><a href="http://stackoverflow.com/questions/tagged/revel" target="_blank">Revel at StackOverflow</a></li>
+                    </ul>
+                <li>
+                 
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="container revel-manual">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="leftnav">
+    <ul class="nav">
+        
+            <li class="nav-header">Overview</li>
+            
+                
+                
+                    <li><a href="index.html">Introduction</a></li>
+                
+            
+                
+                
+                    <li><a href="concepts.html">Concepts</a></li>
+                
+            
+                
+                
+                    <li><a href="organization.html">Code Organization</a></li>
+                
+            
+        
+            <li class="nav-header">Controllers</li>
+            
+                
+                
+                    <li><a href="controllers.html">Controllers Overview</a></li>
+                
+            
+                
+                
+                    <li><a href="routing.html">URL Routing</a></li>
+                
+            
+                
+                
+                    <li><a href="/modules/static.html">Static Content</a></li>
+                
+            
+                
+                
+                    <li><a href="parameters.html">Request Parameters & JSON</a></li>
+                
+            
+                
+                
+                    <li><a href="validation.html">Validation</a></li>
+                
+            
+                
+                
+                    <li><a href="sessionflash.html">Session & Flash</a></li>
+                
+            
+                
+                
+                    <li><a href="results.html">Results & Response</a></li>
+                
+            
+                
+                
+                    <li><a href="templates.html">Templates</a></li>
+                
+            
+                
+                
+                    <li><a href="template-engine.html">Template Engine</a></li>
+                
+            
+                
+                
+                    <li><a href="templates-go.html">Go Template Engine</a></li>
+                
+            
+                
+                
+                    <li><a href="server-engine.html">Server Engine</a></li>
+                
+            
+                
+                
+                    <li><a href="interceptors.html">Interceptors</a></li>
+                
+            
+                
+                
+                    <li><a href="filters.html">Filters</a></li>
+                
+            
+                
+                
+                    <li><a href="websockets.html">Websockets</a></li>
+                
+            
+                
+                
+                    <li><a href="i18n-messages.html">Internationalization</a></li>
+                
+            
+                
+                
+                    <li><a href="cache.html">Cache</a></li>
+                
+            
+                
+                
+                    <li><a href="database.html">Database</a></li>
+                
+            
+                
+                
+                    <li><a href="debug.html">Debugging</a></li>
+                
+            
+                
+                
+                    <li><a href="/modules/testing.html">Testing</a></li>
+                
+            
+        
+            <li class="nav-header">Operational</li>
+            
+                
+                
+                    <li><a href="versions.html">Versions</a></li>
+                
+            
+                
+                
+                    <li><a href="logging.html">Logging</a></li>
+                
+            
+                
+                
+                    <li><a href="deployment.html">Deployment</a></li>
+                
+            
+        
+            <li class="nav-header">Reference</li>
+            
+                
+                
+                    <li><a href="appconf.html">app.conf</a></li>
+                
+            
+                
+                
+                    <li><a href="tool.html">revel cmd</a></li>
+                
+            
+                
+                
+                    <li><a href="faq.html">FAQ</a></li>
+                
+            
+        
+    </ul>
+</div>
+
+            </div>
+
+            <div class="col-md-9">
+                <div class="page-header">
+                    <a href="https://github.com/revel/revel.github.io/edit/master/manual/namespace.md" class="improve-page btn dbtn-info" target="_blank"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Improve Page</a>
+                    <h1>Namespace</h1>
+                </div>
+                <div class="main">
+                    <h2 id="namespace">Namespace</h2>
+
+<p>Namespace definition begins with the application configuration. Modules are defined inside the configuration file by <code class="highlighter-rouge">module.static=github.com/revel/modules/static</code> this defines the revel namespace of the word <code class="highlighter-rouge">static</code> to all the controllers and templates within the module. To reference the name space use the backslash in front of your controller action like below.</p>
+
+<p>Route mapping inside the route file would be defined like</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*       /favicon.png                  static\Static.Serve("folder")
+</code></pre></div></div>
+
+<p>Module routing remains unchanged</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*      /debug/                          module:testrunner
+</code></pre></div></div>
+
+<p>Reverse routing has an optional namespace as well.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;td&gt;&lt;a href=""&gt;Start&lt;/a&gt;&lt;/td&gt;
+</code></pre></div></div>
+
+<h3 id="namespace-in-the-application">Namespace in the application</h3>
+<h4 id="referencing-namespace-within-the-route-file">Referencing Namespace within the route file.</h4>
+<p>Given you had a line in the configuration importing a module like   <code class="highlighter-rouge">module.jobs=jobs</code> Route mapping inside the route file would be defined like.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*       /run/:id                  jobs\Jobs.Run
+</code></pre></div></div>
+
+<p>To remain backwards compatible routes without a namespace will be matched to the first controller/name within the same module space or global space. Another words, if you have a definition like below in your app folder it will be matched to the first app controller that is called <code class="highlighter-rouge">Jobs</code> with a function <code class="highlighter-rouge">Run</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*       /run/:id                  Jobs.Run
+</code></pre></div></div>
+
+<h4 id="wildcard-matching">Wildcard matching</h4>
+<p>You can limit the wildcard matching to a single module by having the namespace in the route like the following.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*       /jobs/:controller/:action                  jobs\:controller.:action
+</code></pre></div></div>
+
+<p>Any route definitions in a module will be assumed that they are limited to only that module, unless that module prefixes a route path with a namespace</p>
+
+<h4 id="referencing-namespace-within-the-template">Referencing Namespace within the template.</h4>
+<p>You can reference a controller by its namespace within the application template by adding the <code class="highlighter-rouge">namespace\\</code> operator before the controller action. For example like given the module was defined in <code class="highlighter-rouge">app.conf</code> like  <code class="highlighter-rouge">module.myjobs=jobs</code> then to reference the controller action Jobs.Run the namespace should be appended in front like</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;td&gt;&lt;a href=""&gt;Start&lt;/a&gt;&lt;/td&gt;
+</code></pre></div></div>
+
+<p>To remain backwards compatible the namespace reference is not required and the synatx `` will work, but it will use the first controller called <code class="highlighter-rouge">Jobs</code> with the action <code class="highlighter-rouge">Run</code> to perform the reverse route.</p>
+
+<h3 id="namespaces-in-a-module">Namespaces in a Module</h3>
+<p>When building a module the application namespace that the module is imported into is unknown. So we introduce a special letter sequence <strong>_LOCAL_\</strong> to indicate that these letters will need to be replaced within the template before the engine receives it. Then the template reverse routes function (the <code class="highlighter-rouge">url</code> template function) you should define the key <code class="highlighter-rouge">_LOCAL_(.module)\</code> in front of <code class="highlighter-rouge">url</code>. The <code class="highlighter-rouge">(.module)</code> portion is only needed if this is referencing a different module in another namespace (see next section for more details) . When revel reads the template file it will rewrite the <code class="highlighter-rouge">_LOCAL_(.module)\</code> portion with the namespace of the defined for example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;td&gt;&lt;a href=""&gt;Start&lt;/a&gt;&lt;/td&gt;
+</code></pre></div></div>
+
+<p>Given that the module is imported as <code class="highlighter-rouge">module.myjobs=jobs</code> The template would then be realized as</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;td&gt;&lt;a href=""&gt;Start&lt;/a&gt;&lt;/td&gt;
+</code></pre></div></div>
+
+<p><strong>Note</strong> to remain backwards compatible the revel engine will attempt to reverse lookup a <code class="highlighter-rouge">Controller.Action</code> across all available controllers. If two controllers have the same name and action the default will be to match the first one. This will be slightly slower then a fully qualified lookup (one that has a namespace defined) is.</p>
+
+<p>If a module requires another module, then there may be a conflict between how that module imported its module vs how the application imported the module. The correct way to map a imported module would be to specify the module to be included in the app.conf of the module like <code class="highlighter-rouge">module.myjobs=jobs</code>, then reference it in the template like the following</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;td&gt;&lt;a href=""&gt;Start&lt;/a&gt;&lt;/td&gt;
+</code></pre></div></div>
+
+<p>In a module routes file this would be similarly done like</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*       /favicon.png                  _LOCAL_.static\Static.Serve("folder")
+</code></pre></div></div>
+
+                    
+
+
+                    
+
+
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; Revel Team 2017 - Revel is released under the <a href="https://github.com/revel/revel/blob/master/LICENSE">MIT License</a></p>
+        </footer>
+    </div>
+</body>
+</html>
+

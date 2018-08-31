@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Results & Responses | Revel - A Web Application Framework for Go!</title>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="/css/jekyll-github.css" rel="stylesheet">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="/js/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+<link href="/css/revel.17.css" rel="stylesheet">
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35042202-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+    
+    
+
+    
+<nav class="navbar navbar-inverse ">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div id="main-logo"><a ddclass="navbar-brand" href="/">Revel</a>
+            </div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                                
+                <li >
+                    <a href="/tutorial/index.html"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Tutorial</a></li>
+                
+                <li class="active">
+                    <a href="/manual/index.html"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Manual</a></li>
+                    
+                <li >
+                    <a href="/modules/index.html"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Modules</a></li>
+                    
+                    
+                <li >
+                    <a href="/examples/index.html"><span class="glyphicon glyphicon-sound-stereo" aria-hidden="true"></span> Examples</a></li>
+                
+                <li >
+                    <a href="/quickref/index.html"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> Quick Ref</a></li>
+                    
+                    
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Project <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://github.com/revel/" target="github"><span class="glyphicon glyphicon-object-align-horizontal" aria-hidden="true"></span> Revel project @ github</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel</li>
+                            <li><a href="https://godoc.org/github.com/revel/revel" target="godoc"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> godoc</a></li>
+                            <li><a href="https://github.com/revel/revel" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/revel/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel command</li>
+                            <li><a href="https://github.com/revel/cmd" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/cmd/issues" target="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Modules</li>
+                        <li><a href="https://github.com/revel/modules" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Example Apps</li>
+                        <li><a href="https://github.com/revel/examples" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">revel.github.io</li>
+                        <li><a href="https://github.com/revel/revel.github.io" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li><a href="https://github.com/revel/revel.github.io/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Support <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://gitter.im/revel/community" target="_blank">Chat on gitter.im</a></li>
+                        <li><a href="http://stackoverflow.com/questions/tagged/revel" target="_blank">Revel at StackOverflow</a></li>
+                    </ul>
+                <li>
+                 
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="container revel-manual">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="leftnav">
+    <ul class="nav">
+        
+            <li class="nav-header">Overview</li>
+            
+                
+                
+                    <li><a href="index.html">Introduction</a></li>
+                
+            
+                
+                
+                    <li><a href="concepts.html">Concepts</a></li>
+                
+            
+                
+                
+                    <li><a href="organization.html">Code Organization</a></li>
+                
+            
+        
+            <li class="nav-header">Controllers</li>
+            
+                
+                
+                    <li><a href="controllers.html">Controllers Overview</a></li>
+                
+            
+                
+                
+                    <li><a href="routing.html">URL Routing</a></li>
+                
+            
+                
+                
+                    <li><a href="/modules/static.html">Static Content</a></li>
+                
+            
+                
+                
+                    <li><a href="parameters.html">Request Parameters & JSON</a></li>
+                
+            
+                
+                
+                    <li><a href="validation.html">Validation</a></li>
+                
+            
+                
+                
+                    <li><a href="sessionflash.html">Session & Flash</a></li>
+                
+            
+                
+                
+                    <li class="active"><a href="results.html">Results & Response</a></li>
+                
+            
+                
+                
+                    <li><a href="templates.html">Templates</a></li>
+                
+            
+                
+                
+                    <li><a href="template-engine.html">Template Engine</a></li>
+                
+            
+                
+                
+                    <li><a href="templates-go.html">Go Template Engine</a></li>
+                
+            
+                
+                
+                    <li><a href="server-engine.html">Server Engine</a></li>
+                
+            
+                
+                
+                    <li><a href="interceptors.html">Interceptors</a></li>
+                
+            
+                
+                
+                    <li><a href="filters.html">Filters</a></li>
+                
+            
+                
+                
+                    <li><a href="websockets.html">Websockets</a></li>
+                
+            
+                
+                
+                    <li><a href="i18n-messages.html">Internationalization</a></li>
+                
+            
+                
+                
+                    <li><a href="cache.html">Cache</a></li>
+                
+            
+                
+                
+                    <li><a href="database.html">Database</a></li>
+                
+            
+                
+                
+                    <li><a href="debug.html">Debugging</a></li>
+                
+            
+                
+                
+                    <li><a href="/modules/testing.html">Testing</a></li>
+                
+            
+        
+            <li class="nav-header">Operational</li>
+            
+                
+                
+                    <li><a href="versions.html">Versions</a></li>
+                
+            
+                
+                
+                    <li><a href="logging.html">Logging</a></li>
+                
+            
+                
+                
+                    <li><a href="deployment.html">Deployment</a></li>
+                
+            
+        
+            <li class="nav-header">Reference</li>
+            
+                
+                
+                    <li><a href="appconf.html">app.conf</a></li>
+                
+            
+                
+                
+                    <li><a href="tool.html">revel cmd</a></li>
+                
+            
+                
+                
+                    <li><a href="faq.html">FAQ</a></li>
+                
+            
+        
+    </ul>
+</div>
+
+            </div>
+
+            <div class="col-md-9">
+                <div class="page-header">
+                    <a href="https://github.com/revel/revel.github.io/edit/master/manual/results.md" class="improve-page btn dbtn-info" target="_blank"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Improve Page</a>
+                    <h1>Results & Responses</h1>
+                </div>
+                <div class="main">
+                    <p>Actions must return a <a href="https://godoc.org/github.com/revel/revel#Result">revel.Result</a>, which
+handles the HTTP response generation and adheres to the simple interface:</p>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">type</span><span class="x"> </span><span class="n">Result</span><span class="x"> </span><span class="k">interface</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">Apply</span><span class="p">(</span><span class="n">req</span><span class="x"> </span><span class="o">*</span><span class="n">Request</span><span class="p">,</span><span class="x"> </span><span class="n">resp</span><span class="x"> </span><span class="o">*</span><span class="n">Response</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span></code></pre></figure>
+
+<p><a href="https://godoc.org/github.com/revel/revel#Controller">revel.Controller</a> provides a few
+methods to produce different results:</p>
+
+<div class="alert alert-success">
+<b>NOTE: From v0.14, the following changes:</b>
+<ul>
+<li>`RenderJson` is now `RenderJSON`</li>
+<li>`RenderJsonP` is now `RenderJSONP`</li>
+<li>`RenderXml` is now `RenderXML`</li>
+</ul>
+</div>
+
+<ul>
+  <li><strong><a href="#Render">Render()</a></strong>, <strong><a href="#RenderTemplate">RenderTemplate()</a></strong>
+    <ul>
+      <li>render a template, passing arguments.</li>
+    </ul>
+  </li>
+  <li><strong><a href="#RenderJSON">RenderJSON()</a></strong>, <strong><a href="#RenderXML">RenderXML()</a></strong>
+    <ul>
+      <li>serialize a structure to json or xml.</li>
+    </ul>
+  </li>
+  <li><strong><code class="highlighter-rouge">RenderText()</code></strong>
+    <ul>
+      <li>return a plaintext response.</li>
+    </ul>
+  </li>
+  <li><strong><a href="#Redirect">Redirect()</a></strong>
+    <ul>
+      <li>redirect to another action or URL</li>
+    </ul>
+  </li>
+  <li><strong><a href="#RenderFile">RenderFile()</a></strong>, <strong><a href="#RenderFileName">RenderFileName()</a></strong>
+    <ul>
+      <li>return a file inline or to be downloaded as an attachment.</li>
+    </ul>
+  </li>
+  <li><strong><code class="highlighter-rouge">RenderError()</code></strong>
+    <ul>
+      <li>return a 500 response that renders the errors/500.html template.</li>
+    </ul>
+  </li>
+  <li><strong><code class="highlighter-rouge">NotFound()</code></strong>
+    <ul>
+      <li>return a 404 response that renders the errors/404.html template.</li>
+    </ul>
+  </li>
+  <li><strong><code class="highlighter-rouge">Todo()</code></strong>
+    <ul>
+      <li>return a stub response (500)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Additionally, the developer may define a result with <a href="#CustomResult">CustomResult</a> and return that.</p>
+
+<h3 id="setting-the-status-code--content-type">Setting the Status Code / Content Type</h3>
+
+<p>Each built-in Result has a default <code class="highlighter-rouge">HTTP Status Code</code> and <code class="highlighter-rouge">Content Type</code>.  To override
+those defaults, simply set those properties on the response:</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">App</span><span class="p">)</span><span class="x"> </span><span class="n">Index</span><span class="p">()</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">c</span><span class="o">.</span><span class="n">Response</span><span class="o">.</span><span class="n">Status</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">StatusTeapot</span><span class="x">
+	</span><span class="n">c</span><span class="o">.</span><span class="n">Response</span><span class="o">.</span><span class="n">ContentType</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="s">"application/dishware"</span><span class="x">
+	</span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Render</span><span class="p">()</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+<p>You can override the default status code by setting one yourself:</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="o">*</span><span class="n">App</span><span class="p">)</span><span class="x"> </span><span class="n">CreateEntity</span><span class="p">()</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="n">c</span><span class="o">.</span><span class="n">Response</span><span class="o">.</span><span class="n">Status</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="m">201</span><span class="x">
+    </span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Render</span><span class="p">()</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+<p><a name="Render"></a><a name="RenderTemplate"></a></p>
+
+<h2 id="controllerrender">Controller.Render()</h2>
+
+<p>Called within an action (e.g. “Controller.Action”),
+<a href="https://godoc.org/github.com/revel/revel#Controller.Render">Controller.Render()</a> does two things:</p>
+
+<ol>
+  <li>Adds all arguments to the controller’s <code class="highlighter-rouge">ViewArgs</code>, using their local identifier as the key.</li>
+  <li>Executes the template “views/Controller/Action.html”, passing in the controller’s <code class="highlighter-rouge">ViewArgs</code> as the data map.</li>
+</ol>
+
+<p>If unsuccessful (e.g. it could not find the template), an <a href="https://godoc.org/github.com/revel/revel#ErrorResult">ErrorResult</a> is returned instead.</p>
+
+<p>This allows the developer to write:</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">MyApp</span><span class="p">)</span><span class="x"> </span><span class="n">Action</span><span class="p">()</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">myValue</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">calculateValue</span><span class="p">()</span><span class="x">
+	</span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Render</span><span class="p">(</span><span class="n">myValue</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+<p>and to use <code class="highlighter-rouge">myValue</code> in their template.  This is usually more convenient than
+constructing an explicit map, since in many cases the data will need to be
+handled as a local variable anyway.</p>
+
+<div class="alert alert-info">Note: Revel looks at the calling method name to determine the Template
+path and to look up the argument names.  Therefore, `c.Render()` may only be  called from Actions.</div>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="c">// Example using mix of render args and variables</span><span class="x">
+</span><span class="c">// This renders the `views/MyController/showSutuff.html` template as</span><span class="x">
+</span><span class="c">// eg &lt;pre&gt;foo={{.foo}} bar={{.bar}} abc={{.abc}} xyz={{.xyz}}&lt;/pre&gt;</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">MyController</span><span class="p">)</span><span class="x"> </span><span class="n">ShowStuff</span><span class="p">()</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="n">c</span><span class="o">.</span><span class="n">ViewArgs</span><span class="p">[</span><span class="s">"foo"</span><span class="p">]</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="s">"bar"</span><span class="x">
+    </span><span class="n">c</span><span class="o">.</span><span class="n">ViewArgs</span><span class="p">[</span><span class="s">"bar"</span><span class="p">]</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="m">1</span><span class="x">
+    </span><span class="n">abc</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="s">"abc"</span><span class="x">
+    </span><span class="n">xyz</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="s">"xyz"</span><span class="x">
+    </span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Render</span><span class="p">(</span><span class="n">xyz</span><span class="p">,</span><span class="x"> </span><span class="n">abc</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="c">// Example renders the `views/Foo/boo.xhtml` tempate</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">MyController</span><span class="p">)</span><span class="x"> </span><span class="n">XTemp</span><span class="p">()</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="n">c</span><span class="o">.</span><span class="n">ViewArgs</span><span class="p">[</span><span class="s">"foo"</span><span class="p">]</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="s">"bar"</span><span class="x">
+    </span><span class="n">c</span><span class="o">.</span><span class="n">ViewArgs</span><span class="p">[</span><span class="s">"bar"</span><span class="p">]</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="m">1</span><span class="x">
+    </span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">RenderTemplate</span><span class="p">(</span><span class="s">"Foo/boo.xhtml"</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span></code></pre></figure>
+
+<p><a name="RenderFile"></a><a name="RenderFileName"></a></p>
+
+<h2 id="controllerrenderfile--controllerrenderfilename">Controller.RenderFile() / Controller.RenderFileName()</h2>
+
+<p>Within an action it is sometimes necessary to serve a file (e.g. an attachment).
+For this case the functions <a href="https://godoc.org/github.com/revel/revel#Controller.RenderFile">Controller.RenderFile()</a> and For this case the functions <a href="https://godoc.org/github.com/revel/revel#Controller.RenderFileName">Controller.RenderFileName()</a> are there.</p>
+
+<p>The main difference is that <code class="highlighter-rouge">Controller.RenderFile()</code> needs an <code class="highlighter-rouge">*os.File</code> and <code class="highlighter-rouge">Controller.RenderFileName()</code> takes a file path as a string. Both require a Content-Disposition option which can be <code class="highlighter-rouge">revel.Attachment</code> or <code class="highlighter-rouge">revel.Inline</code>.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">revel.Attachment</code> forces the browser to download the file. The filename and size are derived from the passed <code class="highlighter-rouge">*os.File</code> or file path.</li>
+  <li><code class="highlighter-rouge">revel.Inline</code> indicates the browser that it may render the file inline. Note that when browsers can’t display the file a download is still performed.</li>
+  <li><code class="highlighter-rouge">revel.NoDisposition</code> omits the content disposition header and let the browser figure out what to do, also omits the file name from the header.</li>
+</ul>
+
+<p><code class="highlighter-rouge">Controller.RenderFileName()</code> can also return an error in case the file is not found. See <a href="https://godoc.org/github.com/revel/revel#Controller.RenderError">Controller.RenderError()</a></p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">App</span><span class="p">)</span><span class="x"> </span><span class="n">File</span><span class="p">()</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">f</span><span class="p">,</span><span class="x"> </span><span class="n">_</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">os</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s">"/path/to/attachment.pdf"</span><span class="p">)</span><span class="x">
+	</span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">RenderFile</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Inline</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">App</span><span class="p">)</span><span class="x"> </span><span class="n">Filename</span><span class="p">()</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">RenderFileName</span><span class="p">(</span><span class="s">"/path/to/attachment.docx"</span><span class="p">,</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Attachment</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+<p><a name="RenderJSON"></a><a name="RenderXML"></a></p>
+
+<h2 id="controllerrenderjson--controllerrenderxml">Controller.RenderJSON() / Controller.RenderXML()</h2>
+
+<p>The application may call
+<a href="https://godoc.org/github.com/revel/revel#Controller.RenderJSON">RenderJSON</a>, 
+<a href="https://godoc.org/github.com/revel/revel#Controller.RenderJSONP">RenderJSONP</a> or
+<a href="https://godoc.org/github.com/revel/revel#Controller.RenderXML">RenderXML</a> and pass in any Go
+type, usually a struct.  Revel will serialize it using
+<a href="http://www.golang.org/pkg/encoding/json/#Marshal">json.Marshal</a> or
+<a href="http://www.golang.org/pkg/encoding/xml/#Marshal">xml.Marshal</a>.</p>
+
+<p>If <a href="appconf.html#results.pretty"><code class="highlighter-rouge">results.pretty=true</code></a> in <a href="appconf.html"><code class="highlighter-rouge">conf/app.conf</code></a>  then serialization will be done using
+<code class="highlighter-rouge">MarshalIndent</code> instead, to produce nicely indented output for human consumption.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">// Simple example</span><span class="x">
+
+</span><span class="k">type</span><span class="x"> </span><span class="n">Stuff</span><span class="x"> </span><span class="k">struct</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="n">Foo</span><span class="x"> </span><span class="kt">string</span><span class="x"> </span><span class="s">` json:"foo" xml:"foo" `</span><span class="x">
+    </span><span class="n">Bar</span><span class="x"> </span><span class="kt">int</span><span class="x"> </span><span class="s">` json:"bar" xml:"bar" `</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">MyController</span><span class="p">)</span><span class="x"> </span><span class="n">MyWork</span><span class="p">()</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="nb">make</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="k">interface</span><span class="p">{})</span><span class="x">
+    </span><span class="n">data</span><span class="p">[</span><span class="s">"error"</span><span class="p">]</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="no">nil</span><span class="x">
+    </span><span class="n">stuff</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">Stuff</span><span class="p">{</span><span class="n">Foo</span><span class="o">:</span><span class="x"> </span><span class="s">"xyz"</span><span class="p">,</span><span class="x"> </span><span class="n">Bar</span><span class="o">:</span><span class="x"> </span><span class="m">999</span><span class="p">}</span><span class="x">
+    </span><span class="n">data</span><span class="p">[</span><span class="s">"stuff"</span><span class="p">]</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">stuff</span><span class="x">
+    </span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">RenderJSON</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="c">// or alternately </span><span class="x">
+    </span><span class="c">// return c.RenderXML(data)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+<p><a name="Redirect"></a></p>
+
+<h2 id="redirect">Redirect()</h2>
+
+<ul>
+  <li>A helper function for generating <a href="http://en.wikipedia.org/wiki/URL_redirection#HTTP_status_codes_3xx">HTTP redirects</a>.</li>
+  <li>It may be used in two ways and both return a <code class="highlighter-rouge">302 Temporary Redirect</code> HTTP status code.</li>
+</ul>
+
+<h4 id="redirect-to-an-action-with-no-arguments">Redirect to an action with no arguments:</h4>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="x">    </span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Redirect</span><span class="p">(</span><span class="n">Hotels</span><span class="o">.</span><span class="n">Settings</span><span class="p">)</span><span class="x">
+</span></code></pre></div></div>
+
+<ul>
+  <li>This form is useful as it provides a degree of type safety and independence from the 
+routing and generates the URL automatically.</li>
+</ul>
+
+<h4 id="redirect-to-a-formatted-string">Redirect to a formatted string:</h4>
+
+<p><code class="highlighter-rouge">return c.Redirect("/hotels/%d/settings", hotelId)</code></p>
+
+<ul>
+  <li>This form is necessary to pass arguments.</li>
+  <li>It returns a <code class="highlighter-rouge">302 Temporary Redirect</code> status code.</li>
+</ul>
+
+<p><a name="CustomResult"></a></p>
+
+<h2 id="custom-result">Custom Result</h2>
+
+<p>Below is a simple example of creating a custom <a href="https://godoc.org/github.com/revel/revel#Result">revel.Result</a>.</p>
+
+<p>Create this type:</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="s">"net/http"</span><span class="p">)</span><span class="x">
+
+</span><span class="k">type</span><span class="x"> </span><span class="n">MyHtml</span><span class="x"> </span><span class="kt">string</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">r</span><span class="x"> </span><span class="n">MyHtml</span><span class="p">)</span><span class="x"> </span><span class="n">Apply</span><span class="p">(</span><span class="n">req</span><span class="x"> </span><span class="o">*</span><span class="n">revel</span><span class="o">.</span><span class="n">Request</span><span class="p">,</span><span class="x"> </span><span class="n">resp</span><span class="x"> </span><span class="o">*</span><span class="n">revel</span><span class="o">.</span><span class="n">Response</span><span class="p">)</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">resp</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusOK</span><span class="p">,</span><span class="x"> </span><span class="s">"text/html"</span><span class="p">)</span><span class="x">
+	</span><span class="n">resp</span><span class="o">.</span><span class="n">GetWriter</span><span class="p">()</span><span class="o">.</span><span class="n">Write</span><span class="p">([]</span><span class="kt">byte</span><span class="p">(</span><span class="n">r</span><span class="p">))</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+<p>Then use it in the action <code class="highlighter-rouge">MyApp.Hello</code>:</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="o">*</span><span class="n">MyApp</span><span class="p">)</span><span class="x"> </span><span class="n">Hello</span><span class="p">()</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="k">return</span><span class="x"> </span><span class="n">MyHtml</span><span class="p">(</span><span class="s">"&lt;html&gt;&lt;body&gt;Hello Result&lt;/body&gt;&lt;/html&gt;"</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+
+                    
+<div class="revel-godoc-bar">
+  <h6>GoDoc Reference</h6>
+  <ul>
+    <li>
+      
+      <a href="https://godoc.org/github.com/revel/revel#Controller.Render" target="_revel_godoc">Controller.Render</a>,
+      
+      <a href="https://godoc.org/github.com/revel/revel#Controller.RenderTemplate" target="_revel_godoc">Controller.RenderTemplate</a>,
+      
+      <a href="https://godoc.org/github.com/revel/revel#Controller.RenderJSON" target="_revel_godoc">Controller.RenderJSON</a>,
+      
+      <a href="https://godoc.org/github.com/revel/revel#Controller.RenderXML" target="_revel_godoc">Controller.RenderXML</a>,
+      
+      <a href="https://godoc.org/github.com/revel/revel#Controller.RenderFile" target="_revel_godoc">Controller.RenderFile</a>,
+      
+      <a href="https://godoc.org/github.com/revel/revel#Controller.RenderFileName" target="_revel_godoc">Controller.RenderFileName</a>,
+      
+      <a href="https://godoc.org/github.com/revel/revel#Controller.Redirect" target="_revel_godoc">Controller.Redirect</a>
+      
+    </li>
+  </ul>
+</div>
+
+
+
+                    
+<div class="revel-github-bar">
+  <h6>GitHub Labels</h6>
+  <ul>
+    <li><b>Issues: </b> 
+      
+      <a href="https://github.com/revel/revel/labels/topic-controller" target="_revel_issues">topic-controller</a> 
+      |
+      
+      <a href="https://github.com/revel/revel/labels/topic-static" target="_revel_issues">topic-static</a> 
+      
+      
+    </li>
+    <li><b>Pull Requests: </b> 
+      
+      <a href="https://github.com/revel/revel/pulls?q=is%3Apr+is%3Aopen+label%3Atopic-controller" target="_revel_pull_requests">topic-controller</a>
+      |
+      
+      <a href="https://github.com/revel/revel/pulls?q=is%3Apr+is%3Aopen+label%3Atopic-static" target="_revel_pull_requests">topic-static</a>
+      
+      
+    </li>
+  </ul>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; Revel Team 2017 - Revel is released under the <a href="https://github.com/revel/revel/blob/master/LICENSE">MIT License</a></p>
+        </footer>
+    </div>
+</body>
+</html>
+

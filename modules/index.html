@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Modules Overview | Revel - A Web Application Framework for Go!</title>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="/css/jekyll-github.css" rel="stylesheet">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="/js/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+<link href="/css/revel.17.css" rel="stylesheet">
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35042202-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+    
+    
+
+    
+<nav class="navbar navbar-inverse ">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div id="main-logo"><a ddclass="navbar-brand" href="/">Revel</a>
+            </div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                                
+                <li >
+                    <a href="/tutorial/index.html"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Tutorial</a></li>
+                
+                <li >
+                    <a href="/manual/index.html"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Manual</a></li>
+                    
+                <li class="active">
+                    <a href="/modules/index.html"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Modules</a></li>
+                    
+                    
+                <li >
+                    <a href="/examples/index.html"><span class="glyphicon glyphicon-sound-stereo" aria-hidden="true"></span> Examples</a></li>
+                
+                <li >
+                    <a href="/quickref/index.html"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> Quick Ref</a></li>
+                    
+                    
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Project <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://github.com/revel/" target="github"><span class="glyphicon glyphicon-object-align-horizontal" aria-hidden="true"></span> Revel project @ github</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel</li>
+                            <li><a href="https://godoc.org/github.com/revel/revel" target="godoc"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> godoc</a></li>
+                            <li><a href="https://github.com/revel/revel" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/revel/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel command</li>
+                            <li><a href="https://github.com/revel/cmd" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/cmd/issues" target="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Modules</li>
+                        <li><a href="https://github.com/revel/modules" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Example Apps</li>
+                        <li><a href="https://github.com/revel/examples" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">revel.github.io</li>
+                        <li><a href="https://github.com/revel/revel.github.io" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li><a href="https://github.com/revel/revel.github.io/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Support <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://gitter.im/revel/community" target="_blank">Chat on gitter.im</a></li>
+                        <li><a href="http://stackoverflow.com/questions/tagged/revel" target="_blank">Revel at StackOverflow</a></li>
+                    </ul>
+                <li>
+                 
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="container revel-modules">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="leftnav">
+    <ul class="nav">
+        
+            <li class="nav-header">Modules</li>
+            
+                
+                
+                    <li class="active"><a href="index.html">Overview</a></li>
+                
+            
+                
+                
+                    <li><a href="jobs.html">Jobs</a></li>
+                
+            
+                
+                
+                    <li><a href="static.html">Static</a></li>
+                
+            
+                
+                
+                    <li><a href="testing.html">Testing</a></li>
+                
+            
+                
+                
+                    <li><a href="template-engine-ace.html">Ace Templates</a></li>
+                
+            
+                
+                
+                    <li><a href="template-engine-pongo2.html">Pongo2 Templates</a></li>
+                
+            
+                
+                
+                    <li><a href="server-engine-newrelic.html">NewRelic Server</a></li>
+                
+            
+                
+                
+                    <li><a href="server-engine-fasthttp.html">FastHTTP Server</a></li>
+                
+            
+        
+    </ul>
+</div>
+
+            </div>
+
+            <div class="col-md-9">
+                <div class="page-header">
+                    <a href="https://github.com/revel/revel.github.io/edit/master/modules/index.md" class="improve-page btn dbtn-info" target="_blank"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Improve Page</a>
+                    <h1>Modules Overview</h1>
+                </div>
+                <div class="main">
+                    <p><strong>Modules</strong> are packages that can be plugged into an application. They allow sharing of controllers, views, assets, and 
+other code between multiple Revel applications or from third-party sources.</p>
+
+<p>A module should have the <a href="../manual/organization.html#DefaultLayout">same layout</a> as a Revel application’s layout. The “hosting” application will merge it in as follows:</p>
+
+<ol>
+  <li>Any templates in <code class="highlighter-rouge">module/app/views</code> will be added to the Template Loader search path</li>
+  <li>Any controllers in <code class="highlighter-rouge">module/app/controllers</code> will be treated as if they were in your application</li>
+  <li>The assets are made available, via a route action of the form <code class="highlighter-rouge">Static.ServeModule("modulename","public")</code></li>
+  <li>Routes can be included in your application with the route line of <code class="highlighter-rouge">module:modulename</code> - see <a href="routing.html#modules">routing</a></li>
+</ol>
+
+<p>Revel comes with some built in modules such as <a href="testing.html">testing</a> and <a href="jobs.html">jobs</a>.</p>
+
+<p><a class="btn btn-success btn-sm" href="https://github.com/revel/modules" role="button"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Modules Repository</a></p>
+
+<h2 id="enabling-a-module">Enabling a module</h2>
+
+<p>In order to add a module to your app, add a line to <a href="appconf.html#modules"><code class="highlighter-rouge">conf/app.conf</code></a>:</p>
+
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="py">module.mymodulename</span> <span class="p">=</span> <span class="s">go/import/path/to/module</span></code></pre></figure>
+
+<p>You can add an ordering method by insert a sortable string in between the
+word module and the name of the module like the following. This allows you to specify 
+which order the views should be loaded, so your application will always be the first,
+then the order of the modules and finally the default views in Revel.</p>
+
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="py">module.01.mymodulename</span> <span class="p">=</span> <span class="s">go/import/path/to/module</span>
+<span class="py">module.02.mymodulename2</span> <span class="p">=</span> <span class="s">go/import/path/to/module2</span></code></pre></figure>
+
+<p>An empty import path disables the module:</p>
+
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="py">module.mymodulename</span> <span class="p">=</span></code></pre></figure>
+
+<p>For example, to enable the <a href="testing.html">test runner</a> module:</p>
+
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="py">module.testrunner</span> <span class="p">=</span> <span class="s">github.com/revel/modules/testrunner</span></code></pre></figure>
+
+<h2 id="routing-a-module">Routing a module</h2>
+<ul>
+  <li>See the <a href="../manual/routing.html#modules">modules config</a> in <a href="../manual/routing.html"><code class="highlighter-rouge">app/routes</code></a></li>
+</ul>
+
+<h2 id="building-a-module">Building a module</h2>
+<h3 id="best-practices">Best Practices</h3>
+<p>It’s a good idea to make sure all your views are in their own namespace
+so that they will not conflict with other applications that your module is
+imported into. If you have a module called Reservation, it would be a good
+idea to have your view path look like <code class="highlighter-rouge">app/views/Reservation/Controller/Action.html</code>
+. This means that your controller needs to call <code class="highlighter-rouge">RenderTemplate</code> 
+instead of <code class="highlighter-rouge">Render</code> so that the correct view path is chosen.</p>
+
+<h2 id="module-initialization">Module Initialization</h2>
+<p>The <code class="highlighter-rouge">revel.RegisterModuleInit(func(*revel.Module))</code> can be for a module to be called immediately after all the modules
+are loaded. The <code class="highlighter-rouge">revel.Module</code> contained in the callback is the one assigned for that module. This can
+be used for a variety of purposes.</p>
+
+<p>An example of a purpose would be to retrieve the logger initialized for
+the module like the following</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span><span class="x"> </span><span class="n">moduleLogger</span><span class="x"> </span><span class="n">logger</span><span class="o">.</span><span class="n">MultiLogger</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="n">init</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">revel</span><span class="o">.</span><span class="n">RegisterModuleInit</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">module</span><span class="x"> </span><span class="o">*</span><span class="n">revel</span><span class="o">.</span><span class="n">Module</span><span class="p">){</span><span class="x">
+		</span><span class="n">moduleLogger</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">module</span><span class="o">.</span><span class="n">Log</span><span class="x">
+		</span><span class="n">moduleLogger</span><span class="o">.</span><span class="n">Debug</span><span class="p">(</span><span class="s">"Assigned Logger"</span><span class="p">)</span><span class="x">
+	</span><span class="p">})</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span></code></pre></div></div>
+<p>The <code class="highlighter-rouge">callback</code> registered in the <code class="highlighter-rouge">revel.RegisterModuleInit</code> is called before the <code class="highlighter-rouge">revel.OnAppStart</code>
+functions are.</p>
+
+                    
+
+
+                    
+
+
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; Revel Team 2017 - Revel is released under the <a href="https://github.com/revel/revel/blob/master/LICENSE">MIT License</a></p>
+        </footer>
+    </div>
+</body>
+</html>
+

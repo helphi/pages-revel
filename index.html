@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Welcome to Revel, the Web Framework for Go!</title>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+
+<link href="./js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="./js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="./css/jekyll-github.css" rel="stylesheet">
+
+<script src="./js/jquery-2.1.3.min.js"></script>
+<script src="./js/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+<link href="./css/revel.17.css" rel="stylesheet">
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35042202-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+    <style>
+    .revel-top-nav {
+        margin-bottom: 0;
+    }
+    </style>
+  </head>
+
+<body>
+
+<!-- fork git hub -->
+<a href="https://github.com/revel/revel" target="_blank" class="hidden-xs">
+<img style="position: absolute; top: 0; right: 0; border: 0; z-index:40000;"
+        src="img/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
+
+
+
+    
+<nav class="navbar navbar-inverse ">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div id="main-logo"><a ddclass="navbar-brand" href="/">Revel</a>
+            </div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                                
+                <li >
+                    <a href="./tutorial/index.html"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Tutorial</a></li>
+                
+                <li >
+                    <a href="./manual/index.html"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Manual</a></li>
+                    
+                <li >
+                    <a href="./modules/index.html"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Modules</a></li>
+                    
+                    
+                <li >
+                    <a href="./examples/index.html"><span class="glyphicon glyphicon-sound-stereo" aria-hidden="true"></span> Examples</a></li>
+                
+                <li >
+                    <a href="./quickref/index.html"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> Quick Ref</a></li>
+                    
+                    
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Project <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://github.com/revel/" target="github"><span class="glyphicon glyphicon-object-align-horizontal" aria-hidden="true"></span> Revel project @ github</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel</li>
+                            <li><a href="https://godoc.org/github.com/revel/revel" target="godoc"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> godoc</a></li>
+                            <li><a href="https://github.com/revel/revel" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/revel/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel command</li>
+                            <li><a href="https://github.com/revel/cmd" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/cmd/issues" target="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Modules</li>
+                        <li><a href="https://github.com/revel/modules" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Example Apps</li>
+                        <li><a href="https://github.com/revel/examples" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">revel.github.io</li>
+                        <li><a href="https://github.com/revel/revel.github.io" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li><a href="https://github.com/revel/revel.github.io/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Support <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://gitter.im/revel/community" target="_blank">Chat on gitter.im</a></li>
+                        <li><a href="http://stackoverflow.com/questions/tagged/revel" target="_blank">Revel at StackOverflow</a></li>
+                    </ul>
+                <li>
+                 
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Banner at top -->
+<header class="hero-unit">
+    <div class="container">
+        <div class="row">
+            <br />
+                <div class="col-md-4" style="padding-bottom:20px">
+                    <!-- Image -->
+                    <img src="img/RevelWhiteLines.png" width="250">
+                </div>
+                <div class="col-md-8">
+                    <h1 style="font-size:4em;">Revel</h1>
+                    <small style="font-size: 14pt;">A high-productivity web framework for the Go language.</small>
+
+                    <div style="font-size: 14pt; margin-top:80px;">
+                        <small style="font-weight: bold">Latest Release:</small><br>
+                        <b><a href="https://github.com/revel/revel/releases">v0.19.0</a></b> on <small>2018-02-06</small><br>
+                        <div style="margin-top:3px">Go: v1.6+ required</div>
+                    </div>
+                </div>
+            <br /><br />
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+
+
+    <!-- features -->
+    <div class="page-header">
+        <h1 style="font-size: 18pt;">Features</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-4" style="background-color: rgb(248, 248, 248);">
+                <p>
+                    <h1 style="font-size: 15pt;">Hot Code Reload</h1>
+                    Edit, save, and refresh.  Revel compiles your code and templates for
+                    you, so you don't miss a beat.  Code doesn't compile?  It gives you a
+                    <a href="img/CompilationError.png">helpful description</a>.
+                    Run-time code panic?  Revel <a href="img/Panic.png">has you
+                    covered</a>.
+                </p>
+            </div>
+            <div class="col-md-4" style="background-color: rgb(239, 239, 239);">
+                <p>
+                    <h1 style="font-size: 15pt;">Comprehensive</h1>
+                    Revel provides
+                    <a href="manual/routing.html">routing</a>,
+                    <a href="manual/parameters.html">parameter parsing</a>,
+                    <a href="manual/validation.html">validation</a>,
+                    <a href="manual/sessionflash.html">session/flash</a>,
+                    <a href="manual/templates.html">templating</a>,
+                    <a href="manual/cache.html">caching</a>,
+                    <a href="modules/jobs.html">job running</a>,
+                    <a href="modules/testing.html">a testing framework</a>,
+                    and even <a href="manual/i18n-messages.html">internationalization</a>.
+                </p><br />
+            </div>
+            <div class="col-md-4" style="background-color: rgb(248, 248, 248);">
+                <p>
+                    <h1 style="font-size: 15pt;">High Performance</h1>
+                    Revel builds on top of the Go HTTP server, which was
+                    <a href="http://www.techempower.com/benchmarks/#section=data-r11">recently
+                    benchmarked</a> to serve <b>three to ten times</b> as many requests
+                    as Rails across a variety of loads.
+                </p><br />
+            </div>
+        </div>
+    </div>
+
+
+    <br />
+
+
+     <!-- framework -->
+    <div class="page-header">
+        <h1 style="font-size: 18pt;">Framework Design</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-4" style="background-color: rgb(248, 248, 248);">
+                <p>
+                    <h1 style="font-size: 15pt;">Synchronous</h1>
+                    The <a href="http://golang.org/pkg/net/http/">Go HTTP server</a>
+                    runs each request in its own
+                    <a href="http://golang.org/doc/effective_go.html#goroutines">goroutine</a>.
+                    Write simple callback-free code without guilt.
+                </p><br /><br />
+            </div>
+            <div class="col-md-4" style="background-color: rgb(239, 239, 239);">
+                <p>
+                    <h1 style="font-size: 15pt;">Stateless</h1>
+                    Revel provides primitives that keep the web tier stateless for
+                    predictable scaling. For example, <a href="/manual/sessionflash.html#Session"><b>session</b></a> data is stored in the user
+                    cookie, and the <a href="manual/cache.html"><b>cache</b></a> is backed by a memcached cluster, redis or in-memory.
+                </p>
+            </div>
+            <div class="col-md-4" style="background-color: rgb(248, 248, 248);">
+                <p>
+                    <h1 style="font-size: 15pt;">Modular</h1>
+                    Revel is built around composable middleware called <a href="/manual/filters.html"><b>filters</b></a>,
+                    which implement nearly all request-processing
+                    functionality. Developers have the freedom to replace the default
+                    filters with custom implementations (e.g. a custom router).
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+     <!-- quickstart -->
+    <section id="quickstart" style="background-color: rgb(248, 248, 248);">
+        <div class="row">
+            <div class="col-md-6">
+                <h1 style="font-size: 15pt; margin-left: 12px;">Quick Start</h1>
+                <p>
+                    Revel has some <a href="/examples/">sample applications</a> to demonstrate typical usage.
+                </p>
+                <p>The commands at right will:</p>
+                <ul>
+                    <li>Install Revel into your GOPATH
+                    <li>Install and Build the Revel command-line tool</li>
+                    <li>Install the sample applications</li>
+                    <li>Run the Chat sample application</li>
+                    <li>Open <a href="http://localhost:9000/">http://localhost:9000/</a></li>
+                </ul>
+                <p><a href="/examples/chat.html">Read how the chat demo is implemented.</a></p>
+
+            </div>
+
+            <div class="col-md-5" style="vertical-align:bottom;">
+<pre>
+# get 'revel' framework and command
+go get github.com/revel/cmd/revel
+
+# Get the example apps
+git clone https://github.com/revel/examples \
+$GOPATH/src/github.com/revel/examples
+
+# revel the chat app
+revel run github.com/revel/examples/chat
+</pre>
+<pre>
+# create a new app and run
+revel new github.com/myaccount/my-app
+</pre>
+            </div>
+        </div>
+    </section>
+
+
+    <br />
+
+
+    <!-- Overview -->
+    <section id="teaser">
+        <div class="page-header">
+            <h1 style="font-size: 18pt;">Overview</h1>
+        </div>
+        <div class="row">
+               <dl class="dl-horizontal">
+                <dt><a href="manual/routing.html">Routing</a></dt>
+                <dd>A simple declarative routing syntax.  Type-safe reverse routing.</dd>
+
+                <dt><a href="manual/controllers.html">Controllers</a></dt>
+                <dd>
+                    Revel organizes endpoints into Controllers. They provide easy
+                    data binding and form validation.
+                </dd>
+
+                <dt><a href="manual/templates.html">Templates</a></dt>
+                <dd>Revel makes Go Templates simple to use at scale.</dd>
+
+                <dt><a href="manual/interceptors.html">Interceptors</a></dt>
+                <dd>
+                    Register functionality to be called before or after actions.  They
+                    can be activated per Controller.
+                </dd>
+
+                <dt><a href="manual/filters.html">Filters</a></dt>
+                <dd>
+                    More general functionality can be implemented with Filters.
+                </dd>
+
+            </dl>
+        </div>
+
+
+      <footer>
+        <p>MIT License</p>
+        <p>
+          Gopher images remixed from those produced by
+          <a href="http://www.golang.org">Go team</a>.
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+  </body>
+</html>

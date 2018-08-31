@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Schedules Jobs | Revel - A Web Application Framework for Go!</title>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="/css/jekyll-github.css" rel="stylesheet">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="/js/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+<link href="/css/revel.17.css" rel="stylesheet">
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35042202-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+    
+    
+
+    
+<nav class="navbar navbar-inverse ">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div id="main-logo"><a ddclass="navbar-brand" href="/">Revel</a>
+            </div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                                
+                <li >
+                    <a href="/tutorial/index.html"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Tutorial</a></li>
+                
+                <li >
+                    <a href="/manual/index.html"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Manual</a></li>
+                    
+                <li class="active">
+                    <a href="/modules/index.html"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Modules</a></li>
+                    
+                    
+                <li >
+                    <a href="/examples/index.html"><span class="glyphicon glyphicon-sound-stereo" aria-hidden="true"></span> Examples</a></li>
+                
+                <li >
+                    <a href="/quickref/index.html"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> Quick Ref</a></li>
+                    
+                    
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Project <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://github.com/revel/" target="github"><span class="glyphicon glyphicon-object-align-horizontal" aria-hidden="true"></span> Revel project @ github</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel</li>
+                            <li><a href="https://godoc.org/github.com/revel/revel" target="godoc"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> godoc</a></li>
+                            <li><a href="https://github.com/revel/revel" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/revel/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel command</li>
+                            <li><a href="https://github.com/revel/cmd" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/cmd/issues" target="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Modules</li>
+                        <li><a href="https://github.com/revel/modules" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Example Apps</li>
+                        <li><a href="https://github.com/revel/examples" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">revel.github.io</li>
+                        <li><a href="https://github.com/revel/revel.github.io" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li><a href="https://github.com/revel/revel.github.io/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Support <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://gitter.im/revel/community" target="_blank">Chat on gitter.im</a></li>
+                        <li><a href="http://stackoverflow.com/questions/tagged/revel" target="_blank">Revel at StackOverflow</a></li>
+                    </ul>
+                <li>
+                 
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="container revel-modules">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="leftnav">
+    <ul class="nav">
+        
+            <li class="nav-header">Modules</li>
+            
+                
+                
+                    <li><a href="index.html">Overview</a></li>
+                
+            
+                
+                
+                    <li class="active"><a href="jobs.html">Jobs</a></li>
+                
+            
+                
+                
+                    <li><a href="static.html">Static</a></li>
+                
+            
+                
+                
+                    <li><a href="testing.html">Testing</a></li>
+                
+            
+                
+                
+                    <li><a href="template-engine-ace.html">Ace Templates</a></li>
+                
+            
+                
+                
+                    <li><a href="template-engine-pongo2.html">Pongo2 Templates</a></li>
+                
+            
+                
+                
+                    <li><a href="server-engine-newrelic.html">NewRelic Server</a></li>
+                
+            
+                
+                
+                    <li><a href="server-engine-fasthttp.html">FastHTTP Server</a></li>
+                
+            
+        
+    </ul>
+</div>
+
+            </div>
+
+            <div class="col-md-9">
+                <div class="page-header">
+                    <a href="https://github.com/revel/revel.github.io/edit/master/modules/jobs.md" class="improve-page btn dbtn-info" target="_blank"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Improve Page</a>
+                    <h1>Schedules Jobs</h1>
+                </div>
+                <div class="main">
+                    <p>The Revel <a href="https://godoc.org/github.com/revel/modules/jobs/app/jobs"><code class="highlighter-rouge">Jobs</code></a> module 
+enables performing tasks asynchronously, outside of the request flow.</p>
+
+<p>A <strong>job</strong> is either:</p>
+<ul>
+  <li><a href="#RecurringJobs">Recurring</a>, e.g. generating a daily report</li>
+  <li><a href="#OneOffJobs">One-off</a>, e.g. sending emails, updating a ledger, or creating a cache</li>
+</ul>
+
+<h2 id="config">Config</h2>
+
+<p>The <a href="https://godoc.org/github.com/revel/modules/jobs/app/jobs"><code class="highlighter-rouge">Jobs</code></a> module
+is optional <strong>not</strong> enabled by default.</p>
+
+<p>To activate add <code class="highlighter-rouge">module.jobs</code> to the <a href="/manual/appconf.html">app.conf</a> file:</p>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">module.jobs</span> <span class="p">=</span> <span class="s">github.com/revel/modules/jobs</span>
+</code></pre></div></div>
+
+<p>Additionally, in order to access the job monitoring page, you will need to add the module’s routes to your app’s <code class="highlighter-rouge">conf/routes</code>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>module:jobs
+</code></pre></div></div>
+
+<h2 id="options">Options</h2>
+
+<p>There are some <a href="/manual/appconf.html#jobs">configuration settings</a> that place some limitations
+job and its run, explained below with default values:</p>
+
+<ul>
+  <li><a href="/manual/appconf.html#jobspool"><code class="highlighter-rouge">jobs.pool = 10</code></a> - The number of jobs allowed to run simultaneously/concurrently</li>
+  <li><a href="/manual/appconf.html#jobsselfconcurrent"><code class="highlighter-rouge">jobs.selfconcurrent = false</code></a> - Allow a job to run only if previous instances are done</li>
+  <li><a href="/manual/appconf#jobsacceptproxyaddress"><code class="highlighter-rouge">jobs.acceptproxyaddress = false</code></a> - Accept <code class="highlighter-rouge">X-Forwarded-For</code> header value (which is spoofable) to allow or deny status page access</li>
+</ul>
+
+<h2 id="implementing-jobs">Implementing Jobs</h2>
+
+<p>To create a Job, implement the <a href="https://github.com/revel/cron/blob/master/cron.go"><code class="highlighter-rouge">cron.Job</code></a> interface.  The 
+<a href="https://godoc.org/github.com/revel/modules/jobs/app/jobs#Job"><code class="highlighter-rouge">Job</code></a> interface has the following signature:</p>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">type</span><span class="x"> </span><span class="n">Job</span><span class="x"> </span><span class="k">interface</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">Run</span><span class="p">()</span><span class="x">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>For example:</p>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">type</span><span class="x"> </span><span class="n">MyJob</span><span class="x"> </span><span class="k">struct</span><span class="x"> </span><span class="p">{}</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">j</span><span class="x"> </span><span class="n">MyJob</span><span class="p">)</span><span class="x"> </span><span class="n">Run</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+   </span><span class="c">// Do something</span><span class="x">
+</span><span class="p">}</span></code></pre></figure>
+
+<h2 id="startup-jobs">Startup Jobs</h2>
+
+<p>To run a task on application startup, use
+<a href="https://godoc.org/github.com/revel/revel#OnAppStart"><code class="highlighter-rouge">revel.OnAppStart()</code></a> to register a function.
+Revel runs these tasks serially, before starting the server.  Note that this
+functionality does not actually use the jobs module, but it can be used to
+submit a job for execution that doesn’t block server startup.</p>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">func</span><span class="x"> </span><span class="n">init</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="n">revel</span><span class="o">.</span><span class="n">OnAppStart</span><span class="p">(</span><span class="k">func</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x"> </span><span class="n">jobs</span><span class="o">.</span><span class="n">Now</span><span class="p">(</span><span class="n">populateCache</span><span class="p">{})</span><span class="x"> </span><span class="p">})</span><span class="x">
+</span><span class="p">}</span></code></pre></figure>
+
+<p><a name="RecurringJobs"></a></p>
+
+<h2 id="recurring-jobs">Recurring Jobs</h2>
+
+<p>Jobs may be scheduled to run on any schedule.  There are two options for expressing the schedule:</p>
+
+<ol>
+  <li>A cron specification</li>
+  <li>A fixed interval</li>
+</ol>
+
+<p>Revel uses the <a href="https://godoc.org/github.com/revel/cron"><code class="highlighter-rouge">cron</code></a> library to parse the
+schedule and run the jobs. The library provides a detailed description of the format accepted.</p>
+
+<p>It’s recommended that <code class="highlighter-rouge">Job</code>s are registered using the
+<a href="https://godoc.org/github.com/revel/revel#OnAppStart"><code class="highlighter-rouge">revel.OnAppStart()</code></a> hook, but they may be
+registered any time after <code class="highlighter-rouge">OnAppStart</code>.</p>
+
+<p>Here are some examples:</p>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
+    </span><span class="s">"time"</span><span class="x">
+    
+    </span><span class="s">"github.com/revel/revel"</span><span class="x">
+    </span><span class="s">"github.com/revel/modules/jobs/app/jobs"</span><span class="x">
+</span><span class="p">)</span><span class="x">
+
+</span><span class="k">type</span><span class="x"> </span><span class="n">ReminderEmails</span><span class="x"> </span><span class="k">struct</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="c">// Filtered</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">e</span><span class="x"> </span><span class="n">ReminderEmails</span><span class="p">)</span><span class="x"> </span><span class="n">Run</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="c">// Queries the DB</span><span class="x">
+    </span><span class="c">// Sends some email</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="n">init</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="n">revel</span><span class="o">.</span><span class="n">OnAppStart</span><span class="p">(</span><span class="k">func</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+        </span><span class="n">jobs</span><span class="o">.</span><span class="n">Schedule</span><span class="p">(</span><span class="s">"0 0 0 * * ?"</span><span class="p">,</span><span class="x">  </span><span class="n">ReminderEmails</span><span class="p">{})</span><span class="x">
+        </span><span class="n">jobs</span><span class="o">.</span><span class="n">Schedule</span><span class="p">(</span><span class="s">"@midnight"</span><span class="p">,</span><span class="x">    </span><span class="n">ReminderEmails</span><span class="p">{})</span><span class="x">
+        </span><span class="n">jobs</span><span class="o">.</span><span class="n">Schedule</span><span class="p">(</span><span class="s">"@every 24h"</span><span class="p">,</span><span class="x">   </span><span class="n">ReminderEmails</span><span class="p">{})</span><span class="x">
+        </span><span class="n">jobs</span><span class="o">.</span><span class="n">Every</span><span class="p">(</span><span class="m">24</span><span class="x"> </span><span class="o">*</span><span class="x"> </span><span class="n">time</span><span class="o">.</span><span class="n">Hour</span><span class="p">,</span><span class="x">    </span><span class="n">ReminderEmails</span><span class="p">{})</span><span class="x">
+    </span><span class="p">})</span><span class="x">
+</span><span class="p">}</span></code></pre></figure>
+
+<p><a name="NamedSchedules"></a></p>
+
+<h2 id="named-schedules">Named Schedules</h2>
+
+<p>You can <a href="/manual/appconf.html#jobs">define cron schedules</a> in your app’s <a href="/manual/appconf.html"><code class="highlighter-rouge">app.conf</code></a> and reference them anywhere for easy reuse.</p>
+
+<p>Simply define your <strong>named cron schedule</strong>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cron.workhours_15m = 0 */15 9-17 ? * MON-FRI
+</code></pre></div></div>
+
+<p>Then, reference it anywhere you would have used a cron spec.</p>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">func</span><span class="x"> </span><span class="n">init</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="n">revel</span><span class="o">.</span><span class="n">OnAppStart</span><span class="p">(</span><span class="k">func</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+        </span><span class="n">jobs</span><span class="o">.</span><span class="n">Schedule</span><span class="p">(</span><span class="s">"cron.workhours_15m"</span><span class="p">,</span><span class="x"> </span><span class="n">ReminderEmails</span><span class="p">{})</span><span class="x">
+    </span><span class="p">})</span><span class="x">
+</span><span class="p">}</span></code></pre></figure>
+
+<div class="alert alert-warning">
+<b>IMPORTANT</b>: The schedule's name must begin with <b>`cron.`</b>.
+
+</div>
+
+<p><a name="OneOffJobs"></a></p>
+
+<h2 id="one-off-jobs">One-off Jobs</h2>
+
+<p>The jobs module allows you to schedule a job to be run once. You can control how long to wait before the job runs.</p>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">type</span><span class="x"> </span><span class="n">AppController</span><span class="x"> </span><span class="k">struct</span><span class="x"> </span><span class="p">{</span><span class="x"> </span><span class="o">*</span><span class="n">revel</span><span class="o">.</span><span class="n">Controller</span><span class="x"> </span><span class="p">}</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">AppController</span><span class="p">)</span><span class="x"> </span><span class="n">Method</span><span class="p">()</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="c">// Handle the request.</span><span class="x">
+    </span><span class="o">...</span><span class="x">
+
+    </span><span class="c">// Send them email asynchronously, right now.</span><span class="x">
+    </span><span class="n">jobs</span><span class="o">.</span><span class="n">Now</span><span class="p">(</span><span class="n">SendConfirmationEmail</span><span class="p">{})</span><span class="x">
+
+    </span><span class="c">// Or, send them email asynchronously after a minute.</span><span class="x">
+    </span><span class="n">jobs</span><span class="o">.</span><span class="n">In</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">Minute</span><span class="p">,</span><span class="x"> </span><span class="n">SendConfirmationEmail</span><span class="p">{})</span><span class="x">
+</span><span class="p">}</span></code></pre></figure>
+
+<h2 id="registering-job-functions">Registering Job Functions</h2>
+
+<p>It is possible to register any <code class="highlighter-rouge">func()</code> as a job by wrapping it in the <a href="https://godoc.org/github.com/revel/modules/jobs/app/jobs#Func"><code class="highlighter-rouge">jobs.Func</code></a> type.</p>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">func</span><span class="x"> </span><span class="n">sendReminderEmails</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="c">// Query the DB</span><span class="x">
+    </span><span class="c">// Send some email</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="n">init</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="n">revel</span><span class="o">.</span><span class="n">OnAppStart</span><span class="p">(</span><span class="k">func</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+        </span><span class="n">jobs</span><span class="o">.</span><span class="n">Schedule</span><span class="p">(</span><span class="s">"@midnight"</span><span class="p">,</span><span class="x"> </span><span class="n">jobs</span><span class="o">.</span><span class="n">Func</span><span class="p">(</span><span class="n">sendReminderEmails</span><span class="p">))</span><span class="x">
+    </span><span class="p">})</span><span class="x">
+</span><span class="p">}</span></code></pre></figure>
+
+<h2 id="job-status">Job Status</h2>
+
+<p>The jobs module provides a status page (<code class="highlighter-rouge">/@jobs</code> url) that shows:</p>
+
+<ul>
+  <li>a list of the scheduled jobs</li>
+  <li>the current status (<strong>IDLE</strong> or <strong>RUNNING</strong>)</li>
+  <li>the previous and next run times</li>
+</ul>
+
+<div class="alert alert-info">For security purposes, the status page is limited to requests that originate
+from 127.0.0.1.</div>
+
+<p><img src="../img/jobs-status.png" alt="Job Status Page" /></p>
+
+<h2 id="constrained-pool-size">Constrained Pool Size</h2>
+
+<p>It’s possible to configure the job module to limit the number of jobs that are
+allowed to run at the same time. This allows the developer to restrict the
+resources that could be potentially in use by asynchronous jobs – typically
+interactive responsiveness is valued above asynchronous processing. When a pool
+is full of running jobs, new jobs block to wait for running jobs to complete.</p>
+
+<p><strong>Implementation Note</strong>: The implementation blocks on a channel receive, which is
+implemented to be <a href="http://en.wikipedia.org/wiki/FIFO">FIFO</a> for waiting goroutines (but not specified/required to be
+so). <a href="https://groups.google.com/forum/?fromgroups=#!topic/golang-nuts/CPwv8WlqKag">See here for discussion</a>.</p>
+
+<h2 id="future-areas-for-development">Future areas for development</h2>
+
+<ul>
+  <li>Allow access to the job status page with HTTP Basic Authentication credentials</li>
+  <li>Allow administrators to run scheduled jobs interactively from the status page</li>
+  <li>Provide more visibility into the job runner, e.g. the pool size, the job queue length, etc.</li>
+</ul>
+
+                    
+
+
+                    
+<div class="revel-github-bar">
+  <h6>GitHub Labels</h6>
+  <ul>
+    <li><b>Issues: </b> 
+      
+      <a href="https://github.com/revel/revel/labels/topic-jobs" target="_revel_issues">topic-jobs</a> 
+      |
+      
+      <a href="https://github.com/revel/revel/labels/topic-runtime" target="_revel_issues">topic-runtime</a> 
+      
+      
+    </li>
+    <li><b>Pull Requests: </b> 
+      
+      <a href="https://github.com/revel/revel/pulls?q=is%3Apr+is%3Aopen+label%3Atopic-jobs" target="_revel_pull_requests">topic-jobs</a>
+      |
+      
+      <a href="https://github.com/revel/revel/pulls?q=is%3Apr+is%3Aopen+label%3Atopic-runtime" target="_revel_pull_requests">topic-runtime</a>
+      
+      
+    </li>
+  </ul>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; Revel Team 2017 - Revel is released under the <a href="https://github.com/revel/revel/blob/master/LICENSE">MIT License</a></p>
+        </footer>
+    </div>
+</body>
+</html>
+

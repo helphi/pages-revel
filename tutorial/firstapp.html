@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The 'Hello World' app | Revel - A Web Application Framework for Go!</title>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="/css/jekyll-github.css" rel="stylesheet">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="/js/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+<link href="/css/revel.17.css" rel="stylesheet">
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35042202-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+    
+    
+
+    
+<nav class="navbar navbar-inverse ">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div id="main-logo"><a ddclass="navbar-brand" href="/">Revel</a>
+            </div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                                
+                <li class="active">
+                    <a href="/tutorial/index.html"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Tutorial</a></li>
+                
+                <li >
+                    <a href="/manual/index.html"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Manual</a></li>
+                    
+                <li >
+                    <a href="/modules/index.html"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Modules</a></li>
+                    
+                    
+                <li >
+                    <a href="/examples/index.html"><span class="glyphicon glyphicon-sound-stereo" aria-hidden="true"></span> Examples</a></li>
+                
+                <li >
+                    <a href="/quickref/index.html"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> Quick Ref</a></li>
+                    
+                    
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Project <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://github.com/revel/" target="github"><span class="glyphicon glyphicon-object-align-horizontal" aria-hidden="true"></span> Revel project @ github</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel</li>
+                            <li><a href="https://godoc.org/github.com/revel/revel" target="godoc"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> godoc</a></li>
+                            <li><a href="https://github.com/revel/revel" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/revel/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel command</li>
+                            <li><a href="https://github.com/revel/cmd" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/cmd/issues" target="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Modules</li>
+                        <li><a href="https://github.com/revel/modules" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Example Apps</li>
+                        <li><a href="https://github.com/revel/examples" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">revel.github.io</li>
+                        <li><a href="https://github.com/revel/revel.github.io" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li><a href="https://github.com/revel/revel.github.io/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Support <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://gitter.im/revel/community" target="_blank">Chat on gitter.im</a></li>
+                        <li><a href="http://stackoverflow.com/questions/tagged/revel" target="_blank">Revel at StackOverflow</a></li>
+                    </ul>
+                <li>
+                 
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="container revel-tutorial">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="leftnav">
+    <ul class="nav">
+        
+            <li class="nav-header">Tutorial</li>
+            
+                
+                
+                    <li><a href="index.html">Introduction</a></li>
+                
+            
+                
+                
+                    <li><a href="gettingstarted.html">Getting started</a></li>
+                
+            
+                
+                
+                    <li><a href="createapp.html">Creating an app</a></li>
+                
+            
+                
+                
+                    <li><a href="requestflow.html">Request flow</a></li>
+                
+            
+                
+                
+                    <li class="active"><a href="firstapp.html">Hello World app</a></li>
+                
+            
+        
+    </ul>
+</div>
+
+            </div>
+
+            <div class="col-md-9">
+                <div class="page-header">
+                    <a href="https://github.com/revel/revel.github.io/edit/master/tutorial/firstapp.md" class="improve-page btn dbtn-info" target="_blank"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Improve Page</a>
+                    <h1>The 'Hello World' app</h1>
+                </div>
+                <div class="main">
+                    <p>This page runs through the quick exercise of implementing a “Hello World”
+application.</p>
+
+<p>Let’s start with the <strong>myapp</strong> project that was <a href="createapp.html">created previously</a>.</p>
+
+<p>Edit the <strong>app/views/App/Index.html</strong> template to add this form, under the
+included <code class="highlighter-rouge">flash.html</code> template:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"/App/Hello"</span> <span class="na">method=</span><span class="s">"GET"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"myName"</span> <span class="nt">/&gt;&lt;br/&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"Say hello!"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></figure>
+
+<p>Refresh the page to see our work.</p>
+
+<p><img src="/img/AlohaForm.png" alt="The Say Hello form" /></p>
+
+<p>Enter some data and submit the form.</p>
+
+<p><img src="/img/HelloRouteNotFound.png" alt="Route not found" /></p>
+
+<p>That makes sense.  Add the method to <strong>app/controllers/app.go</strong>:</p>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">App</span><span class="p">)</span><span class="x"> </span><span class="n">Hello</span><span class="p">(</span><span class="n">myName</span><span class="x"> </span><span class="kt">string</span><span class="p">)</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Render</span><span class="p">(</span><span class="n">myName</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Next, we have to create the view.  Create a file
+<strong>app/views/App/Hello.html</strong>, with this content:</p>
+
+<figure class="highlight"><pre><code class="language-htmldjango" data-lang="htmldjango">{{set . "title" "Hello page"}}
+{{template "header.html" .}}
+
+&lt;h1&gt;Hello {{.myName}}&lt;/h1&gt;
+&lt;a href="/"&gt;Back to form&lt;/a&gt;
+
+{{template "footer.html" .}}</code></pre></figure>
+
+<p>Finally, add the following to <strong>conf/routes</strong> file, just below the <code class="highlighter-rouge">App.Index</code> entry.</p>
+
+<figure class="highlight"><pre><code class="language-htmldjango" data-lang="htmldjango">GET     /App/Hello     App.Hello</code></pre></figure>
+
+<p>Refresh the page, and you should see a greeting:</p>
+
+<p><img src="/img/HelloRevel.png" alt="Hello revel" /></p>
+
+<p>Lastly, let’s add some validation.  The name should be required, and at least
+three characters.</p>
+
+<p>To do this, let’s use the <a href="/manual/validation.html">validation module</a>.  Edit
+your method in <strong>app/controllers/app.go</strong>:</p>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">App</span><span class="p">)</span><span class="x"> </span><span class="n">Hello</span><span class="p">(</span><span class="n">myName</span><span class="x"> </span><span class="kt">string</span><span class="p">)</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="n">c</span><span class="o">.</span><span class="n">Validation</span><span class="o">.</span><span class="n">Required</span><span class="p">(</span><span class="n">myName</span><span class="p">)</span><span class="o">.</span><span class="n">Message</span><span class="p">(</span><span class="s">"Your name is required!"</span><span class="p">)</span><span class="x">
+    </span><span class="n">c</span><span class="o">.</span><span class="n">Validation</span><span class="o">.</span><span class="n">MinSize</span><span class="p">(</span><span class="n">myName</span><span class="p">,</span><span class="x"> </span><span class="m">3</span><span class="p">)</span><span class="o">.</span><span class="n">Message</span><span class="p">(</span><span class="s">"Your name is not long enough!"</span><span class="p">)</span><span class="x">
+
+    </span><span class="k">if</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Validation</span><span class="o">.</span><span class="n">HasErrors</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+        </span><span class="n">c</span><span class="o">.</span><span class="n">Validation</span><span class="o">.</span><span class="n">Keep</span><span class="p">()</span><span class="x">
+        </span><span class="n">c</span><span class="o">.</span><span class="n">FlashParams</span><span class="p">()</span><span class="x">
+        </span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Redirect</span><span class="p">(</span><span class="n">App</span><span class="o">.</span><span class="n">Index</span><span class="p">)</span><span class="x">
+    </span><span class="p">}</span><span class="x">
+
+    </span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Render</span><span class="p">(</span><span class="n">myName</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Now it will send the user back to <code class="highlighter-rouge">Index()</code> if they have not entered a valid
+name. Their name and the validation error are kept in the
+<a href="/manual/sessionflash.html#flash">Flash</a>, which is a temporary cookie.</p>
+
+<p>The provided <code class="highlighter-rouge">flash.html</code> template will show any errors or flash messages:</p>
+
+<figure class="highlight"><pre><code class="language-htmldjango" data-lang="htmldjango">{{if .flash.success}}
+&lt;div class="alert alert-success"&gt;
+    {{.flash.success}}
+&lt;/div&gt;
+{{end}}
+
+{{if or .errors .flash.error}}
+&lt;div class="alert alert-error"&gt;
+    {{if .flash.error}}
+        {{.flash.error}}
+    {{end}}
+    {{if .errors}}
+    &lt;ul style="margin-top:10px;"&gt;
+        {{range .errors}}
+            &lt;li&gt;{{.}}&lt;/li&gt;
+        {{end}}
+    &lt;/ul&gt;
+    {{end}}
+&lt;/div&gt;
+{{end}}</code></pre></figure>
+
+<p>When we submit that form with a name that fails validation, we want the form to retain the bad name, so that the user can edit it before 
+re-submitting.  Amend the form you had added to your <strong>app/views/App/Index.html</strong> template:</p>
+
+<figure class="highlight"><pre><code class="language-htmldjango" data-lang="htmldjango">&lt;form action="/App/Hello" method="GET"&gt;
+    {{with $field := field "myName" .}}
+        &lt;input type="text" name="{{$field.Name}}" value="{{$field.Flash}}"/&gt;&lt;br/&gt;
+    {{end}}
+    &lt;input type="submit" value="Say hello!" /&gt;
+&lt;/form&gt;</code></pre></figure>
+
+<p>Now when we submit a single letter as our name:</p>
+
+<p><img src="/img/HelloNameNotLongEnough.png" alt="Example error" /></p>
+
+<p>Success, we got an appropriate error and our input was saved for us to edit.</p>
+
+<hr />
+
+<ul>
+  <li>Read more in the <a href="/manual/concepts.html">manual</a></li>
+  <li>Look at the <a href="/examples/">example</a> applications</li>
+</ul>
+
+                    
+
+
+                    
+
+
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; Revel Team 2017 - Revel is released under the <a href="https://github.com/revel/revel/blob/master/LICENSE">MIT License</a></p>
+        </footer>
+    </div>
+</body>
+</html>

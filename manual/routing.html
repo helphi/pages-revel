@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>URL Routing | Revel - A Web Application Framework for Go!</title>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="/css/jekyll-github.css" rel="stylesheet">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="/js/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+<link href="/css/revel.17.css" rel="stylesheet">
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35042202-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+    
+    
+
+    
+<nav class="navbar navbar-inverse ">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div id="main-logo"><a ddclass="navbar-brand" href="/">Revel</a>
+            </div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                                
+                <li >
+                    <a href="/tutorial/index.html"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Tutorial</a></li>
+                
+                <li class="active">
+                    <a href="/manual/index.html"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Manual</a></li>
+                    
+                <li >
+                    <a href="/modules/index.html"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Modules</a></li>
+                    
+                    
+                <li >
+                    <a href="/examples/index.html"><span class="glyphicon glyphicon-sound-stereo" aria-hidden="true"></span> Examples</a></li>
+                
+                <li >
+                    <a href="/quickref/index.html"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> Quick Ref</a></li>
+                    
+                    
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Project <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://github.com/revel/" target="github"><span class="glyphicon glyphicon-object-align-horizontal" aria-hidden="true"></span> Revel project @ github</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel</li>
+                            <li><a href="https://godoc.org/github.com/revel/revel" target="godoc"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> godoc</a></li>
+                            <li><a href="https://github.com/revel/revel" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/revel/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel command</li>
+                            <li><a href="https://github.com/revel/cmd" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/cmd/issues" target="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Modules</li>
+                        <li><a href="https://github.com/revel/modules" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Example Apps</li>
+                        <li><a href="https://github.com/revel/examples" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">revel.github.io</li>
+                        <li><a href="https://github.com/revel/revel.github.io" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li><a href="https://github.com/revel/revel.github.io/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Support <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://gitter.im/revel/community" target="_blank">Chat on gitter.im</a></li>
+                        <li><a href="http://stackoverflow.com/questions/tagged/revel" target="_blank">Revel at StackOverflow</a></li>
+                    </ul>
+                <li>
+                 
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="container revel-manual">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="leftnav">
+    <ul class="nav">
+        
+            <li class="nav-header">Overview</li>
+            
+                
+                
+                    <li><a href="index.html">Introduction</a></li>
+                
+            
+                
+                
+                    <li><a href="concepts.html">Concepts</a></li>
+                
+            
+                
+                
+                    <li><a href="organization.html">Code Organization</a></li>
+                
+            
+        
+            <li class="nav-header">Controllers</li>
+            
+                
+                
+                    <li><a href="controllers.html">Controllers Overview</a></li>
+                
+            
+                
+                
+                    <li class="active"><a href="routing.html">URL Routing</a></li>
+                
+            
+                
+                
+                    <li><a href="/modules/static.html">Static Content</a></li>
+                
+            
+                
+                
+                    <li><a href="parameters.html">Request Parameters & JSON</a></li>
+                
+            
+                
+                
+                    <li><a href="validation.html">Validation</a></li>
+                
+            
+                
+                
+                    <li><a href="sessionflash.html">Session & Flash</a></li>
+                
+            
+                
+                
+                    <li><a href="results.html">Results & Response</a></li>
+                
+            
+                
+                
+                    <li><a href="templates.html">Templates</a></li>
+                
+            
+                
+                
+                    <li><a href="template-engine.html">Template Engine</a></li>
+                
+            
+                
+                
+                    <li><a href="templates-go.html">Go Template Engine</a></li>
+                
+            
+                
+                
+                    <li><a href="server-engine.html">Server Engine</a></li>
+                
+            
+                
+                
+                    <li><a href="interceptors.html">Interceptors</a></li>
+                
+            
+                
+                
+                    <li><a href="filters.html">Filters</a></li>
+                
+            
+                
+                
+                    <li><a href="websockets.html">Websockets</a></li>
+                
+            
+                
+                
+                    <li><a href="i18n-messages.html">Internationalization</a></li>
+                
+            
+                
+                
+                    <li><a href="cache.html">Cache</a></li>
+                
+            
+                
+                
+                    <li><a href="database.html">Database</a></li>
+                
+            
+                
+                
+                    <li><a href="debug.html">Debugging</a></li>
+                
+            
+                
+                
+                    <li><a href="/modules/testing.html">Testing</a></li>
+                
+            
+        
+            <li class="nav-header">Operational</li>
+            
+                
+                
+                    <li><a href="versions.html">Versions</a></li>
+                
+            
+                
+                
+                    <li><a href="logging.html">Logging</a></li>
+                
+            
+                
+                
+                    <li><a href="deployment.html">Deployment</a></li>
+                
+            
+        
+            <li class="nav-header">Reference</li>
+            
+                
+                
+                    <li><a href="appconf.html">app.conf</a></li>
+                
+            
+                
+                
+                    <li><a href="tool.html">revel cmd</a></li>
+                
+            
+                
+                
+                    <li><a href="faq.html">FAQ</a></li>
+                
+            
+        
+    </ul>
+</div>
+
+            </div>
+
+            <div class="col-md-9">
+                <div class="page-header">
+                    <a href="https://github.com/revel/revel.github.io/edit/master/manual/routing.md" class="improve-page btn dbtn-info" target="_blank"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Improve Page</a>
+                    <h1>URL Routing</h1>
+                </div>
+                <div class="main">
+                    <p>URL’s and routes are defined in the <code class="highlighter-rouge">conf/routes</code> file and have three columns as example below:</p>
+
+<pre><code class="language-csv">[METHOD] [URL Pattern] [Controller.Method]
+GET      /              MySite.Welcome
+</code></pre>
+
+<h3 id="conf-example">conf example</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Higher priority routes first
+
+module:jobs  # Importing jobs includes all the routes from the module
+
+## main routes
+GET             /                       App.Home # A simple path
+
+GET             /contact                App.Contact  # contact page
+#GET            /contact/               App.Contact  # unnecessary as (optional trailing slash is above)
+
+GET             /login                  App.Login
+
+GET             /hotels/                Hotels.Index            # Match /hotels and /hotels/ 
+GET             /hotels/:id             Hotels.Show             # Extract a URI argument
+WS              /hotels/:id/feed        Hotels.Feed             # WebSockets.
+POST            /hotels/:id/:method     Hotels.:method          # Automatically route some methods.
+
+PURGE           /purge/:key             Cache.Purge             # Cache
+
+# WebDAV extends the set of standard HTTP verbs and headers allowed for request methods.
+PROPFIND        /webdav/:key            WebDav.PropFind         # WebDav
+PROPPATCH       /webdav/:key            WebDav.PropPatch        # WebDav
+MKCOL           /webdav/:key            WebDav.MkCol            # WebDav
+COPY            /webdav/:key            WebDav.Copy             # WebDav
+MOVE            /webdav/:key            WebDav.Mode             # WebDav
+LOCK            /webdav/:key            WebDav.Lock             # WebDav
+UNLOCK          /webdav/:key            WebDav.UnLock           # WebDav
+
+## Static files. Map /app/public resources under /public/...
+GET    /public/*filepath      Static.Serve("public") 
+
+## Developer Stuff
+# Prefix all routes in the testrunner module with /debug/
+*      /debug/                module:testrunner 
+
+## Finally
+# Catch all and Automatic URL generation
+*      /:controller/:method   :controller.:method
+</code></pre></div></div>
+
+<p>Let’s go through the lines one at a time and by the end, we’ll see how to
+accomplish <a href="#reverse-routing">reverse routing</a> i.e generating the URL to invoke a particular action.</p>
+
+<h2 id="a-fixed-path">A Fixed Path</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET    /login                 App.Login
+GET    /about                 App.About
+</code></pre></div></div>
+
+<p>The routes above use an ‘exact match’ of HTTP method and path and invoke the Login and About
+<em>method</em> on the <em>App</em> controller.</p>
+
+<h2 id="trailing-slashes">Trailing slashes/</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET    /hotels/               Hotels.Index
+</code></pre></div></div>
+
+<ul>
+  <li>This route invokes <code class="highlighter-rouge">Hotels.Index</code> for both <code class="highlighter-rouge">/hotels</code> and <code class="highlighter-rouge">/hotels/</code></li>
+  <li>The <a href="#reverse-routing">reverse route</a> to <code class="highlighter-rouge">Hotels.Index</code> will include the trailing slash/</li>
+</ul>
+
+<p>Trailing slashes should not be used to differentiate between actions. The
+simple path <code class="highlighter-rouge">/login</code> <strong>will</strong> be matched by a request to <code class="highlighter-rouge">/login/</code>.</p>
+
+<h2 id="url-parameters">URL :parameters</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET    /hotels/:id            Hotels.Show
+</code></pre></div></div>
+
+<ul>
+  <li>Segments of the path may be matched and extracted with a <code class="highlighter-rouge">:</code> prefix.</li>
+  <li>The <code class="highlighter-rouge">:id</code> variable above will match anything except a slash. For example, <code class="highlighter-rouge">/hotels/123</code> and
+<code class="highlighter-rouge">/hotels/abc</code> would both be matched by the route above.</li>
+  <li>Extracted parameters are available in both the
+    <ul>
+      <li><a href="https://godoc.org/github.com/revel/revel#Params">Controller.Params</a> map</li>
+      <li>and via Method <a href="parameters.html">parameters</a>.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>For example:</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">Hotels</span><span class="p">)</span><span class="x"> </span><span class="n">Show</span><span class="p">(</span><span class="n">id</span><span class="x"> </span><span class="kt">int</span><span class="p">)</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="o">...</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+<p>or</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">Hotels</span><span class="p">)</span><span class="x"> </span><span class="n">Show</span><span class="p">()</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="k">var</span><span class="x"> </span><span class="n">id</span><span class="x"> </span><span class="kt">string</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s">"id"</span><span class="p">)</span><span class="x">
+    </span><span class="o">...</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+<p>or</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">Hotels</span><span class="p">)</span><span class="x"> </span><span class="n">Show</span><span class="p">()</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="k">var</span><span class="x"> </span><span class="n">id</span><span class="x"> </span><span class="kt">int</span><span class="x">
+    </span><span class="n">c</span><span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">id</span><span class="p">,</span><span class="x"> </span><span class="s">"id"</span><span class="p">)</span><span class="x">
+    </span><span class="o">...</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+<h2 id="star-parameters">Star *parameters</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET    /public/*filepath            Static.Serve("public")
+</code></pre></div></div>
+
+<p>The starred parameter must be
+the first element in the path, and match all remaining path elements.</p>
+
+<p>For example, in the case above it will match any path beginning with <code class="highlighter-rouge">/public/</code>, and
+its value will be the path substring that follows the <code class="highlighter-rouge">*</code> prefix.</p>
+
+<h2 id="fixed-parameters">Fixed Parameters</h2>
+
+<p>As also demonstrated in <a href="#StaticFiles">Static Serving</a> below, routes may specify one or more
+parameters to the method.  For example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET    /products/:id     ShowList("PRODUCT")
+GET    /menus/:id        ShowList("MENU")
+</code></pre></div></div>
+
+<p>The provided argument(s) are bound to a parameter name using their position. In
+this case, the list type string would be bound to the name of the first method
+parameter.</p>
+
+<p>This is helpful in situations where:</p>
+
+<ul>
+  <li>you have a couple similar methods</li>
+  <li>you have methods that do the same thing, but operate in different modes</li>
+  <li>you have methods that do the same thing, but operate on different data types</li>
+</ul>
+
+<h2 id="auto-routing">Auto Routing</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST   /hotels/:id/:method    Hotels.:method
+*      /:controller/:method   :controller.:method
+</code></pre></div></div>
+
+<p>URL argument extraction can also be used to determine the invoked method.
+Matching to controllers and methods is <strong>case insensitive</strong>.</p>
+
+<p>The first example route line would effect the following routes:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/hotels/1/show    =&gt; Hotels.Show
+/hotels/2/details =&gt; Hotels.Details
+</code></pre></div></div>
+
+<p>Similarly, the second example may be used to access any action (Controller.Method) in the
+application:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/app/login         =&gt; App.Login
+/users/list        =&gt; Users.List
+</code></pre></div></div>
+
+<p>Since matching to controllers and methods are case insensitive, the following
+routes would also work:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/APP/LOGIN         =&gt; App.Login
+/Users/List        =&gt; Users.List
+</code></pre></div></div>
+
+<p>Using auto-routing as a catch-all (e.g. last route in the file) is useful for
+quickly hooking up actions to non-vanity URLs, especially in conjunction with
+the <a href="#reverse-routing">reverse router</a>.</p>
+
+<p><strong>It is recommended that auto-routing be used for rapid development work, then 
+routes should be fully qualified to avoid exposing a method in a controller</strong></p>
+
+<p><a name="StaticFiles"></a></p>
+
+<h2 id="static-serving">Static Serving</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET    /public/*filepath            Static.Serve("public")
+GET    /favicon.ico                 Static.Serve("public","img/favicon.png")
+GET    /img/icon.png                Static.Serve("public", "img/icon.png") &lt;&lt; space causes error
+</code></pre></div></div>
+
+<p>For serving directories of static assets, Revel provides the <strong>static</strong> built in module,
+which contains a single
+<a href="https://godoc.org/github.com/revel/modules/static/app/controllers#Static">Static</a>
+controller.  <a href="https://godoc.org/github.com/revel/modules/static/app/controllers#Static.Serve">Static.Serve</a> 
+method takes two parameters:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">prefix</code> (string) - A (relative or absolute) path to the asset root.</li>
+  <li><code class="highlighter-rouge">filepath</code> (string) - A relative path that specifies the requested file.</li>
+</ul>
+
+<div class="alert alert-warning">
+Important:<br />For the two parameters version of <code>Static.Serve</code>, blank spaces are not allowed between
+<code>"</code> and <code>,</code> due to how <a href="http://golang.org/pkg/encoding/csv/"><code>encoding/csv</code></a> works.
+</div>
+<div class="alert alert-danger">Static content can only be served from within the application root for security reasons. To include `external assets` consider symbolic links or a git submodule</div>
+
+<ul>
+  <li>Refer to <a href="organization.html">organization</a> for the directory layout</li>
+</ul>
+
+<p><a name="modules"></a></p>
+
+<h2 id="modules">Modules</h2>
+
+<p><a href="/modules/index.html">Modules</a> which contain routes can be imported into your application in two ways:</p>
+
+<p>In the example below, its assumed <code class="highlighter-rouge">mymodule</code> has a <code class="highlighter-rouge">routes</code> file containing:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET      /gopher        MyModule.FetchGopher
+POST     /gopher/add    MyModule.AddGopher
+</code></pre></div></div>
+
+<h3 id="1-importing-routes-as-is">1) Importing routes as-is</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># mymodule routes 
+module:mymodule
+
+# Other routes
+GET     /        Application.Index
+GET     /bar     Application.Bar
+</code></pre></div></div>
+
+<ul>
+  <li>The routes would be ‘imported’ into your application with the URL’s <code class="highlighter-rouge">/gopher</code> and <code class="highlighter-rouge">/gopher/add</code></li>
+</ul>
+
+<h3 id="2-importing-the-routes-under-a-prefixed-path">2) Importing the routes under a prefixed path</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># mymodule routes with prefix - Must be defined with an asterisk * for the method
+*       /myurl     module:mymodule 
+	
+# Other routes
+GET     /        Application.MyMethod
+GET     /foo     Application.FooMethod
+</code></pre></div></div>
+
+<ul>
+  <li>The routes would be imported with the URL’s <code class="highlighter-rouge">/myurl/gopher</code> and <code class="highlighter-rouge">/myurl/gopher/add</code>.</li>
+  <li>See also <a href="/modules/index.hml">Modules</a> and  <a href="/modules/jobs.html">Jobs</a></li>
+</ul>
+
+<h2 id="websockets">Websockets</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>WS     /hotels/:id/feed       Hotels.Feed
+</code></pre></div></div>
+
+<p><a href="websockets.html">Websockets</a> are routed the same way as other requests with the ‘method’
+identifier of <code class="highlighter-rouge">WS</code>.</p>
+
+<h2 id="purge">Purge</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PURGE           /purge/:key             Cache.Purge             # Cache
+</code></pre></div></div>
+
+<ul>
+  <li>Purge method is routed the same way as other requests with the <code class="highlighter-rouge">method</code></li>
+  <li>An HTTP purge is similar to an HTTP GET request, except that the method is PURGE.</li>
+  <li>Actually you can call the method whatever you’d like, but most people refer to this as purging.</li>
+</ul>
+
+<h2 id="webdav">WebDav</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROPFIND        /webdav/:key            WebDav.PropFind         # WebDav
+PROPPATCH       /webdav/:key            WebDav.PropPatch        # WebDav
+MKCOL           /webdav/:key            WebDav.MkCol            # WebDav
+COPY            /webdav/:key            WebDav.Copy             # WebDav
+MOVE            /webdav/:key            WebDav.Mode             # WebDav
+LOCK            /webdav/:key            WebDav.Lock             # WebDav
+UNLOCK          /webdav/:key            WebDav.UnLock           # WebDav
+</code></pre></div></div>
+
+<ul>
+  <li>WebDav Methods are routed the same way as other requests with the <code class="highlighter-rouge">method</code>.</li>
+  <li>See the <a href="https://en.wikipedia.org/wiki/WebDAV">WebDav Documentation</a> for more details.</li>
+</ul>
+
+<h2 id="reverse-routing">Reverse Routing</h2>
+
+<p>It is good practice to use a reverse router to generate URL’s instead of hardcoding for a few reasons including:</p>
+
+<ul>
+  <li>Avoids misspellings</li>
+  <li>The compiler ensures that reverse routes have the right number and type of parameters.</li>
+  <li>Localizes URL changes to one place in the ‘conf/routes’ file.</li>
+</ul>
+
+<p>Upon building your application, Revel generates an <code class="highlighter-rouge">app/routes</code> package.  Use it
+with a statement of the form:</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">routes</span><span class="o">.</span><span class="n">Controller</span><span class="o">.</span><span class="n">Method</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span><span class="x"> </span><span class="n">param2</span><span class="p">)</span><span class="x">
+</span></code></pre></div></div>
+
+<p>The above statement returns an URL string to <code class="highlighter-rouge">Controller.Method</code> with the
+given parameters.</p>
+
+<div class="alert alert-info"><strong>Limitation:</strong> Only primitive
+parameters to a route are typed due to the possibility of circular imports.
+Non-primitive parameters are typed as interface{}.
+</div>
+
+<p>Below is a more complete example:</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
+	</span><span class="s">"github.com/revel/revel"</span><span class="x">
+	</span><span class="s">"project/app/routes"</span><span class="x">
+</span><span class="p">)</span><span class="x">
+
+</span><span class="k">type</span><span class="x"> </span><span class="n">App</span><span class="x"> </span><span class="k">struct</span><span class="x"> </span><span class="p">{</span><span class="x"> </span><span class="o">*</span><span class="n">revel</span><span class="o">.</span><span class="n">Controller</span><span class="x"> </span><span class="p">}</span><span class="x">
+
+</span><span class="c">// Show a form</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">App</span><span class="p">)</span><span class="x"> </span><span class="n">ViewForm</span><span class="p">(</span><span class="n">username</span><span class="x"> </span><span class="kt">string</span><span class="p">)</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Render</span><span class="p">(</span><span class="n">username</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="c">// Process the submitted form.</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">App</span><span class="p">)</span><span class="x"> </span><span class="n">ProcessForm</span><span class="p">(</span><span class="n">username</span><span class="p">,</span><span class="x"> </span><span class="n">input</span><span class="x"> </span><span class="kt">string</span><span class="p">)</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="o">...</span><span class="x">
+	</span><span class="k">if</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Validation</span><span class="o">.</span><span class="n">HasErrors</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+		</span><span class="n">c</span><span class="o">.</span><span class="n">Validation</span><span class="o">.</span><span class="n">Keep</span><span class="p">()</span><span class="x">
+		</span><span class="n">c</span><span class="o">.</span><span class="n">Flash</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s">"Form invalid. Try again."</span><span class="p">)</span><span class="x">
+		</span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Redirect</span><span class="p">(</span><span class="n">routes</span><span class="o">.</span><span class="n">App</span><span class="o">.</span><span class="n">ViewForm</span><span class="p">(</span><span class="n">username</span><span class="p">))</span><span class="x">  </span><span class="c">// &lt;--- REVERSE ROUTE</span><span class="x">
+	</span><span class="p">}</span><span class="x">
+	</span><span class="n">c</span><span class="o">.</span><span class="n">Flash</span><span class="o">.</span><span class="n">Success</span><span class="p">(</span><span class="s">"Form processed!"</span><span class="p">)</span><span class="x">
+	</span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Redirect</span><span class="p">(</span><span class="n">routes</span><span class="o">.</span><span class="n">App</span><span class="o">.</span><span class="n">ViewConfirmation</span><span class="p">(</span><span class="n">username</span><span class="p">,</span><span class="x"> </span><span class="n">input</span><span class="p">))</span><span class="x">  </span><span class="c">// &lt;--- REVERSE ROUTE</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+
+                    
+<div class="revel-godoc-bar">
+  <h6>GoDoc Reference</h6>
+  <ul>
+    <li>
+      
+      <a href="https://godoc.org/github.com/revel/revel#Router" target="_revel_godoc">Router</a>,
+      
+      <a href="https://godoc.org/github.com/revel/revel#Params" target="_revel_godoc">Params</a>
+      
+    </li>
+  </ul>
+</div>
+
+
+
+                    
+<div class="revel-github-bar">
+  <h6>GitHub Labels</h6>
+  <ul>
+    <li><b>Issues: </b> 
+      
+      <a href="https://github.com/revel/revel/labels/topic-routing" target="_revel_issues">topic-routing</a> 
+      
+      
+    </li>
+    <li><b>Pull Requests: </b> 
+      
+      <a href="https://github.com/revel/revel/pulls?q=is%3Apr+is%3Aopen+label%3Atopic-routing" target="_revel_pull_requests">topic-routing</a>
+      
+      
+    </li>
+  </ul>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; Revel Team 2017 - Revel is released under the <a href="https://github.com/revel/revel/blob/master/LICENSE">MIT License</a></p>
+        </footer>
+    </div>
+</body>
+</html>
+

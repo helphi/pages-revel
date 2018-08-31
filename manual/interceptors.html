@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Interceptors | Revel - A Web Application Framework for Go!</title>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="/css/jekyll-github.css" rel="stylesheet">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="/js/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+<link href="/css/revel.17.css" rel="stylesheet">
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35042202-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+    
+    
+
+    
+<nav class="navbar navbar-inverse ">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div id="main-logo"><a ddclass="navbar-brand" href="/">Revel</a>
+            </div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                                
+                <li >
+                    <a href="/tutorial/index.html"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Tutorial</a></li>
+                
+                <li class="active">
+                    <a href="/manual/index.html"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Manual</a></li>
+                    
+                <li >
+                    <a href="/modules/index.html"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Modules</a></li>
+                    
+                    
+                <li >
+                    <a href="/examples/index.html"><span class="glyphicon glyphicon-sound-stereo" aria-hidden="true"></span> Examples</a></li>
+                
+                <li >
+                    <a href="/quickref/index.html"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> Quick Ref</a></li>
+                    
+                    
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Project <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://github.com/revel/" target="github"><span class="glyphicon glyphicon-object-align-horizontal" aria-hidden="true"></span> Revel project @ github</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel</li>
+                            <li><a href="https://godoc.org/github.com/revel/revel" target="godoc"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> godoc</a></li>
+                            <li><a href="https://github.com/revel/revel" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/revel/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel command</li>
+                            <li><a href="https://github.com/revel/cmd" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/cmd/issues" target="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Modules</li>
+                        <li><a href="https://github.com/revel/modules" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Example Apps</li>
+                        <li><a href="https://github.com/revel/examples" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">revel.github.io</li>
+                        <li><a href="https://github.com/revel/revel.github.io" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li><a href="https://github.com/revel/revel.github.io/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Support <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://gitter.im/revel/community" target="_blank">Chat on gitter.im</a></li>
+                        <li><a href="http://stackoverflow.com/questions/tagged/revel" target="_blank">Revel at StackOverflow</a></li>
+                    </ul>
+                <li>
+                 
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="container revel-manual">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="leftnav">
+    <ul class="nav">
+        
+            <li class="nav-header">Overview</li>
+            
+                
+                
+                    <li><a href="index.html">Introduction</a></li>
+                
+            
+                
+                
+                    <li><a href="concepts.html">Concepts</a></li>
+                
+            
+                
+                
+                    <li><a href="organization.html">Code Organization</a></li>
+                
+            
+        
+            <li class="nav-header">Controllers</li>
+            
+                
+                
+                    <li><a href="controllers.html">Controllers Overview</a></li>
+                
+            
+                
+                
+                    <li><a href="routing.html">URL Routing</a></li>
+                
+            
+                
+                
+                    <li><a href="/modules/static.html">Static Content</a></li>
+                
+            
+                
+                
+                    <li><a href="parameters.html">Request Parameters & JSON</a></li>
+                
+            
+                
+                
+                    <li><a href="validation.html">Validation</a></li>
+                
+            
+                
+                
+                    <li><a href="sessionflash.html">Session & Flash</a></li>
+                
+            
+                
+                
+                    <li><a href="results.html">Results & Response</a></li>
+                
+            
+                
+                
+                    <li><a href="templates.html">Templates</a></li>
+                
+            
+                
+                
+                    <li><a href="template-engine.html">Template Engine</a></li>
+                
+            
+                
+                
+                    <li><a href="templates-go.html">Go Template Engine</a></li>
+                
+            
+                
+                
+                    <li><a href="server-engine.html">Server Engine</a></li>
+                
+            
+                
+                
+                    <li class="active"><a href="interceptors.html">Interceptors</a></li>
+                
+            
+                
+                
+                    <li><a href="filters.html">Filters</a></li>
+                
+            
+                
+                
+                    <li><a href="websockets.html">Websockets</a></li>
+                
+            
+                
+                
+                    <li><a href="i18n-messages.html">Internationalization</a></li>
+                
+            
+                
+                
+                    <li><a href="cache.html">Cache</a></li>
+                
+            
+                
+                
+                    <li><a href="database.html">Database</a></li>
+                
+            
+                
+                
+                    <li><a href="debug.html">Debugging</a></li>
+                
+            
+                
+                
+                    <li><a href="/modules/testing.html">Testing</a></li>
+                
+            
+        
+            <li class="nav-header">Operational</li>
+            
+                
+                
+                    <li><a href="versions.html">Versions</a></li>
+                
+            
+                
+                
+                    <li><a href="logging.html">Logging</a></li>
+                
+            
+                
+                
+                    <li><a href="deployment.html">Deployment</a></li>
+                
+            
+        
+            <li class="nav-header">Reference</li>
+            
+                
+                
+                    <li><a href="appconf.html">app.conf</a></li>
+                
+            
+                
+                
+                    <li><a href="tool.html">revel cmd</a></li>
+                
+            
+                
+                
+                    <li><a href="faq.html">FAQ</a></li>
+                
+            
+        
+    </ul>
+</div>
+
+            </div>
+
+            <div class="col-md-9">
+                <div class="page-header">
+                    <a href="https://github.com/revel/revel.github.io/edit/master/manual/interceptors.md" class="improve-page btn dbtn-info" target="_blank"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Improve Page</a>
+                    <h1>Interceptors</h1>
+                </div>
+                <div class="main">
+                    <p>An <strong>Interceptor</strong> is a function that is invoked by the framework <code class="highlighter-rouge">BEFORE</code> or <code class="highlighter-rouge">AFTER</code> an action invocation.  It allows a form of
+<a href="http://en.wikipedia.org/wiki/Aspect-oriented_programming">Aspect Oriented Programming</a>,
+which is useful for some common concerns such as:</p>
+
+<ul>
+  <li>Request logging</li>
+  <li>Error handling</li>
+  <li>Statistics logging</li>
+  <li>Authentication handling</li>
+</ul>
+
+<p>In Revel, an interceptor can take one of three forms:</p>
+
+<ul>
+  <li>A <a href="#function_interceptor">Function Interceptor</a></li>
+  <li>A <a href="#method_interceptor">Method Interceptor</a></li>
+  <li>A <a href="#controller_auto_interceptor">Controller Auto Interceptor</a>
+   using the <code class="highlighter-rouge">revel.BeforeAfterFilter</code> filter</li>
+</ul>
+
+<p>An Interceptor has an <a href="#intercept_times">intercept</a> point in the request (<a href="https://godoc.org/github.com/revel/revel#When">When</a>) 
+and returns a <a href="#results">Result</a> or <code class="highlighter-rouge">nil</code>.</p>
+
+<div class="alert alert-warning">NOTE: Interceptors are called in the order that they are added.</div>
+
+<p><a name="function_interceptor"></a></p>
+
+<h3 id="function-interceptor">Function Interceptor</h3>
+
+<ul>
+  <li>A function meeting the <a href="https://godoc.org/github.com/revel/revel#InterceptorFunc">InterceptorFunc</a> interface.</li>
+  <li>Does <strong>not have access to the specific</strong> <code class="highlighter-rouge">Controller</code> invoked.</li>
+  <li>May be applied to any / all Controllers in an application (by adding lines of code).</li>
+</ul>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">// simple example or user auth</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="n">checkUser</span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="o">*</span><span class="n">revel</span><span class="o">.</span><span class="n">Controller</span><span class="p">)</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="k">if</span><span class="x"> </span><span class="n">user</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">MyCheckAuth</span><span class="p">(</span><span class="n">c</span><span class="p">);</span><span class="x"> </span><span class="n">user</span><span class="x"> </span><span class="o">==</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
+        </span><span class="n">c</span><span class="o">.</span><span class="n">Flash</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s">"Please log in first"</span><span class="p">)</span><span class="x">
+        </span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Redirect</span><span class="p">(</span><span class="n">App</span><span class="o">.</span><span class="n">Index</span><span class="p">)</span><span class="x">
+    </span><span class="p">}</span><span class="x">
+    </span><span class="k">return</span><span class="x"> </span><span class="no">nil</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="n">doNothing</span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="o">*</span><span class="n">revel</span><span class="o">.</span><span class="n">Controller</span><span class="p">)</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x"> </span><span class="k">return</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">}</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="n">init</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="n">revel</span><span class="o">.</span><span class="n">InterceptFunc</span><span class="p">(</span><span class="n">checkUser</span><span class="p">,</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">BEFORE</span><span class="p">,</span><span class="x"> </span><span class="o">&amp;</span><span class="n">App</span><span class="p">{})</span><span class="x">
+    </span><span class="n">revel</span><span class="o">.</span><span class="n">InterceptFunc</span><span class="p">(</span><span class="n">doNothing</span><span class="p">,</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">AFTER</span><span class="p">,</span><span class="x"> </span><span class="o">&amp;</span><span class="n">App</span><span class="p">{})</span><span class="x">
+    </span><span class="n">revel</span><span class="o">.</span><span class="n">InterceptFunc</span><span class="p">(</span><span class="n">checkUser</span><span class="p">,</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">BEFORE</span><span class="p">,</span><span class="x"> </span><span class="o">&amp;</span><span class="n">AnotherController</span><span class="p">{})</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+<p><a name="method_interceptor"></a></p>
+
+<h3 id="method-interceptor">Method Interceptor</h3>
+
+<ul>
+  <li>A <a href="https://godoc.org/github.com/revel/revel#InterceptorMethod">InterceptorMethod</a> method accepting no arguments and returning a <a href="results.html"><code class="highlighter-rouge">revel.Result</code></a>.</li>
+  <li>May <strong>only intercept calls to the bound</strong> <a href="controllers.html">Controller</a>.</li>
+  <li>May <strong>modify the invoked controller</strong> as desired.</li>
+  <li>A method interceptor signature may have one of these two forms, or both:
+    <ul>
+      <li><code class="highlighter-rouge">func (c AppController) example() revel.Result</code></li>
+      <li><code class="highlighter-rouge">func (c *AppController) example() revel.Result // pointer</code></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">// simple method example</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">Hotels</span><span class="p">)</span><span class="x"> </span><span class="n">checkUser</span><span class="p">()</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="k">if</span><span class="x"> </span><span class="n">user</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">connected</span><span class="p">(</span><span class="n">c</span><span class="p">);</span><span class="x"> </span><span class="n">user</span><span class="x"> </span><span class="o">==</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
+        </span><span class="n">c</span><span class="o">.</span><span class="n">Flash</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s">"Please log in first"</span><span class="p">)</span><span class="x">
+        </span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Redirect</span><span class="p">(</span><span class="n">App</span><span class="o">.</span><span class="n">Index</span><span class="p">)</span><span class="x">
+    </span><span class="p">}</span><span class="x">
+    </span><span class="k">return</span><span class="x"> </span><span class="no">nil</span><span class="x">
+</span><span class="p">}</span><span class="x">
+    
+</span><span class="k">func</span><span class="x"> </span><span class="n">init</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="n">revel</span><span class="o">.</span><span class="n">InterceptMethod</span><span class="p">(</span><span class="n">Hotels</span><span class="o">.</span><span class="n">checkUser</span><span class="p">,</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">BEFORE</span><span class="p">)</span><span class="x">
+    </span><span class="n">revel</span><span class="o">.</span><span class="n">InterceptMethod</span><span class="p">(</span><span class="n">Room</span><span class="o">.</span><span class="n">checkVacant</span><span class="p">,</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">BEFORE</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+<h3 id="controller-auto-interceptor">Controller Auto Interceptor</h3>
+<p>Controllers that have methods named <code class="highlighter-rouge">Before</code>,<code class="highlighter-rouge">After</code>,<code class="highlighter-rouge">Finally</code>,<code class="highlighter-rouge">Panic</code>, will be called in the 
+same manner as the interceptor does. The method signature is a little different then normal 
+to allow for method Overriding and cascades. ie if <strong>Application</strong> has 
+<strong>GorpController</strong> controller embedded inside it and both define the 
+<code class="highlighter-rouge">Before</code> method then what happens is the <code class="highlighter-rouge">GorpController.Before</code> 
+is invoked before the <code class="highlighter-rouge">Application.Before</code>. The method signature must match the 
+following syntax</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func (c Application) Before() (r revel.Result, a Application) {
+...
+func (c *GorpController) Before() (result revel.Result, controller *GorpController) {
+</code></pre></div></div>
+<p><strong>Notice</strong> along with the revel.Result we return the Controller type. 
+This is so when the application starts up it can determine which method belongs to what 
+field in the controller (currently Go does not tell you this information). 
+These work identical to the revel.Interceptors without any configuration.</p>
+
+<p>On the <code class="highlighter-rouge">Before</code> method the deepest embedded struct with the <code class="highlighter-rouge">Before</code> method is run first, 
+then the next deepest and so on until the top level. <code class="highlighter-rouge">After</code>, <code class="highlighter-rouge">Finally</code>, <code class="highlighter-rouge">Panic</code> 
+are run from the top down</p>
+
+<h4 id="controller-auto-interceptor-implementation">Controller Auto Interceptor Implementation</h4>
+<p>Add the filter <code class="highlighter-rouge">revel.BeforeAfterFilter</code> to revel.Filters on app/init.go. 
+Ensure your function names match <code class="highlighter-rouge">func (c Application) Before() (r revel.Result, a Application)</code></p>
+
+<p><a name="intercept_times"></a></p>
+
+<h2 id="intercept-times">Intercept Times</h2>
+
+<p>An interceptor can be registered to run at four points in the request lifecycle; defined in <a href="https://godoc.org/github.com/revel/revel#When">When()</a>:</p>
+
+<ol>
+  <li><strong>BEFORE</strong>
+    <ul>
+      <li>After the request has been <a href="routing.html">routed</a>, the <a href="sessionflash.html">session, flash</a>, and <a href="parameters.html">parameters</a> decoded, but before the action has been invoked.</li>
+    </ul>
+  </li>
+  <li><strong>AFTER</strong>
+    <ul>
+      <li>After the request has returned a <a href="results.html">Result</a>, but before that Result has been applied.  These interceptors are not invoked if the action panicked.</li>
+    </ul>
+  </li>
+  <li><strong>PANIC</strong>
+    <ul>
+      <li>After a <a href="http://golang.org/pkg/builtin/#panic">panic</a> exits an action or is raised from applying the returned Result.</li>
+    </ul>
+  </li>
+  <li><strong>FINALLY</strong>
+    <ul>
+      <li>After an action has completed and the Result has been applied.</li>
+    </ul>
+  </li>
+</ol>
+
+<p><a name="results"></a></p>
+
+<h2 id="results">Results</h2>
+
+<p>Interceptors typically return <code class="highlighter-rouge">nil</code>, in which case the request continues to
+be processed without interruption.</p>
+
+<p>The effect of returning a non-<code class="highlighter-rouge">nil</code> <a href="results.html">revel.Result</a> depends on <a href="https://godoc.org/github.com/revel/revel#When">When()</a> the interceptor
+was invoked.</p>
+
+<ol>
+  <li><strong>BEFORE</strong>
+    <ul>
+      <li>No further interceptors are invoked, and neither is the action.</li>
+    </ul>
+  </li>
+  <li><strong>AFTER</strong>
+    <ul>
+      <li>All interceptors are still run.</li>
+    </ul>
+  </li>
+  <li><strong>PANIC</strong>
+    <ul>
+      <li>All interceptors are still run.</li>
+    </ul>
+  </li>
+  <li><strong>FINALLY</strong>
+    <ul>
+      <li>All interceptors are still run.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>In all cases, any returned <a href="results.html">Result</a> will take the place of any existing Result.</p>
+
+<ul>
+  <li>However, in the <code class="highlighter-rouge">BEFORE</code> case, the returned Result is guaranteed to be final,</li>
+  <li>While in the <code class="highlighter-rouge">AFTER</code> case it is possible that a further interceptor could emit its own Result.</li>
+</ul>
+
+
+                    
+<div class="revel-godoc-bar">
+  <h6>GoDoc Reference</h6>
+  <ul>
+    <li>
+      
+      <a href="https://godoc.org/github.com/revel/revel#InterceptFunc" target="_revel_godoc">InterceptFunc</a>,
+      
+      <a href="https://godoc.org/github.com/revel/revel#InterceptMethod" target="_revel_godoc">InterceptMethod</a>,
+      
+      <a href="https://godoc.org/github.com/revel/revel#When" target="_revel_godoc">When</a>
+      
+    </li>
+  </ul>
+</div>
+
+
+
+                    
+<div class="revel-github-bar">
+  <h6>GitHub Labels</h6>
+  <ul>
+    <li><b>Issues: </b> 
+      
+      <a href="https://github.com/revel/revel/labels/topic-controller" target="_revel_issues">topic-controller</a> 
+      
+      
+    </li>
+    <li><b>Pull Requests: </b> 
+      
+      <a href="https://github.com/revel/revel/pulls?q=is%3Apr+is%3Aopen+label%3Atopic-controller" target="_revel_pull_requests">topic-controller</a>
+      
+      
+    </li>
+  </ul>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; Revel Team 2017 - Revel is released under the <a href="https://github.com/revel/revel/blob/master/LICENSE">MIT License</a></p>
+        </footer>
+    </div>
+</body>
+</html>
+

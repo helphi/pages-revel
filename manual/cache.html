@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cache | Revel - A Web Application Framework for Go!</title>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="/css/jekyll-github.css" rel="stylesheet">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="/js/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+<link href="/css/revel.17.css" rel="stylesheet">
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35042202-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+    
+    
+
+    
+<nav class="navbar navbar-inverse ">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div id="main-logo"><a ddclass="navbar-brand" href="/">Revel</a>
+            </div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                                
+                <li >
+                    <a href="/tutorial/index.html"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Tutorial</a></li>
+                
+                <li class="active">
+                    <a href="/manual/index.html"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Manual</a></li>
+                    
+                <li >
+                    <a href="/modules/index.html"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Modules</a></li>
+                    
+                    
+                <li >
+                    <a href="/examples/index.html"><span class="glyphicon glyphicon-sound-stereo" aria-hidden="true"></span> Examples</a></li>
+                
+                <li >
+                    <a href="/quickref/index.html"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> Quick Ref</a></li>
+                    
+                    
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Project <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://github.com/revel/" target="github"><span class="glyphicon glyphicon-object-align-horizontal" aria-hidden="true"></span> Revel project @ github</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel</li>
+                            <li><a href="https://godoc.org/github.com/revel/revel" target="godoc"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> godoc</a></li>
+                            <li><a href="https://github.com/revel/revel" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/revel/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel command</li>
+                            <li><a href="https://github.com/revel/cmd" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/cmd/issues" target="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Modules</li>
+                        <li><a href="https://github.com/revel/modules" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Example Apps</li>
+                        <li><a href="https://github.com/revel/examples" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">revel.github.io</li>
+                        <li><a href="https://github.com/revel/revel.github.io" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li><a href="https://github.com/revel/revel.github.io/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Support <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://gitter.im/revel/community" target="_blank">Chat on gitter.im</a></li>
+                        <li><a href="http://stackoverflow.com/questions/tagged/revel" target="_blank">Revel at StackOverflow</a></li>
+                    </ul>
+                <li>
+                 
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="container revel-manual">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="leftnav">
+    <ul class="nav">
+        
+            <li class="nav-header">Overview</li>
+            
+                
+                
+                    <li><a href="index.html">Introduction</a></li>
+                
+            
+                
+                
+                    <li><a href="concepts.html">Concepts</a></li>
+                
+            
+                
+                
+                    <li><a href="organization.html">Code Organization</a></li>
+                
+            
+        
+            <li class="nav-header">Controllers</li>
+            
+                
+                
+                    <li><a href="controllers.html">Controllers Overview</a></li>
+                
+            
+                
+                
+                    <li><a href="routing.html">URL Routing</a></li>
+                
+            
+                
+                
+                    <li><a href="/modules/static.html">Static Content</a></li>
+                
+            
+                
+                
+                    <li><a href="parameters.html">Request Parameters & JSON</a></li>
+                
+            
+                
+                
+                    <li><a href="validation.html">Validation</a></li>
+                
+            
+                
+                
+                    <li><a href="sessionflash.html">Session & Flash</a></li>
+                
+            
+                
+                
+                    <li><a href="results.html">Results & Response</a></li>
+                
+            
+                
+                
+                    <li><a href="templates.html">Templates</a></li>
+                
+            
+                
+                
+                    <li><a href="template-engine.html">Template Engine</a></li>
+                
+            
+                
+                
+                    <li><a href="templates-go.html">Go Template Engine</a></li>
+                
+            
+                
+                
+                    <li><a href="server-engine.html">Server Engine</a></li>
+                
+            
+                
+                
+                    <li><a href="interceptors.html">Interceptors</a></li>
+                
+            
+                
+                
+                    <li><a href="filters.html">Filters</a></li>
+                
+            
+                
+                
+                    <li><a href="websockets.html">Websockets</a></li>
+                
+            
+                
+                
+                    <li><a href="i18n-messages.html">Internationalization</a></li>
+                
+            
+                
+                
+                    <li class="active"><a href="cache.html">Cache</a></li>
+                
+            
+                
+                
+                    <li><a href="database.html">Database</a></li>
+                
+            
+                
+                
+                    <li><a href="debug.html">Debugging</a></li>
+                
+            
+                
+                
+                    <li><a href="/modules/testing.html">Testing</a></li>
+                
+            
+        
+            <li class="nav-header">Operational</li>
+            
+                
+                
+                    <li><a href="versions.html">Versions</a></li>
+                
+            
+                
+                
+                    <li><a href="logging.html">Logging</a></li>
+                
+            
+                
+                
+                    <li><a href="deployment.html">Deployment</a></li>
+                
+            
+        
+            <li class="nav-header">Reference</li>
+            
+                
+                
+                    <li><a href="appconf.html">app.conf</a></li>
+                
+            
+                
+                
+                    <li><a href="tool.html">revel cmd</a></li>
+                
+            
+                
+                
+                    <li><a href="faq.html">FAQ</a></li>
+                
+            
+        
+    </ul>
+</div>
+
+            </div>
+
+            <div class="col-md-9">
+                <div class="page-header">
+                    <a href="https://github.com/revel/revel.github.io/edit/master/manual/cache.md" class="improve-page btn dbtn-info" target="_blank"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Improve Page</a>
+                    <h1>Cache</h1>
+                </div>
+                <div class="main">
+                    <p>Revel provides a <a href="https://godoc.org/github.com/revel/revel/cache#Cache">Cache</a> library for server-side, temporary, low-latency
+storage.  It is a good replacement for frequent database access to slowly
+changing data. It could also be used for implementing user sessions, if for example the cookie-based sessions are insufficient.</p>
+
+<h2 id="implementations">Implementations</h2>
+
+<p>The Cache may be configured to be backed by one of the following implementations:</p>
+
+<ul>
+  <li>a list of <a href="http://memcached.org/">memcached</a> hosts</li>
+  <li>a single <a href="http://redis.io">redis</a> host</li>
+  <li>the ‘in-memory’ implementation. <strong>Note the in memory stores the object in memory
+and returns the same object when you <code class="highlighter-rouge">Get</code> it (if available). This means that
+updating an object retrieved from the cache will update the stored cache object 
+as well.</strong></li>
+</ul>
+
+<h2 id="expiration">Expiration</h2>
+
+<p>Cache items are set with an expiration time, in one of three forms:</p>
+
+<ul>
+  <li>a <a href="http://golang.org/pkg/time/#Duration">time.Duration</a></li>
+  <li><code class="highlighter-rouge">cache.DefaultExpiryTime</code> - the application-wide default expiration time, one hour by default (see <a href="appconf.html#cache">cache config</a>)</li>
+  <li><code class="highlighter-rouge">cache.ForEverNeverExpiry</code> - will cause the item to never expire</li>
+</ul>
+
+<div class="alert alert-info"><b>Important</b>: Callers can <b>not</b> rely on items being present in the cache, as
+  the data is not durable, and a cache restart may clear all data.</div>
+
+<h2 id="serialization">Serialization</h2>
+
+<p>The <a href="https://godoc.org/github.com/revel/revel/cache#Cache">Cache</a> getters and setters automatically serialize values for callers, to
+and from any type, <em>with the exception of the inmemory model which stores and returns the object verbatim</em>. 
+It uses the following mechanisms:</p>
+
+<ul>
+  <li>If the value is already of type <code class="highlighter-rouge">[]byte</code>, the data is not touched</li>
+  <li>If the value is of any integer type, it is stored as the ASCII representation</li>
+  <li>Otherwise, the value is encoded using <a href="http://golang.org/pkg/encoding/gob/">encoding/gob</a></li>
+</ul>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>Configure the cache using these keys in <a href="appconf.html"><code class="highlighter-rouge">conf/app.conf</code></a>:</p>
+
+<ul>
+  <li><a href="appconf.html#cacheexpires"><code class="highlighter-rouge">cache.expires</code></a>
+    <ul>
+      <li>a string accepted by  <a href="http://golang.org/pkg/time/#ParseDuration"><code class="highlighter-rouge">time.ParseDuration</code></a> to specify
+  the default expiration duration.  (default 1 hour)</li>
+    </ul>
+  </li>
+  <li><a href="appconf.html#cachememcached"><code class="highlighter-rouge">cache.memcached</code></a>
+    <ul>
+      <li>a boolean indicating whether or not memcached should be
+  used. (default <code class="highlighter-rouge">false</code>)</li>
+    </ul>
+  </li>
+  <li><a href="appconf.html#cacheredis"><code class="highlighter-rouge">cache.redis</code></a>
+    <ul>
+      <li>a boolean indicating whether or not redis should be
+  used. (default <code class="highlighter-rouge">false</code>)</li>
+    </ul>
+  </li>
+  <li><a href="appconf.html#cachehosts"><code class="highlighter-rouge">cache.hosts</code></a>
+    <ul>
+      <li>a comma separated list of hosts to use as backends.  If the backend is Redis,
+  then only the first host in this list will be used.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="cache-example">Cache Example</h2>
+
+<p>Here’s an example of the common operations.  Note that callers may invoke cache
+operations in a new goroutine if they do not require the result of the
+invocation to process the request.</p>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
+	</span><span class="s">"github.com/revel/revel"</span><span class="x">
+	</span><span class="s">"github.com/revel/revel/cache"</span><span class="x">
+</span><span class="p">)</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">App</span><span class="p">)</span><span class="x"> </span><span class="n">ShowProduct</span><span class="p">(</span><span class="n">id</span><span class="x"> </span><span class="kt">string</span><span class="p">)</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="k">var</span><span class="x"> </span><span class="n">product</span><span class="x"> </span><span class="o">*</span><span class="n">Product</span><span class="x"> 
+	</span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">cache</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s">"product_"</span><span class="o">+</span><span class="n">id</span><span class="p">,</span><span class="x"> </span><span class="o">&amp;</span><span class="n">product</span><span class="p">);</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
+	    </span><span class="n">product</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">loadProduct</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="x">
+	    </span><span class="k">go</span><span class="x"> </span><span class="n">cache</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s">"product_"</span><span class="o">+</span><span class="n">id</span><span class="p">,</span><span class="x"> </span><span class="n">product</span><span class="p">,</span><span class="x"> </span><span class="m">30</span><span class="o">*</span><span class="n">time</span><span class="o">.</span><span class="n">Minute</span><span class="p">)</span><span class="x">
+	</span><span class="p">}</span><span class="x">
+	</span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Render</span><span class="p">(</span><span class="n">product</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">App</span><span class="p">)</span><span class="x"> </span><span class="n">AddProduct</span><span class="p">(</span><span class="n">name</span><span class="x"> </span><span class="kt">string</span><span class="p">,</span><span class="x"> </span><span class="n">price</span><span class="x"> </span><span class="kt">int</span><span class="p">)</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">product</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">NewProduct</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="x"> </span><span class="n">price</span><span class="p">)</span><span class="x">
+	</span><span class="n">product</span><span class="o">.</span><span class="n">Save</span><span class="p">()</span><span class="x">
+	</span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Redirect</span><span class="p">(</span><span class="s">"/products/%d"</span><span class="p">,</span><span class="x"> </span><span class="n">product</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">App</span><span class="p">)</span><span class="x"> </span><span class="n">EditProduct</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="x"> </span><span class="n">name</span><span class="x"> </span><span class="kt">string</span><span class="p">,</span><span class="x"> </span><span class="n">price</span><span class="x"> </span><span class="kt">int</span><span class="p">)</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">product</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">loadProduct</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="x">
+	</span><span class="n">product</span><span class="o">.</span><span class="n">name</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">name</span><span class="x">
+	</span><span class="n">product</span><span class="o">.</span><span class="n">price</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">price</span><span class="x">
+	</span><span class="k">go</span><span class="x"> </span><span class="n">cache</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s">"product_"</span><span class="o">+</span><span class="n">id</span><span class="p">,</span><span class="x"> </span><span class="n">product</span><span class="p">,</span><span class="x"> </span><span class="m">30</span><span class="o">*</span><span class="n">time</span><span class="o">.</span><span class="n">Minute</span><span class="p">)</span><span class="x">
+	</span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Redirect</span><span class="p">(</span><span class="s">"/products/%d"</span><span class="p">,</span><span class="x"> </span><span class="n">id</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">App</span><span class="p">)</span><span class="x"> </span><span class="n">DeleteProduct</span><span class="p">(</span><span class="n">id</span><span class="x"> </span><span class="kt">string</span><span class="p">)</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">product</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">loadProduct</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="x">
+	</span><span class="n">product</span><span class="o">.</span><span class="n">Delete</span><span class="p">()</span><span class="x">
+	</span><span class="k">go</span><span class="x"> </span><span class="n">cache</span><span class="o">.</span><span class="n">Delete</span><span class="p">(</span><span class="s">"product_"</span><span class="o">+</span><span class="n">id</span><span class="p">)</span><span class="x">
+	</span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Redirect</span><span class="p">(</span><span class="s">"/products"</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span></code></pre></figure>
+
+<h2 id="session-usage">Session usage</h2>
+
+<p>The <a href="https://godoc.org/github.com/revel/revel/cache#Cache">Cache</a> has a global key space. To use it as a <a href="sessionflash.html">session</a> store, callers should
+take advantage of the session’s UUID, as shown below:</p>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="n">cache</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">Session</span><span class="o">.</span><span class="n">Id</span><span class="p">(),</span><span class="x"> </span><span class="n">products</span><span class="p">)</span><span class="x">
+
+</span><span class="c">// and then in subsequent requests</span><span class="x">
+</span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">cache</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">Session</span><span class="o">.</span><span class="n">Id</span><span class="p">(),</span><span class="x"> </span><span class="o">&amp;</span><span class="n">products</span><span class="p">)</span></code></pre></figure>
+
+
+                    
+<div class="revel-godoc-bar">
+  <h6>GoDoc Reference</h6>
+  <ul>
+    <li>
+      
+      <a href="https://godoc.org/github.com/revel/revel#Cache" target="_revel_godoc">Cache</a>
+      
+    </li>
+  </ul>
+</div>
+
+
+
+                    
+<div class="revel-github-bar">
+  <h6>GitHub Labels</h6>
+  <ul>
+    <li><b>Issues: </b> 
+      
+      <a href="https://github.com/revel/revel/labels/topic-cache" target="_revel_issues">topic-cache</a> 
+      
+      
+    </li>
+    <li><b>Pull Requests: </b> 
+      
+      <a href="https://github.com/revel/revel/pulls?q=is%3Apr+is%3Aopen+label%3Atopic-cache" target="_revel_pull_requests">topic-cache</a>
+      
+      
+    </li>
+  </ul>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; Revel Team 2017 - Revel is released under the <a href="https://github.com/revel/revel/blob/master/LICENSE">MIT License</a></p>
+        </footer>
+    </div>
+</body>
+</html>
+

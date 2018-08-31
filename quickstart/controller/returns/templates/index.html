@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Templates | Revel - A Web Application Framework for Go!</title>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="/css/jekyll-github.css" rel="stylesheet">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="/js/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+<link href="/css/revel.17.css" rel="stylesheet">
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35042202-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+    <link href="/css/manual.css" type="text/css" rel="stylesheet" />
+    <link href="/css/prettify.css" type="text/css" rel="stylesheet" />
+    <script src="/js/prettify.js" type="text/javascript"></script>
+    <script src="/js/lang-go-rich.js" type="text/javascript"></script>
+		<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35042202-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+
+  <body onload="prettyPrint()">
+
+    
+
+    
+<nav class="navbar navbar-inverse ">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div id="main-logo"><a ddclass="navbar-brand" href="/">Revel</a>
+            </div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                                
+                <li >
+                    <a href="/tutorial/index.html"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Tutorial</a></li>
+                
+                <li >
+                    <a href="/manual/index.html"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Manual</a></li>
+                    
+                <li >
+                    <a href="/modules/index.html"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Modules</a></li>
+                    
+                    
+                <li >
+                    <a href="/examples/index.html"><span class="glyphicon glyphicon-sound-stereo" aria-hidden="true"></span> Examples</a></li>
+                
+                <li >
+                    <a href="/quickref/index.html"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> Quick Ref</a></li>
+                    
+                    
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Project <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://github.com/revel/" target="github"><span class="glyphicon glyphicon-object-align-horizontal" aria-hidden="true"></span> Revel project @ github</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel</li>
+                            <li><a href="https://godoc.org/github.com/revel/revel" target="godoc"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> godoc</a></li>
+                            <li><a href="https://github.com/revel/revel" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/revel/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel command</li>
+                            <li><a href="https://github.com/revel/cmd" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/cmd/issues" target="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Modules</li>
+                        <li><a href="https://github.com/revel/modules" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Example Apps</li>
+                        <li><a href="https://github.com/revel/examples" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">revel.github.io</li>
+                        <li><a href="https://github.com/revel/revel.github.io" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li><a href="https://github.com/revel/revel.github.io/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Support <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://gitter.im/revel/community" target="_blank">Chat on gitter.im</a></li>
+                        <li><a href="http://stackoverflow.com/questions/tagged/revel" target="_blank">Revel at StackOverflow</a></li>
+                    </ul>
+                <li>
+                 
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="span2">
+          
+
+<ul>
+
+</ul>
+        </div>
+
+        <div class="span10">
+          <div class="page-header">
+            <h1>Templates</h1>
+            <a href="https://github.com/revel/revel.github.io/edit/master/quickstart/controller/returns/templates/index.md" class="improve-page btn btn-info" target="_blank">Improve this page</a>
+          </div>
+          <p>Revel uses <a href="http://www.golang.org/pkg/text/template/">Go Templates</a>.  It
+searches two directories for templates:</p>
+
+<ul>
+  <li>The application’s <code class="highlighter-rouge">views</code> directory (and all subdirectories)</li>
+  <li>Revel’s own <code class="highlighter-rouge">templates</code> directory.</li>
+</ul>
+
+<p>Given a controller named <code class="highlighter-rouge">Hello</code> with an method named <code class="highlighter-rouge">World</code>, Revel will
+look for a template file named <code class="highlighter-rouge">views/Hello/World.html</code>. Template file names
+are case insensitive so <code class="highlighter-rouge">views/hello/world.html</code> will work the same as
+<code class="highlighter-rouge">views/HeLlO/wOrLd.HtMl</code>.</p>
+
+<p>Revel provides templates for error pages (that display the friendly compilation
+errors in DEV mode), but the application may override them by creating a
+template of the equivalent name, e.g. <code class="highlighter-rouge">app/views/errors/500.html</code>.</p>
+
+<h2 id="render-context">Render Context</h2>
+
+<p>Revel executes the template using the ViewArgs data map.  Aside from
+application-provided data, Revel provides the following entries:</p>
+
+<ul>
+  <li>“errors” - the map returned by
+<a href="../docs/godoc/validation.html#Validation.ErrorMap"><code class="highlighter-rouge">Validation.ErrorMap</code></a></li>
+  <li>“flash” - the data flashed by the previous request.</li>
+</ul>
+
+<h2 id="template-functions">Template Functions</h2>
+
+<p>Go provides
+<a href="http://www.golang.org/pkg/text/template/#Functions">a few functions</a> for use in
+your templates.  Revel adds to those.  Read the documentation below or
+<a href="../docs/godoc/template.html#variables">check out their source code</a>.</p>
+
+<h3 id="eq">eq</h3>
+
+<p>A simple “a == b” test.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div class="message {{if eq .User "you"}}you{{end}}"&gt;
+</code></pre></div></div>
+
+<h3 id="set">set</h3>
+
+<p>Set a variable in the given context.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{set . "title" "Basic Chat room"}}
+
+&lt;h1&gt;{{.title}}&lt;/h1&gt;
+</code></pre></div></div>
+
+<h3 id="append">append</h3>
+
+<p>Add a variable to an array, or start an array, in the given context.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{append . "moreScripts" "js/jquery-ui-1.7.2.custom.min.js"}}
+
+{{range .moreStyles}}
+  &lt;link rel="stylesheet" type="text/css" href="/public/{{.}}"&gt;
+{{end}}
+</code></pre></div></div>
+
+<h3 id="field">field</h3>
+
+<p>A helper for input fields.</p>
+
+<p>Given a field name, it returns a struct containing the following members:</p>
+
+<ul>
+  <li>Id: the field name, converted to be suitable as a HTML element ID.</li>
+  <li>Name: the field name</li>
+  <li>Value: the value of the field in the current ViewArgs</li>
+  <li>Flash: the flashed value of the field.</li>
+  <li>Error: the error message, if any is associated with this field.</li>
+  <li>ErrorClass: the raw string “hasError”, if there was an error, else “”.</li>
+</ul>
+
+<p><a href="../docs/godoc/field.html">See godoc.</a></p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{with $field := field "booking.CheckInDate" .}}
+  &lt;p class="{{$field.ErrorClass}}"&gt;
+    &lt;strong&gt;Check In Date:&lt;/strong&gt;
+    &lt;input type="text" size="10" name="{{$field.Name}}" class="datepicker" value="{{$field.Flash}}"&gt; *
+    &lt;span class="error"&gt;{{$field.Error}}&lt;/span&gt;
+  &lt;/p&gt;
+{{end}}
+</code></pre></div></div>
+
+<h3 id="option">option</h3>
+
+<p>Assists in constructing HTML <code class="highlighter-rouge">option</code> elements, in conjunction with the field
+helper.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{with $field := field "booking.Beds" .}}
+&lt;select name="{{$field.Name}}"&gt;
+  {{option $field "1" "One king-size bed"}}
+  {{option $field "2" "Two double beds"}}
+  {{option $field "3" "Three beds"}}
+&lt;/select&gt;
+{{end}}
+</code></pre></div></div>
+
+<h3 id="radio">radio</h3>
+
+<p>Assists in constructing HTML radio <code class="highlighter-rouge">input</code> elements, in conjunction with the field
+helper.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{with $field := field "booking.Smoking" .}}
+  {{radio $field "true"}} Smoking
+  {{radio $field "false"}} Non smoking
+{{end}}
+</code></pre></div></div>
+
+<h3 id="nl2br">nl2br</h3>
+
+<p>Convert newlines to HTML breaks.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>You said:
+&lt;div class="comment"&gt;{{nl2br .commentText}}&lt;/div&gt;
+</code></pre></div></div>
+
+<h3 id="pluralize">pluralize</h3>
+
+<p>A helper for correctly pluralizing words.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>There are {{.numComments}} comment{{pluralize (len comments) "" "s"}}
+</code></pre></div></div>
+
+<h3 id="raw">raw</h3>
+
+<p>Prints raw, unescaped, text.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div class="body"&gt;{{raw .blogBody}}&lt;/div&gt;
+</code></pre></div></div>
+
+<h3 id="even">even</h3>
+
+<p>Perform $in % 2 == 0. This is a convenience function that assists with table row coloring.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{range $index, $element := .results}}
+&lt;tr class="{{if even $index}}danger{{end}}"&gt;
+	...
+&lt;/tr&gt;
+{{end}}
+</code></pre></div></div>
+
+<h2 id="including">Including</h2>
+
+<p>Go Templates allow you to compose templates by inclusion.  For example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{template "header.html" .}}
+</code></pre></div></div>
+
+<p>There are two things to note:</p>
+
+<ul>
+  <li>Paths are relative to <code class="highlighter-rouge">app/views</code></li>
+</ul>
+
+<h2 id="tips">Tips</h2>
+
+<p>The sample applications included with Revel try to demonstrate effective use of
+Go Templates.  In particular, please take a look at:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">revel/samples/booking/app/views/header.html</code></li>
+  <li><code class="highlighter-rouge">revel/samples/booking/app/views/Hotels/Book.html</code></li>
+</ul>
+
+<p>It takes advantage of the helper functions to set the title and extra styles in
+the template itself.</p>
+
+<p>For example, the header looks like this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>{{.title}}<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Type"</span> <span class="na">content=</span><span class="s">"text/html; charset=utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">media=</span><span class="s">"screen"</span> <span class="na">href=</span><span class="s">"/public/css/main.css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"shortcut icon"</span> <span class="na">type=</span><span class="s">"image/png"</span> <span class="na">href=</span><span class="s">"/public/img/favicon.png"</span><span class="nt">&gt;</span>
+    {{range .moreStyles}}
+      <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">href=</span><span class="s">"/public/{{.}}"</span><span class="nt">&gt;</span>
+    {{end}}
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/public/js/jquery-1.3.2.min.js"</span> <span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/public/js/sessvars.js"</span> <span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    {{range .moreScripts}}
+      <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/public/{{.}}"</span> <span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    {{end}}
+  <span class="nt">&lt;/head&gt;</span>
+</code></pre></div></div>
+
+<p>And templates that include it look like this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{set . title "Hotels"}}
+{{append . "moreStyles" "ui-lightness/jquery-ui-1.7.2.custom.css"}}
+{{append . "moreScripts" "js/jquery-ui-1.7.2.custom.min.js"}}
+{{template "header.html" .}}
+</code></pre></div></div>
+
+<h2 id="custom-functions">Custom Functions</h2>
+
+<p>Applications may register custom functions to use in templates.</p>
+
+<p>Here is an example:</p>
+
+<pre class="prettyprint lang-go">
+func init() {
+	revel.TemplateFuncs["eq"] = func(a, b interface{}) bool { return a == b }
+}
+</pre>
+
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

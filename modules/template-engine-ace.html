@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ace Template Engine | Revel - A Web Application Framework for Go!</title>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="/css/jekyll-github.css" rel="stylesheet">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="/js/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+<link href="/css/revel.17.css" rel="stylesheet">
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35042202-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+    
+    
+
+    
+<nav class="navbar navbar-inverse ">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div id="main-logo"><a ddclass="navbar-brand" href="/">Revel</a>
+            </div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                                
+                <li >
+                    <a href="/tutorial/index.html"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Tutorial</a></li>
+                
+                <li >
+                    <a href="/manual/index.html"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Manual</a></li>
+                    
+                <li class="active">
+                    <a href="/modules/index.html"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Modules</a></li>
+                    
+                    
+                <li >
+                    <a href="/examples/index.html"><span class="glyphicon glyphicon-sound-stereo" aria-hidden="true"></span> Examples</a></li>
+                
+                <li >
+                    <a href="/quickref/index.html"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> Quick Ref</a></li>
+                    
+                    
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Project <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://github.com/revel/" target="github"><span class="glyphicon glyphicon-object-align-horizontal" aria-hidden="true"></span> Revel project @ github</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel</li>
+                            <li><a href="https://godoc.org/github.com/revel/revel" target="godoc"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> godoc</a></li>
+                            <li><a href="https://github.com/revel/revel" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/revel/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel command</li>
+                            <li><a href="https://github.com/revel/cmd" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/cmd/issues" target="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Modules</li>
+                        <li><a href="https://github.com/revel/modules" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Example Apps</li>
+                        <li><a href="https://github.com/revel/examples" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">revel.github.io</li>
+                        <li><a href="https://github.com/revel/revel.github.io" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li><a href="https://github.com/revel/revel.github.io/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Support <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://gitter.im/revel/community" target="_blank">Chat on gitter.im</a></li>
+                        <li><a href="http://stackoverflow.com/questions/tagged/revel" target="_blank">Revel at StackOverflow</a></li>
+                    </ul>
+                <li>
+                 
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="container revel-modules">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="leftnav">
+    <ul class="nav">
+        
+            <li class="nav-header">Modules</li>
+            
+                
+                
+                    <li><a href="index.html">Overview</a></li>
+                
+            
+                
+                
+                    <li><a href="jobs.html">Jobs</a></li>
+                
+            
+                
+                
+                    <li><a href="static.html">Static</a></li>
+                
+            
+                
+                
+                    <li><a href="testing.html">Testing</a></li>
+                
+            
+                
+                
+                    <li class="active"><a href="template-engine-ace.html">Ace Templates</a></li>
+                
+            
+                
+                
+                    <li><a href="template-engine-pongo2.html">Pongo2 Templates</a></li>
+                
+            
+                
+                
+                    <li><a href="server-engine-newrelic.html">NewRelic Server</a></li>
+                
+            
+                
+                
+                    <li><a href="server-engine-fasthttp.html">FastHTTP Server</a></li>
+                
+            
+        
+    </ul>
+</div>
+
+            </div>
+
+            <div class="col-md-9">
+                <div class="page-header">
+                    <a href="https://github.com/revel/revel.github.io/edit/master/modules/template-engine-ace.md" class="improve-page btn dbtn-info" target="_blank"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Improve Page</a>
+                    <h1>Ace Template Engine</h1>
+                </div>
+                <div class="main">
+                    <p>The <a href="https://github.com/yosssi/ace">ACE</a> Template Engine</p>
+
+<ul>
+  <li>
+    <p>Ace templates have full access to the <code class="highlighter-rouge">revel.TemplateFuncs</code>, any function 
+ defined in there can be used by the this engine</p>
+  </li>
+  <li>
+    <p>Ace files must be identified by using a <code class="highlighter-rouge">shebang</code> on the first line 
+(preferred method) or changing the file extension to home.ace.html.</p>
+  </li>
+  <li>
+    <p>Ace templates can be set to be case sensitive by setting
+<code class="highlighter-rouge">ace.tempate.caseinsensitive=false</code>, default is not case sensitive. If case sensitivity
+is off internal imports must be done using lower case</p>
+  </li>
+  <li>
+    <p>All function registered in <code class="highlighter-rouge">revel.TemplateFuncs</code> are available for use 
+inside the ace framework</p>
+  </li>
+</ul>
+
+<h5 id="details">Details</h5>
+<p>Ace is a little different of a templating system, its output is a 
+standard go template but there is no concept of template sets, 
+instead you build a composite template using
+ a <em>base</em> template and an <em>inner</em> template. The 
+ <em>inner</em> template can only contain items like :</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>= content main
+  h2 Inner Template - Main : {{.Msg}}
+
+= content sub
+  h3 Inner Template - Sub : {{.Msg}}
+     
+</code></pre></div></div>
+
+<p>The base template can contain items like</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>= doctype html
+html lang=en
+  head
+    meta charset=utf-8
+    title Ace example
+    = css
+      h1 { color: blue; }
+  body
+    h1 Base Template : {{.Msg}}
+    #container.wrapper
+      = yield main
+      = yield sub
+      = include inc .Msg
+    = javascript
+      alert('{{.Msg}}');
+</code></pre></div></div>
+
+<p>You are allowed to include one <em>inner</em> template with the base template,
+to do so in Revel you can extend your controller from the ace controller
+and call <code class="highlighter-rouge">RenderAceTemplate(base ,inner string)</code> which will insert
+the inner template using the outer template.</p>
+
+                    
+
+
+                    
+<div class="revel-github-bar">
+  <h6>GitHub Labels</h6>
+  <ul>
+    <li><b>Issues: </b> 
+      
+      <a href="https://github.com/revel/revel/labels/topic-template-engine" target="_revel_issues">topic-template-engine</a> 
+      
+      
+    </li>
+    <li><b>Pull Requests: </b> 
+      
+      <a href="https://github.com/revel/revel/pulls?q=is%3Apr+is%3Aopen+label%3Atopic-template-engine" target="_revel_pull_requests">topic-template-engine</a>
+      
+      
+    </li>
+  </ul>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; Revel Team 2017 - Revel is released under the <a href="https://github.com/revel/revel/blob/master/LICENSE">MIT License</a></p>
+        </footer>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Booking | Revel - A Web Application Framework for Go!</title>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="/css/jekyll-github.css" rel="stylesheet">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="/js/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+<link href="/css/revel.17.css" rel="stylesheet">
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35042202-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+    
+    
+
+    
+<nav class="navbar navbar-inverse ">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div id="main-logo"><a ddclass="navbar-brand" href="/">Revel</a>
+            </div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                                
+                <li >
+                    <a href="/tutorial/index.html"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Tutorial</a></li>
+                
+                <li >
+                    <a href="/manual/index.html"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Manual</a></li>
+                    
+                <li >
+                    <a href="/modules/index.html"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Modules</a></li>
+                    
+                    
+                <li class="active">
+                    <a href="/examples/index.html"><span class="glyphicon glyphicon-sound-stereo" aria-hidden="true"></span> Examples</a></li>
+                
+                <li >
+                    <a href="/quickref/index.html"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> Quick Ref</a></li>
+                    
+                    
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Project <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://github.com/revel/" target="github"><span class="glyphicon glyphicon-object-align-horizontal" aria-hidden="true"></span> Revel project @ github</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel</li>
+                            <li><a href="https://godoc.org/github.com/revel/revel" target="godoc"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> godoc</a></li>
+                            <li><a href="https://github.com/revel/revel" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/revel/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel command</li>
+                            <li><a href="https://github.com/revel/cmd" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/cmd/issues" target="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Modules</li>
+                        <li><a href="https://github.com/revel/modules" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Example Apps</li>
+                        <li><a href="https://github.com/revel/examples" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">revel.github.io</li>
+                        <li><a href="https://github.com/revel/revel.github.io" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li><a href="https://github.com/revel/revel.github.io/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Support <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://gitter.im/revel/community" target="_blank">Chat on gitter.im</a></li>
+                        <li><a href="http://stackoverflow.com/questions/tagged/revel" target="_blank">Revel at StackOverflow</a></li>
+                    </ul>
+                <li>
+                 
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="container revel-examples">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="leftnav">
+    <ul class="nav">
+        
+            <li class="nav-header">Examples</li>
+            
+                
+                
+                    <li><a href="index.html">Overview</a></li>
+                
+            
+                
+                
+                    <li class="active"><a href="booking.html">Booking</a></li>
+                
+            
+                
+                
+                    <li><a href="chat.html">Chat</a></li>
+                
+            
+                
+                
+                    <li><a href="validation.html">Validation</a></li>
+                
+            
+                
+                
+                    <li><a href="upload.html">Upload</a></li>
+                
+            
+                
+                
+                    <li><a href="twitter-oauth.html">Twitter OAuth</a></li>
+                
+            
+                
+                
+                    <li><a href="facebook-oauth2.html">Facebook OAuth2</a></li>
+                
+            
+                
+                
+                    <li><a href="messages.html">Messages</a></li>
+                
+            
+        
+    </ul>
+</div>
+
+            </div>
+
+            <div class="col-md-9">
+                <div class="page-header">
+                    <a href="https://github.com/revel/revel.github.io/edit/master/examples/booking.md" class="improve-page btn dbtn-info" target="_blank"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Improve Page</a>
+                    <h1>Booking</h1>
+                </div>
+                <div class="main">
+                    <p>The Booking sample app demonstrates:</p>
+
+<ul>
+  <li>Using an SQL (SQLite) database and configuring the Revel DB module.</li>
+  <li>Using the third party <a href="https://github.com/go-gorp/gorp">GORP</a> <em>ORM-ish</em> library</li>
+  <li><a href="/manual/interceptors.html">Interceptors</a> for checking that a user is logged in.</li>
+  <li>Using <a href="/manual/validation">validation</a> and displaying inline errors</li>
+</ul>
+
+<p><a class="btn btn-success btn-sm" href="https://github.com/revel/examples/tree/master/booking" role="button"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Browse Source</a></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	booking/app/
+		models		   # Structs and validation.
+			booking.go
+			hotel.go
+			user.go
+
+		controllers
+			init.go    # Register all of the interceptors.
+			gorp.go    # A plugin for setting up Gorp, creating tables, and managing transactions.
+			app.go     # "Login" and "Register new user" pages
+			hotels.go  # Hotel searching and booking
+
+		views
+			...
+</code></pre></div></div>
+
+<h2 id="sqlite-installation">sqlite Installation</h2>
+
+<p>The booking app uses <a href="https://github.com/mattn/go-sqlite3">go-sqlite3</a> database driver (which wraps the native C library).</p>
+
+<h3 id="to-install-on-osx">To install on OSX:</h3>
+
+<ol>
+  <li>Install <a href="http://mxcl.github.com/homebrew/">Homebrew</a> if you don’t already have it.</li>
+  <li>Install pkg-config and sqlite3:</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew install pkgconfig sqlite3
+</code></pre></div></div>
+
+<h3 id="to-install-on-ubuntu">To install on Ubuntu:</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get install sqlite3 libsqlite3-dev
+</code></pre></div></div>
+
+<p>Once you have SQLite installed, it will be possible to run the booking app:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ revel run github.com/revel/examples/booking
+</code></pre></div></div>
+
+<h2 id="database--gorp-plugin">Database / Gorp Plugin</h2>
+
+<p><a href="https://github.com/revel/examples/blob/master/booking/app/controllers/gorp.go"><code class="highlighter-rouge">app/controllers/gorp.go</code></a> defines <code class="highlighter-rouge">GorpPlugin</code>, which is a plugin that does a couple things:</p>
+
+<ul>
+  <li>OnAppStart: Uses the DB module to open a SQLite in-memory database, create the
+User, Booking, and Hotel tables, and insert some test records.</li>
+  <li>BeforeRequest: Begins a transaction and stores the Transaction on the Controller</li>
+  <li>AfterRequest: Commits the transaction.  Panics if there was an error.</li>
+  <li>OnException: Rolls back the transaction.</li>
+</ul>
+
+<h2 id="interceptors">Interceptors</h2>
+
+<p><a href="https://github.com/revel/examples/blob/master/booking/app/controllers/init.go"><code class="highlighter-rouge">app/controllers/init.go</code></a> 
+registers the <a href="/manual/interceptors.html">interceptors</a> that run before every method (<a href="https://godoc.org/github.com/revel/revel#InterceptorMethod">InterceptorMethod</a>):</p>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">func</span><span class="x"> </span><span class="n">init</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">revel</span><span class="o">.</span><span class="n">OnAppStart</span><span class="p">(</span><span class="n">Init</span><span class="p">)</span><span class="x">
+	</span><span class="n">revel</span><span class="o">.</span><span class="n">InterceptMethod</span><span class="p">((</span><span class="o">*</span><span class="n">GorpController</span><span class="p">)</span><span class="o">.</span><span class="n">Begin</span><span class="p">,</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">BEFORE</span><span class="p">)</span><span class="x">
+	</span><span class="n">revel</span><span class="o">.</span><span class="n">InterceptMethod</span><span class="p">(</span><span class="n">Application</span><span class="o">.</span><span class="n">AddUser</span><span class="p">,</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">BEFORE</span><span class="p">)</span><span class="x">
+	</span><span class="n">revel</span><span class="o">.</span><span class="n">InterceptMethod</span><span class="p">(</span><span class="n">Hotels</span><span class="o">.</span><span class="n">checkUser</span><span class="p">,</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">BEFORE</span><span class="p">)</span><span class="x">
+	</span><span class="n">revel</span><span class="o">.</span><span class="n">InterceptMethod</span><span class="p">((</span><span class="o">*</span><span class="n">GorpController</span><span class="p">)</span><span class="o">.</span><span class="n">Commit</span><span class="p">,</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">AFTER</span><span class="p">)</span><span class="x">
+	</span><span class="n">revel</span><span class="o">.</span><span class="n">InterceptMethod</span><span class="p">((</span><span class="o">*</span><span class="n">GorpController</span><span class="p">)</span><span class="o">.</span><span class="n">Rollback</span><span class="p">,</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">FINALLY</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>As an example, <code class="highlighter-rouge">checkUser</code> looks up the username in the session and redirects
+the user to log in if they are not already.</p>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">Hotels</span><span class="p">)</span><span class="x"> </span><span class="n">checkUser</span><span class="p">()</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="k">if</span><span class="x"> </span><span class="n">user</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">connected</span><span class="p">();</span><span class="x"> </span><span class="n">user</span><span class="x"> </span><span class="o">==</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
+		</span><span class="n">c</span><span class="o">.</span><span class="n">Flash</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s">"Please log in first"</span><span class="p">)</span><span class="x">
+		</span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Redirect</span><span class="p">(</span><span class="n">Application</span><span class="o">.</span><span class="n">Index</span><span class="p">)</span><span class="x">
+	</span><span class="p">}</span><span class="x">
+	</span><span class="k">return</span><span class="x"> </span><span class="no">nil</span><span class="x">
+</span><span class="p">}</span></code></pre></figure>
+
+<p><a href="https://github.com/revel/examples/blob/master/booking/app/controllers/app.go">Check out the user management code in app.go</a></p>
+
+<h2 id="validation">Validation</h2>
+
+<p>The booking app does quite a bit of validation.</p>
+
+<p>For example, here is the routine to validate a booking, from
+<a href="https://github.com/revel/examples/blob/master/booking/app/models/booking.go">models/booking.go</a>:</p>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">booking</span><span class="x"> </span><span class="n">Booking</span><span class="p">)</span><span class="x"> </span><span class="n">Validate</span><span class="p">(</span><span class="n">v</span><span class="x"> </span><span class="o">*</span><span class="n">revel</span><span class="o">.</span><span class="n">Validation</span><span class="p">)</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">v</span><span class="o">.</span><span class="n">Required</span><span class="p">(</span><span class="n">booking</span><span class="o">.</span><span class="n">User</span><span class="p">)</span><span class="x">
+	</span><span class="n">v</span><span class="o">.</span><span class="n">Required</span><span class="p">(</span><span class="n">booking</span><span class="o">.</span><span class="n">Hotel</span><span class="p">)</span><span class="x">
+	</span><span class="n">v</span><span class="o">.</span><span class="n">Required</span><span class="p">(</span><span class="n">booking</span><span class="o">.</span><span class="n">CheckInDate</span><span class="p">)</span><span class="x">
+	</span><span class="n">v</span><span class="o">.</span><span class="n">Required</span><span class="p">(</span><span class="n">booking</span><span class="o">.</span><span class="n">CheckOutDate</span><span class="p">)</span><span class="x">
+
+	</span><span class="n">v</span><span class="o">.</span><span class="n">Match</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">CardNumber</span><span class="p">,</span><span class="x"> </span><span class="n">regexp</span><span class="o">.</span><span class="n">MustCompile</span><span class="p">(</span><span class="s">`\d{16}`</span><span class="p">))</span><span class="o">.</span><span class="x">
+		</span><span class="n">Message</span><span class="p">(</span><span class="s">"Credit card number must be numeric and 16 digits"</span><span class="p">)</span><span class="x">
+
+	</span><span class="n">v</span><span class="o">.</span><span class="n">Check</span><span class="p">(</span><span class="n">booking</span><span class="o">.</span><span class="n">NameOnCard</span><span class="p">,</span><span class="x">
+		</span><span class="n">revel</span><span class="o">.</span><span class="n">Required</span><span class="p">{},</span><span class="x">
+		</span><span class="n">revel</span><span class="o">.</span><span class="n">MinSize</span><span class="p">{</span><span class="m">3</span><span class="p">},</span><span class="x">
+		</span><span class="n">revel</span><span class="o">.</span><span class="n">MaxSize</span><span class="p">{</span><span class="m">70</span><span class="p">},</span><span class="x">
+	</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Revel applies the validation and records errors using the name of the
+validated variable (unless overridden).  For example, <code class="highlighter-rouge">booking.CheckInDate</code> is
+required; if it evaluates to the zero date, Revel stores a <code class="highlighter-rouge">ValidationError</code> in
+the validation context under the key “booking.CheckInDate”.</p>
+
+<p>Subsequently, the
+<a href="https://github.com/revel/examples/blob/master/booking/app/views/Hotels/Book.html">Hotels/Book.html</a>
+template can easily access them using the <a href="/manual/templates.html#field"><code class="highlighter-rouge">field</code></a> helper:</p>
+
+<figure class="highlight"><pre><code class="language-htmldjango" data-lang="htmldjango">{{with $field := field "booking.CheckInDate" .}}
+&lt;p class="{{$field.ErrorClass}}"&gt;
+    &lt;strong&gt;Check In Date:&lt;/strong&gt;
+    &lt;input type="text" size="10" name="{{$field.Name}}" class="datepicker" value="{{$field.Flash}}"&gt;
+    * &lt;span class="error"&gt;{{$field.Error}}&lt;/span&gt;
+ss&lt;/p&gt;
+{{end}}</code></pre></figure>
+
+<p>The <a href="/manual/templates.html#field"><code class="highlighter-rouge">field</code></a> template helper looks for errors in the validation context, using
+the field name as the key.</p>
+
+                    
+<div class="revel-godoc-bar">
+  <h6>GoDoc Reference</h6>
+  <ul>
+    <li>
+      
+      <a href="https://godoc.org/github.com/revel/revel#Controller" target="_revel_godoc">Controller</a>,
+      
+      <a href="https://godoc.org/github.com/revel/revel#InterceptMethod" target="_revel_godoc">InterceptMethod</a>,
+      
+      <a href="https://godoc.org/github.com/revel/revel#Flash" target="_revel_godoc">Flash</a>
+      
+    </li>
+  </ul>
+</div>
+
+
+
+                    
+
+
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; Revel Team 2017 - Revel is released under the <a href="https://github.com/revel/revel/blob/master/LICENSE">MIT License</a></p>
+        </footer>
+    </div>
+</body>
+</html>

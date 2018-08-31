@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Session / Flash Scopes | Revel - A Web Application Framework for Go!</title>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="/css/jekyll-github.css" rel="stylesheet">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="/js/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+<link href="/css/revel.17.css" rel="stylesheet">
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35042202-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+    
+    
+
+    
+<nav class="navbar navbar-inverse ">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div id="main-logo"><a ddclass="navbar-brand" href="/">Revel</a>
+            </div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                                
+                <li >
+                    <a href="/tutorial/index.html"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Tutorial</a></li>
+                
+                <li class="active">
+                    <a href="/manual/index.html"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Manual</a></li>
+                    
+                <li >
+                    <a href="/modules/index.html"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Modules</a></li>
+                    
+                    
+                <li >
+                    <a href="/examples/index.html"><span class="glyphicon glyphicon-sound-stereo" aria-hidden="true"></span> Examples</a></li>
+                
+                <li >
+                    <a href="/quickref/index.html"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> Quick Ref</a></li>
+                    
+                    
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Project <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://github.com/revel/" target="github"><span class="glyphicon glyphicon-object-align-horizontal" aria-hidden="true"></span> Revel project @ github</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel</li>
+                            <li><a href="https://godoc.org/github.com/revel/revel" target="godoc"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> godoc</a></li>
+                            <li><a href="https://github.com/revel/revel" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/revel/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel command</li>
+                            <li><a href="https://github.com/revel/cmd" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/cmd/issues" target="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Modules</li>
+                        <li><a href="https://github.com/revel/modules" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Example Apps</li>
+                        <li><a href="https://github.com/revel/examples" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">revel.github.io</li>
+                        <li><a href="https://github.com/revel/revel.github.io" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li><a href="https://github.com/revel/revel.github.io/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Support <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://gitter.im/revel/community" target="_blank">Chat on gitter.im</a></li>
+                        <li><a href="http://stackoverflow.com/questions/tagged/revel" target="_blank">Revel at StackOverflow</a></li>
+                    </ul>
+                <li>
+                 
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="container revel-manual">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="leftnav">
+    <ul class="nav">
+        
+            <li class="nav-header">Overview</li>
+            
+                
+                
+                    <li><a href="index.html">Introduction</a></li>
+                
+            
+                
+                
+                    <li><a href="concepts.html">Concepts</a></li>
+                
+            
+                
+                
+                    <li><a href="organization.html">Code Organization</a></li>
+                
+            
+        
+            <li class="nav-header">Controllers</li>
+            
+                
+                
+                    <li><a href="controllers.html">Controllers Overview</a></li>
+                
+            
+                
+                
+                    <li><a href="routing.html">URL Routing</a></li>
+                
+            
+                
+                
+                    <li><a href="/modules/static.html">Static Content</a></li>
+                
+            
+                
+                
+                    <li><a href="parameters.html">Request Parameters & JSON</a></li>
+                
+            
+                
+                
+                    <li><a href="validation.html">Validation</a></li>
+                
+            
+                
+                
+                    <li class="active"><a href="sessionflash.html">Session & Flash</a></li>
+                
+            
+                
+                
+                    <li><a href="results.html">Results & Response</a></li>
+                
+            
+                
+                
+                    <li><a href="templates.html">Templates</a></li>
+                
+            
+                
+                
+                    <li><a href="template-engine.html">Template Engine</a></li>
+                
+            
+                
+                
+                    <li><a href="templates-go.html">Go Template Engine</a></li>
+                
+            
+                
+                
+                    <li><a href="server-engine.html">Server Engine</a></li>
+                
+            
+                
+                
+                    <li><a href="interceptors.html">Interceptors</a></li>
+                
+            
+                
+                
+                    <li><a href="filters.html">Filters</a></li>
+                
+            
+                
+                
+                    <li><a href="websockets.html">Websockets</a></li>
+                
+            
+                
+                
+                    <li><a href="i18n-messages.html">Internationalization</a></li>
+                
+            
+                
+                
+                    <li><a href="cache.html">Cache</a></li>
+                
+            
+                
+                
+                    <li><a href="database.html">Database</a></li>
+                
+            
+                
+                
+                    <li><a href="debug.html">Debugging</a></li>
+                
+            
+                
+                
+                    <li><a href="/modules/testing.html">Testing</a></li>
+                
+            
+        
+            <li class="nav-header">Operational</li>
+            
+                
+                
+                    <li><a href="versions.html">Versions</a></li>
+                
+            
+                
+                
+                    <li><a href="logging.html">Logging</a></li>
+                
+            
+                
+                
+                    <li><a href="deployment.html">Deployment</a></li>
+                
+            
+        
+            <li class="nav-header">Reference</li>
+            
+                
+                
+                    <li><a href="appconf.html">app.conf</a></li>
+                
+            
+                
+                
+                    <li><a href="tool.html">revel cmd</a></li>
+                
+            
+                
+                
+                    <li><a href="faq.html">FAQ</a></li>
+                
+            
+        
+    </ul>
+</div>
+
+            </div>
+
+            <div class="col-md-9">
+                <div class="page-header">
+                    <a href="https://github.com/revel/revel.github.io/edit/master/manual/sessionflash.md" class="improve-page btn dbtn-info" target="_blank"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Improve Page</a>
+                    <h1>Session / Flash Scopes</h1>
+                </div>
+                <div class="main">
+                    <p>Revel provides two cookie-based storage mechanisms for convenience, <a href="#session">Session</a> and <a href="#flash">Flash</a>.</p>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="c">// A signed cookie, and thus limited to 4kb in size.</span><span class="x">
+</span><span class="c">// Restriction: Keys may not have a colon in them.</span><span class="x">
+</span><span class="k">type</span><span class="x"> </span><span class="n">Session</span><span class="x"> </span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="x">
+
+</span><span class="c">// Flash represents a cookie that gets overwritten on each request.</span><span class="x">
+</span><span class="c">// It allows data to be stored across one page at a time.</span><span class="x">
+</span><span class="c">// This is commonly used to implement success or error messages.</span><span class="x">
+</span><span class="c">// e.g. the Post/Redirect/Get pattern: http://en.wikipedia.org/wiki/Post/Redirect/Get</span><span class="x">
+</span><span class="k">type</span><span class="x"> </span><span class="n">Flash</span><span class="x"> </span><span class="k">struct</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">Data</span><span class="p">,</span><span class="x"> </span><span class="n">Out</span><span class="x"> </span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="x">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>NOTE: To set your own cookie, use <a href="https://godoc.org/github.com/revel/revel#Controller.SetCookie">Controller.SetCookie()</a></p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">MyController</span><span class="p">)</span><span class="x"> </span><span class="n">MyMethod</span><span class="p">()</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="n">new_cookie</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Cookie</span><span class="p">{</span><span class="n">Name</span><span class="o">:</span><span class="x"> </span><span class="s">"foo"</span><span class="p">,</span><span class="x"> </span><span class="n">Value</span><span class="o">:</span><span class="x"> </span><span class="s">"Bar"</span><span class="p">}</span><span class="x">
+    </span><span class="n">c</span><span class="o">.</span><span class="n">SetCookie</span><span class="p">(</span><span class="n">new_cookie</span><span class="p">)</span><span class="x">
+    </span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Render</span><span class="p">()</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+<p><a name="session"></a></p>
+
+<h2 id="session">Session</h2>
+<p>Revel’s concept of <em>session</em> is a string map, stored as a cryptographically signed cookie.</p>
+
+<p>This has some implications:</p>
+
+<ul>
+  <li>The size limit is 4kb.</li>
+  <li>All data must be serialized to a <code class="highlighter-rouge">string</code> for storage.</li>
+  <li>All data may be viewed by the user as it is <strong>not encrypted</strong>, but it is safe from modification.</li>
+</ul>
+
+<p>The default lifetime of the session cookie is the browser lifetime.  This
+can be overriden to a specific amount of time by setting the <a href="appconf.html#session.expires">session.expires</a>
+option in <a href="appconf.html">conf/app.conf</a>.  The format is that of
+<a href="http://golang.org/pkg/time/#ParseDuration">time.ParseDuration</a>.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">MyController</span><span class="p">)</span><span class="x"> </span><span class="n">MyMethod</span><span class="p">()</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="n">c</span><span class="o">.</span><span class="n">Session</span><span class="p">[</span><span class="s">"foo"</span><span class="p">]</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="s">"bar"</span><span class="x">
+    </span><span class="n">c</span><span class="o">.</span><span class="n">Session</span><span class="p">[</span><span class="s">"bar"</span><span class="p">]</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="m">1</span><span class="x"> </span><span class="c">// Error - value needs to be a string</span><span class="x">
+    </span><span class="nb">delete</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">Session</span><span class="p">,</span><span class="x"> </span><span class="s">"abc"</span><span class="p">)</span><span class="x"> </span><span class="c">// Removed item from session</span><span class="x">
+    </span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Render</span><span class="p">()</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+<p><a name="flash"></a></p>
+
+<h2 id="flash">Flash</h2>
+
+<p>The Flash provides single-use string storage. It is useful for implementing
+<a href="http://en.wikipedia.org/wiki/Post/Redirect/Get">the Post/Redirect/Get pattern</a>,
+or for transient “Operation Successful!” or “Operation Failed!” messages.</p>
+
+<p>Here’s an example of that pattern:</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">// Show the Settings form</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">App</span><span class="p">)</span><span class="x"> </span><span class="n">ShowSettings</span><span class="p">()</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Render</span><span class="p">()</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="c">// Process a post</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">App</span><span class="p">)</span><span class="x"> </span><span class="n">SaveSettings</span><span class="p">(</span><span class="n">setting</span><span class="x"> </span><span class="kt">string</span><span class="p">)</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Result</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="c">// Make sure `setting` is provided and not empty</span><span class="x">
+    </span><span class="n">c</span><span class="o">.</span><span class="n">Validation</span><span class="o">.</span><span class="n">Required</span><span class="p">(</span><span class="n">setting</span><span class="p">)</span><span class="x">
+    </span><span class="k">if</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Validation</span><span class="o">.</span><span class="n">HasErrors</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+        </span><span class="c">// Sets the flash parameter `error` which will be sent by a flash cookie</span><span class="x">
+        </span><span class="n">c</span><span class="o">.</span><span class="n">Flash</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s">"Settings invalid!"</span><span class="p">)</span><span class="x">
+        </span><span class="c">// Keep the validation error from above by setting a flash cookie</span><span class="x">
+        </span><span class="n">c</span><span class="o">.</span><span class="n">Validation</span><span class="o">.</span><span class="n">Keep</span><span class="p">()</span><span class="x">
+        </span><span class="c">// Copies all given parameters (URL, Form, Multipart) to the flash cookie</span><span class="x">
+        </span><span class="n">c</span><span class="o">.</span><span class="n">FlashParams</span><span class="p">()</span><span class="x">
+        </span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Redirect</span><span class="p">(</span><span class="n">App</span><span class="o">.</span><span class="n">ShowSettings</span><span class="p">)</span><span class="x">
+    </span><span class="p">}</span><span class="x">
+    </span><span class="n">saveSetting</span><span class="p">(</span><span class="n">setting</span><span class="p">)</span><span class="x">
+    </span><span class="c">// Sets the flash cookie to contain a success string</span><span class="x">
+    </span><span class="n">c</span><span class="o">.</span><span class="n">Flash</span><span class="o">.</span><span class="n">Success</span><span class="p">(</span><span class="s">"Settings saved!"</span><span class="p">)</span><span class="x">
+    </span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Redirect</span><span class="p">(</span><span class="n">App</span><span class="o">.</span><span class="n">ShowSettings</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+<p>Walking through this example:</p>
+
+<ol>
+  <li>User fetches the settings page.</li>
+  <li>User posts a setting (POST)</li>
+  <li>Application processes the request, saves an error or success message to the flash, and redirects the user to the settings page (REDIRECT)</li>
+  <li>User fetches the settings page, whose template shows the flashed message. (GET)</li>
+</ol>
+
+<p>It uses two convenience functions:</p>
+
+<ol>
+  <li><code class="highlighter-rouge">Flash.Success(message string)</code> is an abbreviation of <code class="highlighter-rouge">Flash.Out["success"] = message</code></li>
+  <li><code class="highlighter-rouge">Flash.Error(message string)</code> is an abbreviation of <code class="highlighter-rouge">Flash.Out["error"] = message</code></li>
+</ol>
+
+<p>Flash messages may be referenced by key in <a href="templates.html">templates</a>.  For example, to access
+the success and error messages set by the convenience functions, use these
+expressions:</p>
+
+<figure class="highlight"><pre><code class="language-htmldjango" data-lang="htmldjango">{{.flash.success}}
+{{.flash.error}}</code></pre></figure>
+
+<p>Here is a second scenario where you want the flash variables returned without using a
+redirect</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">c</span><span class="x"> </span><span class="n">Controller</span><span class="p">)</span><span class="x"> </span><span class="n">Submit</span><span class="p">(</span><span class="n">Input</span><span class="x"> </span><span class="n">UserName</span><span class="p">)</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="n">Input</span><span class="o">.</span><span class="n">Validate</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">Validation</span><span class="p">);</span><span class="x">
+    </span><span class="k">if</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Validation</span><span class="o">.</span><span class="n">HasErrors</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+
+        </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{}</span><span class="x">
+        </span><span class="k">for</span><span class="x"> </span><span class="n">key</span><span class="p">,</span><span class="x"> </span><span class="n">vals</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="k">range</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">Values</span><span class="x"> </span><span class="p">{</span><span class="x">
+            </span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">strings</span><span class="o">.</span><span class="n">Join</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span><span class="x"> </span><span class="s">","</span><span class="p">)</span><span class="x">
+        </span><span class="p">}</span><span class="x">
+        </span><span class="n">c</span><span class="o">.</span><span class="n">RenderArgs</span><span class="p">[</span><span class="s">"flash"</span><span class="p">]</span><span class="x"> </span><span class="o">=</span><span class="x">  </span><span class="n">data</span><span class="x">
+
+        </span><span class="c">// Display input page</span><span class="x">
+        </span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">RenderTemplate</span><span class="p">(</span><span class="s">"test.html"</span><span class="p">)</span><span class="x">
+    </span><span class="p">}</span><span class="x">
+    </span><span class="o">...</span><span class="x">
+    </span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+
+                    
+<div class="revel-godoc-bar">
+  <h6>GoDoc Reference</h6>
+  <ul>
+    <li>
+      
+      <a href="https://godoc.org/github.com/revel/revel#Session" target="_revel_godoc">Session</a>,
+      
+      <a href="https://godoc.org/github.com/revel/revel#Flash" target="_revel_godoc">Flash</a>
+      
+    </li>
+  </ul>
+</div>
+
+
+
+                    
+<div class="revel-github-bar">
+  <h6>GitHub Labels</h6>
+  <ul>
+    <li><b>Issues: </b> 
+      
+      <a href="https://github.com/revel/revel/labels/topic-session" target="_revel_issues">topic-session</a> 
+      
+      
+    </li>
+    <li><b>Pull Requests: </b> 
+      
+      <a href="https://github.com/revel/revel/pulls?q=is%3Apr+is%3Aopen+label%3Atopic-session" target="_revel_pull_requests">topic-session</a>
+      
+      
+    </li>
+  </ul>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; Revel Team 2017 - Revel is released under the <a href="https://github.com/revel/revel/blob/master/LICENSE">MIT License</a></p>
+        </footer>
+    </div>
+</body>
+</html>
+

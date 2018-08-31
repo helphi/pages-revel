@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Testing | Revel - A Web Application Framework for Go!</title>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="/css/jekyll-github.css" rel="stylesheet">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="/js/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+<link href="/css/revel.17.css" rel="stylesheet">
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35042202-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+    
+    
+
+    
+<nav class="navbar navbar-inverse ">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div id="main-logo"><a ddclass="navbar-brand" href="/">Revel</a>
+            </div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                                
+                <li >
+                    <a href="/tutorial/index.html"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Tutorial</a></li>
+                
+                <li >
+                    <a href="/manual/index.html"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Manual</a></li>
+                    
+                <li class="active">
+                    <a href="/modules/index.html"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Modules</a></li>
+                    
+                    
+                <li >
+                    <a href="/examples/index.html"><span class="glyphicon glyphicon-sound-stereo" aria-hidden="true"></span> Examples</a></li>
+                
+                <li >
+                    <a href="/quickref/index.html"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> Quick Ref</a></li>
+                    
+                    
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Project <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://github.com/revel/" target="github"><span class="glyphicon glyphicon-object-align-horizontal" aria-hidden="true"></span> Revel project @ github</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel</li>
+                            <li><a href="https://godoc.org/github.com/revel/revel" target="godoc"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> godoc</a></li>
+                            <li><a href="https://github.com/revel/revel" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/revel/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel command</li>
+                            <li><a href="https://github.com/revel/cmd" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/cmd/issues" target="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Modules</li>
+                        <li><a href="https://github.com/revel/modules" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Example Apps</li>
+                        <li><a href="https://github.com/revel/examples" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">revel.github.io</li>
+                        <li><a href="https://github.com/revel/revel.github.io" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li><a href="https://github.com/revel/revel.github.io/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Support <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://gitter.im/revel/community" target="_blank">Chat on gitter.im</a></li>
+                        <li><a href="http://stackoverflow.com/questions/tagged/revel" target="_blank">Revel at StackOverflow</a></li>
+                    </ul>
+                <li>
+                 
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="container revel-modules">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="leftnav">
+    <ul class="nav">
+        
+            <li class="nav-header">Modules</li>
+            
+                
+                
+                    <li><a href="index.html">Overview</a></li>
+                
+            
+                
+                
+                    <li><a href="jobs.html">Jobs</a></li>
+                
+            
+                
+                
+                    <li><a href="static.html">Static</a></li>
+                
+            
+                
+                
+                    <li class="active"><a href="testing.html">Testing</a></li>
+                
+            
+                
+                
+                    <li><a href="template-engine-ace.html">Ace Templates</a></li>
+                
+            
+                
+                
+                    <li><a href="template-engine-pongo2.html">Pongo2 Templates</a></li>
+                
+            
+                
+                
+                    <li><a href="server-engine-newrelic.html">NewRelic Server</a></li>
+                
+            
+                
+                
+                    <li><a href="server-engine-fasthttp.html">FastHTTP Server</a></li>
+                
+            
+        
+    </ul>
+</div>
+
+            </div>
+
+            <div class="col-md-9">
+                <div class="page-header">
+                    <a href="https://github.com/revel/revel.github.io/edit/master/modules/testing.md" class="improve-page btn dbtn-info" target="_blank"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Improve Page</a>
+                    <h1>Testing</h1>
+                </div>
+                <div class="main">
+                    <p>Revel provides a testing framework that makes it easy to write and run functional tests against an application.</p>
+
+<p>The <a href="https://github.com/revel/revel/tree/master/skeleton">skeleton app</a> comes with a simple <a href="https://github.com/revel/revel/blob/master/skeleton/tests/apptest.go"><code class="highlighter-rouge">apptest.go</code></a> to use as a starting point.</p>
+
+<h2 id="testing-overview">Testing Overview</h2>
+
+<p>Tests needs to be in the <code class="highlighter-rouge">tests/</code> directory:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>myapp/
+	app/
+	conf/
+	public/
+	tests/    &lt;----
+</code></pre></div></div>
+
+<div class="alert alert-danger"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> WARNING: The name of test file should avoid naming like name_test.go format which would be ignored by go build tool. Please check the <a href="https://golang.org/cmd/go/#hdr-Compile_packages_and_dependencies">Detail</a>.</div>
+
+<p>A simple test file looks like the following:</p>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
+     </span><span class="s">"github.com/revel/revel/testing"</span><span class="x">
+</span><span class="p">)</span><span class="x">
+
+</span><span class="c">// Must Embed `testing.TestSuite`</span><span class="x">
+</span><span class="k">type</span><span class="x"> </span><span class="n">MyAppTest</span><span class="x"> </span><span class="k">struct</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="n">testing</span><span class="o">.</span><span class="n">TestSuite</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="c">// Run this before a request</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">t</span><span class="x"> </span><span class="o">*</span><span class="n">MyAppTest</span><span class="p">)</span><span class="x"> </span><span class="n">Before</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="nb">println</span><span class="p">(</span><span class="s">"Set up"</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="c">// Run this after request</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">t</span><span class="x"> </span><span class="o">*</span><span class="n">MyAppTest</span><span class="p">)</span><span class="x"> </span><span class="n">After</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="nb">println</span><span class="p">(</span><span class="s">"Tear down"</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="c">// Check main page is kinda there</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">t</span><span class="x"> </span><span class="o">*</span><span class="n">MyAppTest</span><span class="p">)</span><span class="x"> </span><span class="n">TestIndexPage</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">t</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s">"/"</span><span class="p">)</span><span class="x">
+	</span><span class="n">t</span><span class="o">.</span><span class="n">AssertOk</span><span class="p">()</span><span class="x">
+	</span><span class="n">t</span><span class="o">.</span><span class="n">AssertContentType</span><span class="p">(</span><span class="s">"text/html"</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span><span class="c">// Check if robots.txt exists</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">t</span><span class="x"> </span><span class="o">*</span><span class="n">MyAppTest</span><span class="p">)</span><span class="x"> </span><span class="n">TestRobotsPage</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="n">t</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s">"/robots.txt"</span><span class="p">)</span><span class="x">
+    </span><span class="n">t</span><span class="o">.</span><span class="n">AssertOk</span><span class="p">()</span><span class="x">
+    </span><span class="n">t</span><span class="o">.</span><span class="n">AssertContentType</span><span class="p">(</span><span class="s">"text/html"</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span><span class="c">// Will not appear in panel as it does not start with `Test`.</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">t</span><span class="x"> </span><span class="o">*</span><span class="n">MyAppTest</span><span class="p">)</span><span class="x"> </span><span class="n">TEstFavIcon</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="n">t</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s">"/favicon.ico"</span><span class="p">)</span><span class="x">
+    </span><span class="n">t</span><span class="o">.</span><span class="n">AssertOk</span><span class="p">()</span><span class="x">
+    </span><span class="n">t</span><span class="o">.</span><span class="n">AssertContentType</span><span class="p">(</span><span class="s">"text/html"</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>The example code above shows a few things:</p>
+
+<ul>
+  <li>A test suite is any struct that embeds <a href="https://godoc.org/github.com/revel/revel/testing#TestSuite"><code class="highlighter-rouge">TestSuite</code></a></li>
+  <li><code class="highlighter-rouge">Before()</code> and <code class="highlighter-rouge">After()</code> are invoked before and after every test method, if present.</li>
+  <li>The <a href="https://godoc.org/github.com/revel/revel/testing#TestSuite"><code class="highlighter-rouge">TestSuite</code></a> provides helpers for issuing requests to your application and for asserting things about the response.</li>
+  <li>An assertion failure generates a panic, which is caught by the test harness.</li>
+  <li>Each test method must contain the <strong>case-sensitive</strong> prefix ‘Test’</li>
+</ul>
+
+<p>You may run this test in two ways:</p>
+
+<ul>
+  <li><a href="#interactively">Interactively</a> - from your web browser, useful during test development.</li>
+  <li><a href="#non-interactively">Non-interactively</a> - from the command line, useful for integrating with a continuous build.</li>
+</ul>
+
+<h2 id="developing-a-test-suite">Developing a test suite</h2>
+
+<p>To create your own test suite, define a struct that embeds <a href="https://godoc.org/github.com/revel/revel/testing#TestSuite"><code class="highlighter-rouge">TestSuite</code></a>, which
+provides a HTTP client and a number of helper methods for making requests to the application.</p>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">type</span><span class="x"> </span><span class="n">TestSuite</span><span class="x"> </span><span class="k">struct</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">Client</span><span class="x">       </span><span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="x">
+	</span><span class="n">Response</span><span class="x">     </span><span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Response</span><span class="x">
+	</span><span class="n">ResponseBody</span><span class="x"> </span><span class="p">[]</span><span class="kt">byte</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="c">// Some request methods</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">t</span><span class="x"> </span><span class="o">*</span><span class="n">TestSuite</span><span class="p">)</span><span class="x"> </span><span class="n">Get</span><span class="p">(</span><span class="n">path</span><span class="x"> </span><span class="kt">string</span><span class="p">)</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">t</span><span class="x"> </span><span class="o">*</span><span class="n">TestSuite</span><span class="p">)</span><span class="x"> </span><span class="n">Post</span><span class="p">(</span><span class="n">path</span><span class="x"> </span><span class="kt">string</span><span class="p">,</span><span class="x"> </span><span class="n">contentType</span><span class="x"> </span><span class="kt">string</span><span class="p">,</span><span class="x"> </span><span class="n">reader</span><span class="x"> </span><span class="n">io</span><span class="o">.</span><span class="n">Reader</span><span class="p">)</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">t</span><span class="x"> </span><span class="o">*</span><span class="n">TestSuite</span><span class="p">)</span><span class="x"> </span><span class="n">PostForm</span><span class="p">(</span><span class="n">path</span><span class="x"> </span><span class="kt">string</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="x"> </span><span class="n">url</span><span class="o">.</span><span class="n">Values</span><span class="p">)</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">t</span><span class="x"> </span><span class="o">*</span><span class="n">TestSuite</span><span class="p">)</span><span class="x"> </span><span class="n">NewTestRequest</span><span class="p">(</span><span class="n">req</span><span class="x"> </span><span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Request</span><span class="p">)</span><span class="x"> </span><span class="o">*</span><span class="n">TestRequest</span><span class="x">
+
+</span><span class="c">// Some assertion methods</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">t</span><span class="x"> </span><span class="o">*</span><span class="n">TestSuite</span><span class="p">)</span><span class="x"> </span><span class="n">AssertOk</span><span class="p">()</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">t</span><span class="x"> </span><span class="o">*</span><span class="n">TestSuite</span><span class="p">)</span><span class="x"> </span><span class="n">AssertContentType</span><span class="p">(</span><span class="n">contentType</span><span class="x"> </span><span class="kt">string</span><span class="p">)</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">t</span><span class="x"> </span><span class="o">*</span><span class="n">TestSuite</span><span class="p">)</span><span class="x"> </span><span class="n">Assert</span><span class="p">(</span><span class="n">exp</span><span class="x"> </span><span class="kt">bool</span><span class="p">)</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">t</span><span class="x"> </span><span class="o">*</span><span class="n">TestSuite</span><span class="p">)</span><span class="x"> </span><span class="n">Assertf</span><span class="p">(</span><span class="n">exp</span><span class="x"> </span><span class="kt">bool</span><span class="p">,</span><span class="x"> </span><span class="n">formatStr</span><span class="x"> </span><span class="kt">string</span><span class="p">,</span><span class="x"> </span><span class="n">args</span><span class="x"> </span><span class="o">...</span><span class="k">interface</span><span class="p">{})</span></code></pre></figure>
+
+<p>All request methods behave similarly:</p>
+
+<ol>
+  <li>They accept a path (e.g. <code class="highlighter-rouge">/users/</code>)</li>
+  <li>They issue the <a href="https://godoc.org/github.com/revel/revel#Request"><code class="highlighter-rouge">Request</code></a> to the app server</li>
+  <li>They store the response in the <a href="https://godoc.org/github.com/revel/revel#Response"><code class="highlighter-rouge">Response</code></a> member.</li>
+  <li>They read the full response body into the <code class="highlighter-rouge">ResponseBody</code> member.</li>
+</ol>
+
+<p>If the developer wishes to use a customized HTTP Client instead of the default <a href="http://golang.org/pkg/net/http/#pkg-variables">http.DefaultClient</a>, they should replace it in the <code class="highlighter-rouge">Before()</code> method.</p>
+
+<p>All assertions raise a panic if they are not fulfilled.  All panics are caught by the test harness and presented as errors.</p>
+
+<h2 id="running-a-test-suite">Running a test suite</h2>
+
+<p>In order to run any tests, the <strong>testrunner</strong> <a href="modules.html">module</a> must be activated.  This is done by including the following line in your <a href="appconf.html#modules"><code class="highlighter-rouge">app.conf</code></a>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>module.testrunner = github.com/revel/modules/testrunner
+</code></pre></div></div>
+
+<p>You must also import the test module’s routes, by adding this line to your <a href="routing.html"><code class="highlighter-rouge">routes</code></a> file:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>module:testrunner
+</code></pre></div></div>
+
+<p>With that done, the tests may be run <a href="#interactively">interactively</a> at the <code class="highlighter-rouge">/@tests</code> url, or <a href="#non-interactively">non-interactively</a> on the command line.</p>
+
+<p><a name="interactively"></a></p>
+
+<h3 id="running-tests-interactively">Running tests interactively</h3>
+
+<p>To take advantage of Revel’s hot-compile functionality, an interactive test runner is provided for quick edit-refresh cycles.</p>
+
+<p>For example, the developer loads <code class="highlighter-rouge">/@tests</code> in their browser:</p>
+
+<p><img src="../img/Tests1.png" alt="Test Runner interface" /></p>
+
+<p>Then they add a test method:</p>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">t</span><span class="x"> </span><span class="n">AppTest</span><span class="p">)</span><span class="x"> </span><span class="n">TestSomethingImportant</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">t</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s">"/"</span><span class="p">)</span><span class="x">
+	</span><span class="n">t</span><span class="o">.</span><span class="n">AssertOk</span><span class="p">()</span><span class="x">
+	</span><span class="n">t</span><span class="o">.</span><span class="n">AssertContentType</span><span class="p">(</span><span class="s">"text/xml"</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Then they refresh their browser to see their new test:</p>
+
+<p><img src="../img/Tests2.png" alt="Test Runner interface" /></p>
+
+<p>They run the test:</p>
+
+<p><img src="../img/Tests3.png" alt="Test Runner interface" /></p>
+
+<p>Uh oh.  It doesn’t work.  They fix the code to expect a content type of “text/html” instead of “text/xml”:</p>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="n">t</span><span class="o">.</span><span class="n">AssertContentType</span><span class="p">(</span><span class="s">"text/html"</span><span class="p">)</span></code></pre></figure>
+
+<p>Then they re-run the test:</p>
+
+<p><img src="../img/Tests4.png" alt="Test Runner interface" /></p>
+
+<p>Success.</p>
+
+<p><a name="non-interactively"></a></p>
+
+<h3 id="running-tests-non-interactively">Running tests non-interactively</h3>
+
+<p>The Revel <a href="tool.html">command line tool</a> provides a <code class="highlighter-rouge">test</code> command that allows all application tests to be run from the command line.</p>
+
+<p>Here is an example session:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ revel test github.com/revel/examples/booking dev
+~
+~ revel! http://revel.github.io
+~
+INFO  2012/11/09 19:21:02 revel.go:237: Loaded module testrunner
+Open DB
+Listening on port 9000...
+INFO  2012/11/09 19:21:06 test.go:95: Testing Booking example (github.com/revel/examples/booking) in dev mode
+Go to /@tests to run the tests.
+
+1 test suite to run.
+
+AppTest                 PASSED        0s
+
+All Tests Passed.
+</code></pre></div></div>
+
+<p>You can also run a single test suite, or method within that suite, with a period-separated parameter:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ revel test github.com/revel/examples/booking dev ApplicationTest
+$ revel test github.com/revel/examples/booking dev ApplicationTest.TestThatIndexPageWorks
+</code></pre></div></div>
+
+<p>In the console only a simple PASSED/FAILED overview by test suite is displayed.  The tool writes more detailed results to the filesystem:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd src/github.com/revel/examples/booking
+$ find test-results
+test-results
+test-results/app.log
+test-results/AppTest.passed.html
+test-results/result.passed
+</code></pre></div></div>
+
+<p>It writes three different things:</p>
+
+<ol>
+  <li>The application’s stdout and stderr are redirected to <code class="highlighter-rouge">app.log</code></li>
+  <li>One HTML file per test suite is written, describing the tests that passed or failed.</li>
+  <li>Either <code class="highlighter-rouge">result.passed</code> or <code class="highlighter-rouge">result.failed</code> is written, depending on the overall success.</li>
+</ol>
+
+<p>There are two suggested mechanisms for integrating this into a continuous build:</p>
+
+<ol>
+  <li>Check the return code, which is 0 for a successful test run and non-zero otherwise.</li>
+  <li>Require the presence of <code class="highlighter-rouge">result.success</code> after the run, or disallow the presence of <code class="highlighter-rouge">result.failed</code>.</li>
+</ol>
+
+<h2 id="implementation-notes">Implementation notes</h2>
+
+<p>What Revel does is:</p>
+
+<ul>
+  <li>Scan the test source code for types that (transitively) embed TestSuite</li>
+  <li>Set the <code class="highlighter-rouge">revel.TestSuites</code> variable to a list of those types in the generated main.go file.</li>
+  <li>On demand, uses reflection to find all methods beginning with “Test” on the TestSuite types, and invokes them to run the test.</li>
+  <li>Catches panics from bugs or failed assertions and displays the error helpfully.</li>
+</ul>
+
+<p>Testing code is only built when the special <code class="highlighter-rouge">testrunner</code> module is activated.</p>
+
+<h2 id="areas-for-development">Areas for development</h2>
+
+<p>The testing framework could use the following improvements:</p>
+
+<ul>
+  <li>Fixtures for populating a datastore with test data.</li>
+  <li>Loggers that write to a file (instead of stderr / stdout) should also be redirected to <code class="highlighter-rouge">test-results/app.log</code></li>
+</ul>
+
+<hr />
+
+<ul>
+  <li>See the godocs for <a href="https://godoc.org/github.com/revel/revel/testing"><code class="highlighter-rouge">Testing</code></a></li>
+</ul>
+
+                    
+
+
+                    
+
+
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; Revel Team 2017 - Revel is released under the <a href="https://github.com/revel/revel/blob/master/LICENSE">MIT License</a></p>
+        </footer>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Quickstart - Input Routing | Revel - A Web Application Framework for Go!</title>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="/css/jekyll-github.css" rel="stylesheet">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="/js/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+<link href="/css/revel.17.css" rel="stylesheet">
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35042202-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+    <link href="/css/manual.css" type="text/css" rel="stylesheet" />
+    <link href="/css/prettify.css" type="text/css" rel="stylesheet" />
+    <script src="/js/prettify.js" type="text/javascript"></script>
+    <script src="/js/lang-go-rich.js" type="text/javascript"></script>
+		<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35042202-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+
+  <body onload="prettyPrint()">
+
+    
+
+    
+<nav class="navbar navbar-inverse ">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div id="main-logo"><a ddclass="navbar-brand" href="/">Revel</a>
+            </div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                                
+                <li >
+                    <a href="/tutorial/index.html"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Tutorial</a></li>
+                
+                <li >
+                    <a href="/manual/index.html"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Manual</a></li>
+                    
+                <li >
+                    <a href="/modules/index.html"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Modules</a></li>
+                    
+                    
+                <li >
+                    <a href="/examples/index.html"><span class="glyphicon glyphicon-sound-stereo" aria-hidden="true"></span> Examples</a></li>
+                
+                <li >
+                    <a href="/quickref/index.html"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> Quick Ref</a></li>
+                    
+                    
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Project <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://github.com/revel/" target="github"><span class="glyphicon glyphicon-object-align-horizontal" aria-hidden="true"></span> Revel project @ github</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel</li>
+                            <li><a href="https://godoc.org/github.com/revel/revel" target="godoc"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> godoc</a></li>
+                            <li><a href="https://github.com/revel/revel" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/revel/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel command</li>
+                            <li><a href="https://github.com/revel/cmd" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/cmd/issues" target="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Modules</li>
+                        <li><a href="https://github.com/revel/modules" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Example Apps</li>
+                        <li><a href="https://github.com/revel/examples" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">revel.github.io</li>
+                        <li><a href="https://github.com/revel/revel.github.io" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li><a href="https://github.com/revel/revel.github.io/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Support <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://gitter.im/revel/community" target="_blank">Chat on gitter.im</a></li>
+                        <li><a href="http://stackoverflow.com/questions/tagged/revel" target="_blank">Revel at StackOverflow</a></li>
+                    </ul>
+                <li>
+                 
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="span2">
+          
+
+<ul>
+
+</ul>
+        </div>
+
+        <div class="span10">
+          <div class="page-header">
+            <h1>Quickstart - Input Routing</h1>
+            <a href="https://github.com/revel/revel.github.io/edit/master/quickstart/controller/input/routing/index.md" class="improve-page btn btn-info" target="_blank">Improve this page</a>
+          </div>
+          <p>Routes are defined in a separate <code class="highlighter-rouge">routes</code> file.</p>
+
+<p>The basic syntax is:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(METHOD) (URL Pattern) (Controller.Method)
+</code></pre></div></div>
+
+<p>This example demonstrates all of the features:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># conf/routes
+# This file defines all application routes (Higher priority routes first)
+
+module:jobs                                          # Import all routes from the jobs module
+
+GET    /login                 App.Login              # A simple path
+GET    /hotels/               Hotels.Index           # Match /hotels and /hotels/ (optional trailing slash)
+GET    /hotels/:id            Hotels.Show            # Extract a URI argument
+WS     /hotels/:id/feed       Hotels.Feed            # WebSockets.
+POST   /hotels/:id/:method    Hotels.:method         # Automatically route the controller Hotels methods.
+GET    /public/*filepath      Static.Serve("public") # Map /app/public resources under /public/...
+*      /debug/                module:testrunner      # Prefix all routes in the testrunner module with /debug/
+*      /:controller/:method   :controller.:method    # Catch all; Automatic URL generation
+</code></pre></div></div>
+
+<p>Let’s go through the lines one at a time.  At the end, we’ll see how to
+accomplish <strong>reverse routing</strong> – generating the URL to invoke a particular method.</p>
+
+<h2 id="a-simple-path">A simple path</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET    /login                 App.Login
+</code></pre></div></div>
+
+<p>The simplest route uses an exact match on method and path.  It invokes the Login
+method on the App controller.</p>
+
+<h2 id="trailing-slashes">Trailing slashes</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET    /hotels/               Hotels.Index
+</code></pre></div></div>
+
+<p>This route invokes <code class="highlighter-rouge">Hotels.Index</code> for both <code class="highlighter-rouge">/hotels</code> and <code class="highlighter-rouge">/hotels/</code>. The
+reverse route to <code class="highlighter-rouge">Hotels.Index</code> will include the trailing slash.</p>
+
+<p>Trailing slashes should not be used to differentiate between methods. The
+simple path <code class="highlighter-rouge">/login</code> <strong>will</strong> be matched by a request to <code class="highlighter-rouge">/login/</code>.</p>
+
+<h2 id="url-parameters">URL Parameters</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET    /hotels/:id            Hotels.Show
+</code></pre></div></div>
+
+<p>Segments of the path may be matched and extracted.  The <code class="highlighter-rouge">:id</code> variable will
+match anything except a slash.  For example, <code class="highlighter-rouge">/hotels/123</code> and
+<code class="highlighter-rouge">/hotels/abc</code> would both be matched by this route.</p>
+
+<p>Extracted parameters are available in the <code class="highlighter-rouge">Controller.Params</code> map, as well as
+via method parameters.  For example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func (c Hotels) Show(id int) revel.Result {
+	...
+}
+</code></pre></div></div>
+
+<p>or</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func (c Hotels) Show() revel.Result {
+	var id string = c.Params.Get("id")
+	...
+}
+</code></pre></div></div>
+
+<p>or</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func (c Hotels) Show() revel.Result {
+	var id int
+	c.Params.Bind(&amp;id, "id")
+	...
+}
+</code></pre></div></div>
+
+<h2 id="star-parameters">Star parameters</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET    /public/*filepath            Static.Serve("public")
+</code></pre></div></div>
+
+<p>The router recognizes a second kind of wildcard. The starred parameter must be
+the last element in the path, and it matches all following path elements.</p>
+
+<p>For example, in this case it will match any path beginning with “/public/”, and
+its value will be exactly the path substring that follows that prefix.</p>
+
+<h2 id="websockets">Websockets</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>WS     /hotels/:id/feed       Hotels.Feed
+</code></pre></div></div>
+
+<p>Websockets are routed in the same way as other requests, using a method
+identifier of <strong>WS</strong>.</p>
+
+<p>The corresponding method would have this signature:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func (c Hotels) Feed(ws revel.ServerWebSocket, id int) revel.Result {
+	...
+}
+</code></pre></div></div>
+
+<h2 id="static-serving">Static Serving</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET    /public/*filepath            Static.Serve("public")
+GET    /favicon.ico                 Static.Serve("public","img/favicon.png")
+</code></pre></div></div>
+
+<p>For the 2 parameters version of Static.Serve, blank spaces are not allowed between
+<strong>“</strong> and <strong>,</strong> due to how encoding/csv works.</p>
+
+<p>For serving directories of static assets, Revel provides the <strong>static</strong> module,
+which contains a single
+<a href="http://godoc.org/github.com/revel/revel/modules/static/app/controllers">Static</a>
+controller.  Its Serve method takes two parameters:</p>
+
+<ul>
+  <li>prefix (string) - A (relative or absolute) path to the asset root.</li>
+  <li>filepath (string) - A relative path that specifies the requested file.</li>
+</ul>
+
+<p>(Refer to <a href="organization.html">organization</a> for the directory layout)</p>
+
+<h2 id="fixed-parameters">Fixed parameters</h2>
+
+<p>As demonstrated in the Static Serving section, routes may specify one or more
+parameters to the method.  For example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET    /products/:id     ShowList("PRODUCT")
+GET    /menus/:id        ShowList("MENU")
+</code></pre></div></div>
+
+<p>The provided argument(s) are bound to a parameter name using their position.  In
+this case, the list type string would be bound to the name of the first method
+parameter.</p>
+
+<p>This could be helpful in situations where:</p>
+
+<ul>
+  <li>you have a couple similar methods</li>
+  <li>you have methods that do the same thing, but operate in different modes</li>
+  <li>you have methods that do the same thing, but operate on different data types</li>
+</ul>
+
+<h2 id="routing-modules">Routing Modules</h2>
+
+<p>Modules which contain routes can be imported into your application in two ways:</p>
+
+<p>First method: Importing routes as-is using the following in your <code class="highlighter-rouge">routes</code> file:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># This is your routes file
+module:mymodule
+
+# Your other routes
+GET     /        Application.Index
+GET     /bar     Application.Bar
+</code></pre></div></div>
+
+<p>Second method: Importing the routes under a prefixed path:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># This is your routes file
+*       /foo     module:mymodule # Must be defined with asterisk for the method
+	
+# Your other routes
+GET     /        Application.Index
+GET     /bar     Application.Bar
+</code></pre></div></div>
+
+<p>Assuming <code class="highlighter-rouge">mymodule</code> has a <code class="highlighter-rouge">routes</code> file containing:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET      /gopher        MyModule.FetchGopher
+POST     /gopher/add    MyModule.AddGopher
+</code></pre></div></div>
+
+<p>Then in the first example, the routes would be imported into your application with the URL patterns <code class="highlighter-rouge">/gopher</code> and <code class="highlighter-rouge">/gopher/add</code>. In the second example, the routes would be imported with the URL patterns <code class="highlighter-rouge">/foo/gopher</code> and <code class="highlighter-rouge">/foo/gopher/add</code>.</p>
+
+<h2 id="auto-routing">Auto Routing</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST   /hotels/:id/:method    Hotels.:method
+*      /:controller/:method   :controller.:method
+</code></pre></div></div>
+
+<p>URL argument extraction can also be used to determine the invoked method.
+Matching to controllers and method is <strong>case insensitive</strong>.</p>
+
+<p>The first example route line would effect the following routes:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/hotels/1/show    =&gt; Hotels.Show
+/hotels/2/details =&gt; Hotels.Details
+</code></pre></div></div>
+
+<p>Similarly, the second example may be used to access any Action (Controller.Method) in the
+application:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/app/login         =&gt; App.Login
+/users/list        =&gt; Users.List
+</code></pre></div></div>
+
+<p>Since matching to controllers and methods is case insensitive, the following
+routes would also work:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/APP/LOGIN         =&gt; App.Login
+/Users/List        =&gt; Users.List
+</code></pre></div></div>
+
+<p>Using auto-routing as a catch-all (e.g. last route in the file) is useful for
+quickly hooking up actions to non-vanity URLs, especially in conjunction with
+the reverse router..</p>
+
+<h2 id="reverse-routing">Reverse Routing</h2>
+
+<p>It is good practice to use a reverse router to generate URLs for a couple reasons:</p>
+
+<ul>
+  <li>Avoids misspellings</li>
+  <li>The compiler ensures that reverse routes have the right number and type of
+parameters.</li>
+  <li>Localizes URL changes to one place: the routes file.</li>
+</ul>
+
+<p>Upon building your application, Revel generates an <code class="highlighter-rouge">app/routes</code> package.  Use it
+with a statement of the form:</p>
+
+<pre class="prettyprint lang-go">
+routes.Controller.Method(param1, param2)
+</pre>
+
+<p>The above statement returns a URL (type string) to Controller.Method with the
+given parameters.  Here is a more complete example:</p>
+
+<pre class="prettyprint lang-go">
+import (
+	&quot;github.com/revel/revel&quot;
+	&quot;project/app/routes&quot;
+)
+
+type App struct { *revel.Controller }
+
+// Show a form
+func (c App) ViewForm(username string) revel.Result {
+	return c.Render(username)
+}
+
+// Process the submitted form.
+func (c App) ProcessForm(username, input string) revel.Result {
+	...
+	if c.Validation.HasErrors() {
+		c.Validation.Keep()
+		c.Flash.Error(&quot;Form invalid. Try again.&quot;)
+		return c.Redirect(routes.App.ViewForm(username))  // &lt;--- REVERSE ROUTE
+	}
+	c.Flash.Success(&quot;Form processed!&quot;)
+	return c.Redirect(routes.App.ViewConfirmation(username, input))  // &lt;--- REVERSE ROUTE
+}
+</pre>
+
+<div class="alert alert-info"><strong>Limitation:</strong> Only primitive
+parameters to a route are typed due to the possibility of circular imports.
+Non-primitive parameters are typed as interface{}.
+</div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Frequently Asked Questions | Revel - A Web Application Framework for Go!</title>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="/css/jekyll-github.css" rel="stylesheet">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="/js/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+<link href="/css/revel.17.css" rel="stylesheet">
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35042202-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+    
+    
+
+    
+<nav class="navbar navbar-inverse ">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div id="main-logo"><a ddclass="navbar-brand" href="/">Revel</a>
+            </div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                                
+                <li >
+                    <a href="/tutorial/index.html"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Tutorial</a></li>
+                
+                <li class="active">
+                    <a href="/manual/index.html"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Manual</a></li>
+                    
+                <li >
+                    <a href="/modules/index.html"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Modules</a></li>
+                    
+                    
+                <li >
+                    <a href="/examples/index.html"><span class="glyphicon glyphicon-sound-stereo" aria-hidden="true"></span> Examples</a></li>
+                
+                <li >
+                    <a href="/quickref/index.html"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> Quick Ref</a></li>
+                    
+                    
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Project <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://github.com/revel/" target="github"><span class="glyphicon glyphicon-object-align-horizontal" aria-hidden="true"></span> Revel project @ github</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel</li>
+                            <li><a href="https://godoc.org/github.com/revel/revel" target="godoc"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> godoc</a></li>
+                            <li><a href="https://github.com/revel/revel" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/revel/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel command</li>
+                            <li><a href="https://github.com/revel/cmd" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/cmd/issues" target="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Modules</li>
+                        <li><a href="https://github.com/revel/modules" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Example Apps</li>
+                        <li><a href="https://github.com/revel/examples" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">revel.github.io</li>
+                        <li><a href="https://github.com/revel/revel.github.io" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li><a href="https://github.com/revel/revel.github.io/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Support <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://gitter.im/revel/community" target="_blank">Chat on gitter.im</a></li>
+                        <li><a href="http://stackoverflow.com/questions/tagged/revel" target="_blank">Revel at StackOverflow</a></li>
+                    </ul>
+                <li>
+                 
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="container revel-manual">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="leftnav">
+    <ul class="nav">
+        
+            <li class="nav-header">Overview</li>
+            
+                
+                
+                    <li><a href="index.html">Introduction</a></li>
+                
+            
+                
+                
+                    <li><a href="concepts.html">Concepts</a></li>
+                
+            
+                
+                
+                    <li><a href="organization.html">Code Organization</a></li>
+                
+            
+        
+            <li class="nav-header">Controllers</li>
+            
+                
+                
+                    <li><a href="controllers.html">Controllers Overview</a></li>
+                
+            
+                
+                
+                    <li><a href="routing.html">URL Routing</a></li>
+                
+            
+                
+                
+                    <li><a href="/modules/static.html">Static Content</a></li>
+                
+            
+                
+                
+                    <li><a href="parameters.html">Request Parameters & JSON</a></li>
+                
+            
+                
+                
+                    <li><a href="validation.html">Validation</a></li>
+                
+            
+                
+                
+                    <li><a href="sessionflash.html">Session & Flash</a></li>
+                
+            
+                
+                
+                    <li><a href="results.html">Results & Response</a></li>
+                
+            
+                
+                
+                    <li><a href="templates.html">Templates</a></li>
+                
+            
+                
+                
+                    <li><a href="template-engine.html">Template Engine</a></li>
+                
+            
+                
+                
+                    <li><a href="templates-go.html">Go Template Engine</a></li>
+                
+            
+                
+                
+                    <li><a href="server-engine.html">Server Engine</a></li>
+                
+            
+                
+                
+                    <li><a href="interceptors.html">Interceptors</a></li>
+                
+            
+                
+                
+                    <li><a href="filters.html">Filters</a></li>
+                
+            
+                
+                
+                    <li><a href="websockets.html">Websockets</a></li>
+                
+            
+                
+                
+                    <li><a href="i18n-messages.html">Internationalization</a></li>
+                
+            
+                
+                
+                    <li><a href="cache.html">Cache</a></li>
+                
+            
+                
+                
+                    <li><a href="database.html">Database</a></li>
+                
+            
+                
+                
+                    <li><a href="debug.html">Debugging</a></li>
+                
+            
+                
+                
+                    <li><a href="/modules/testing.html">Testing</a></li>
+                
+            
+        
+            <li class="nav-header">Operational</li>
+            
+                
+                
+                    <li><a href="versions.html">Versions</a></li>
+                
+            
+                
+                
+                    <li><a href="logging.html">Logging</a></li>
+                
+            
+                
+                
+                    <li><a href="deployment.html">Deployment</a></li>
+                
+            
+        
+            <li class="nav-header">Reference</li>
+            
+                
+                
+                    <li><a href="appconf.html">app.conf</a></li>
+                
+            
+                
+                
+                    <li><a href="tool.html">revel cmd</a></li>
+                
+            
+                
+                
+                    <li class="active"><a href="faq.html">FAQ</a></li>
+                
+            
+        
+    </ul>
+</div>
+
+            </div>
+
+            <div class="col-md-9">
+                <div class="page-header">
+                    <a href="https://github.com/revel/revel.github.io/edit/master/manual/faq.md" class="improve-page btn dbtn-info" target="_blank"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Improve Page</a>
+                    <h1>Frequently Asked Questions</h1>
+                </div>
+                <div class="main">
+                    <ul>
+  <li><a href="http://stackoverflow.com/questions/tagged/revel">Revel at StackOverflow</a></li>
+</ul>
+
+<h2 id="how-do-i-integrate-existing-httphandlers-with-revel-">How do I integrate existing http.Handlers with Revel ?</h2>
+
+<p>As shown in the <a href="concepts.html">concept diagram</a>, The server engine is responsible 
+for routing of the traffic, you can install your own mux on the GoServerEngine 
+once it is initialized. Requests that are sent through the GoServerEngine handler
+will be processed by Revel which creates the <a href="controllers.html">Controller</a> instance and passes the request to the
+<a href="filters.html">Filter Chain</a>.</p>
+
+<p>Applications may integrate existing http.Handlers by doing the following:</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="x">
+    </span><span class="k">func</span><span class="x"> </span><span class="n">installHandlers</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+        </span><span class="n">revel</span><span class="o">.</span><span class="n">AddInitEventHandler</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">event</span><span class="x"> </span><span class="kt">int</span><span class="p">,</span><span class="x"> </span><span class="n">_</span><span class="x"> </span><span class="k">interface</span><span class="p">{})</span><span class="x"> </span><span class="p">(</span><span class="n">r</span><span class="x"> </span><span class="kt">int</span><span class="p">)</span><span class="x"> </span><span class="p">{</span><span class="x">
+            </span><span class="k">if</span><span class="x"> </span><span class="n">event</span><span class="o">==</span><span class="n">revel</span><span class="o">.</span><span class="n">ENGINE_STARTED</span><span class="x"> </span><span class="p">{</span><span class="x">
+                </span><span class="k">var</span><span class="x"> </span><span class="p">(</span><span class="x">
+                    </span><span class="n">serveMux</span><span class="x">     </span><span class="o">=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewServeMux</span><span class="p">()</span><span class="x">
+                    </span><span class="n">revelHandler</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">CurrentEngine</span><span class="o">.</span><span class="p">(</span><span class="o">*</span><span class="n">revel</span><span class="o">.</span><span class="n">GoHttpServer</span><span class="p">)</span><span class="o">.</span><span class="n">Server</span><span class="o">.</span><span class="n">Handler</span><span class="x">
+                </span><span class="p">)</span><span class="x">
+                </span><span class="n">serveMux</span><span class="o">.</span><span class="n">Handle</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span><span class="x">     </span><span class="n">revelHandler</span><span class="p">)</span><span class="x">
+                </span><span class="n">serveMux</span><span class="o">.</span><span class="n">Handle</span><span class="p">(</span><span class="s">"/path"</span><span class="p">,</span><span class="x"> </span><span class="n">myHandler</span><span class="p">)</span><span class="x">
+                </span><span class="n">revel</span><span class="o">.</span><span class="n">CurrentEngine</span><span class="o">.</span><span class="p">(</span><span class="o">*</span><span class="n">revel</span><span class="o">.</span><span class="n">GoHttpServer</span><span class="p">)</span><span class="o">.</span><span class="n">Server</span><span class="o">.</span><span class="n">Handler</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">serveMux</span><span class="x">
+    
+    
+            </span><span class="p">}</span><span class="x">
+            </span><span class="k">return</span><span class="x">
+    </span><span class="p">})</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="n">init</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="n">revel</span><span class="o">.</span><span class="n">OnAppStart</span><span class="p">(</span><span class="n">installHandlers</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+<h2 id="what-is-the-relationship-between-interceptors-filters-and-modules-">What is the relationship between interceptors, filters, and modules ?</h2>
+
+<ol>
+  <li>
+    <p><a href="modules.html">Modules</a> are packages that can be plugged into an application. They allow
+sharing of controllers, views, assets, and other code between multiple Revel
+applications (or from third-party sources).</p>
+  </li>
+  <li>
+    <p><a href="filters.html">Filters</a> are functions that may be hooked into the request processing
+pipeline.  They generally apply to the application as a whole and handle
+technical concerns, orthogonal to application logic.</p>
+  </li>
+  <li>
+    <p><a href="interceptors.html">Interceptors</a> are a convenient way to package data and behavior, since
+embedding a type imports its interceptors and fields.  This makes interceptors
+useful for things like verifying the login cookie and saving that information
+into a field.  Interceptors can be applied to one or more controllers.</p>
+  </li>
+</ol>
+
+<h2 id="hot-reload-is-really-slow-with-sqlite3-">Hot Reload is really slow with sqlite3 ?</h2>
+
+<ul>
+  <li>The <a href="https://github.com/mattn/go-sqlite3"><code class="highlighter-rouge">github.com/mattn/go-sqlite3</code></a> package has a five megabyte <code class="highlighter-rouge">.c</code> file.</li>
+  <li>When building the package, this <code class="highlighter-rouge">.c</code> file is compiled and building a 5mb <code class="highlighter-rouge">.c</code> takes a while.</li>
+  <li>So unless you <code class="highlighter-rouge">go install</code> it. the package is built every time you build a package which depends on it.</li>
+  <li>See <a href="https://github.com/revel/revel/issues/290#issuecomment-52385218">bug 290</a></li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    go install github.com/mattn/go-sqlite3
+</code></pre></div></div>
+
+<h2 id="is-there-an-smtp-mailer-">Is there an SMTP mailer ?</h2>
+
+<p>Revel previously had a mailer, but this was removed (<a href="https://github.com/revel/revel/pull/633">#633</a>)
+in favour of a third party flexibility/quality/DRY. See:</p>
+
+<ul>
+  <li><a href="https://github.com/jordan-wright/email">github.com/jordan-wright/email</a></li>
+  <li><a href="https://github.com/golang/go/wiki/SendingMail">Native Go</a></li>
+</ul>
+
+
+                    
+
+
+                    
+
+
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; Revel Team 2017 - Revel is released under the <a href="https://github.com/revel/revel/blob/master/LICENSE">MIT License</a></p>
+        </footer>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>app.conf | Revel - A Web Application Framework for Go!</title>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="/css/jekyll-github.css" rel="stylesheet">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="/js/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+<link href="/css/revel.17.css" rel="stylesheet">
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35042202-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+    
+    
+
+    
+<nav class="navbar navbar-inverse ">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div id="main-logo"><a ddclass="navbar-brand" href="/">Revel</a>
+            </div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                                
+                <li >
+                    <a href="/tutorial/index.html"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Tutorial</a></li>
+                
+                <li class="active">
+                    <a href="/manual/index.html"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Manual</a></li>
+                    
+                <li >
+                    <a href="/modules/index.html"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Modules</a></li>
+                    
+                    
+                <li >
+                    <a href="/examples/index.html"><span class="glyphicon glyphicon-sound-stereo" aria-hidden="true"></span> Examples</a></li>
+                
+                <li >
+                    <a href="/quickref/index.html"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> Quick Ref</a></li>
+                    
+                    
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Project <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://github.com/revel/" target="github"><span class="glyphicon glyphicon-object-align-horizontal" aria-hidden="true"></span> Revel project @ github</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel</li>
+                            <li><a href="https://godoc.org/github.com/revel/revel" target="godoc"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> godoc</a></li>
+                            <li><a href="https://github.com/revel/revel" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/revel/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Revel command</li>
+                            <li><a href="https://github.com/revel/cmd" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                            <li><a href="https://github.com/revel/cmd/issues" target="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Modules</li>
+                        <li><a href="https://github.com/revel/modules" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Example Apps</li>
+                        <li><a href="https://github.com/revel/examples" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">revel.github.io</li>
+                        <li><a href="https://github.com/revel/revel.github.io" target="github"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Source code</a></li>
+                        <li><a href="https://github.com/revel/revel.github.io/issues" starget="github"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Issues</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Support <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://gitter.im/revel/community" target="_blank">Chat on gitter.im</a></li>
+                        <li><a href="http://stackoverflow.com/questions/tagged/revel" target="_blank">Revel at StackOverflow</a></li>
+                    </ul>
+                <li>
+                 
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="container revel-manual">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="leftnav">
+    <ul class="nav">
+        
+            <li class="nav-header">Overview</li>
+            
+                
+                
+                    <li><a href="index.html">Introduction</a></li>
+                
+            
+                
+                
+                    <li><a href="concepts.html">Concepts</a></li>
+                
+            
+                
+                
+                    <li><a href="organization.html">Code Organization</a></li>
+                
+            
+        
+            <li class="nav-header">Controllers</li>
+            
+                
+                
+                    <li><a href="controllers.html">Controllers Overview</a></li>
+                
+            
+                
+                
+                    <li><a href="routing.html">URL Routing</a></li>
+                
+            
+                
+                
+                    <li><a href="/modules/static.html">Static Content</a></li>
+                
+            
+                
+                
+                    <li><a href="parameters.html">Request Parameters & JSON</a></li>
+                
+            
+                
+                
+                    <li><a href="validation.html">Validation</a></li>
+                
+            
+                
+                
+                    <li><a href="sessionflash.html">Session & Flash</a></li>
+                
+            
+                
+                
+                    <li><a href="results.html">Results & Response</a></li>
+                
+            
+                
+                
+                    <li><a href="templates.html">Templates</a></li>
+                
+            
+                
+                
+                    <li><a href="template-engine.html">Template Engine</a></li>
+                
+            
+                
+                
+                    <li><a href="templates-go.html">Go Template Engine</a></li>
+                
+            
+                
+                
+                    <li><a href="server-engine.html">Server Engine</a></li>
+                
+            
+                
+                
+                    <li><a href="interceptors.html">Interceptors</a></li>
+                
+            
+                
+                
+                    <li><a href="filters.html">Filters</a></li>
+                
+            
+                
+                
+                    <li><a href="websockets.html">Websockets</a></li>
+                
+            
+                
+                
+                    <li><a href="i18n-messages.html">Internationalization</a></li>
+                
+            
+                
+                
+                    <li><a href="cache.html">Cache</a></li>
+                
+            
+                
+                
+                    <li><a href="database.html">Database</a></li>
+                
+            
+                
+                
+                    <li><a href="debug.html">Debugging</a></li>
+                
+            
+                
+                
+                    <li><a href="/modules/testing.html">Testing</a></li>
+                
+            
+        
+            <li class="nav-header">Operational</li>
+            
+                
+                
+                    <li><a href="versions.html">Versions</a></li>
+                
+            
+                
+                
+                    <li><a href="logging.html">Logging</a></li>
+                
+            
+                
+                
+                    <li><a href="deployment.html">Deployment</a></li>
+                
+            
+        
+            <li class="nav-header">Reference</li>
+            
+                
+                
+                    <li class="active"><a href="appconf.html">app.conf</a></li>
+                
+            
+                
+                
+                    <li><a href="tool.html">revel cmd</a></li>
+                
+            
+                
+                
+                    <li><a href="faq.html">FAQ</a></li>
+                
+            
+        
+    </ul>
+</div>
+
+            </div>
+
+            <div class="col-md-9">
+                <div class="page-header">
+                    <a href="https://github.com/revel/revel.github.io/edit/master/manual/appconf.md" class="improve-page btn dbtn-info" target="_blank"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Improve Page</a>
+                    <h1>app.conf</h1>
+                </div>
+                <div class="main">
+                    <p>The application config file is at <code class="highlighter-rouge">conf/app.conf</code> relative to your app root. It
+uses the syntax accepted by <a href="https://github.com/revel/config">revel/config</a>
+which is similar to <a href="http://en.wikipedia.org/wiki/INI_file">INI</a> files. We’ll
+cover the general structure here. See <a href="appconf-keys">comprehensive keys</a> for
+a list of all built-in config keys and their values.</p>
+
+<h2 id="example">Example</h2>
+
+<p>Two sections, <code class="highlighter-rouge">dev</code> (develop) and <code class="highlighter-rouge">prod</code> (production):</p>
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">app.name</span> <span class="p">=</span> <span class="s">myapp</span>
+<span class="py">app.secret</span> <span class="p">=</span> <span class="s">pJLzyoiDe17L36mytqC912j81PfTiolHm1veQK6Grn1En3YFdB5lvEHVTwFEaWvj</span>
+<span class="py">http.addr</span> <span class="p">=</span>
+<span class="py">http.port</span> <span class="p">=</span> <span class="s">9000</span>
+
+<span class="py">my_stuff.foo</span> <span class="p">=</span> <span class="s">1234</span>
+<span class="py">my_stuff.bar</span> <span class="p">=</span> <span class="s">Sheebang!</span>
+
+<span class="c"># Development settings
+</span><span class="nn">[dev]</span>
+<span class="py">results.pretty</span> <span class="p">=</span> <span class="s">true</span>
+<span class="py">watch</span> <span class="p">=</span> <span class="s">true</span>
+<span class="py">http.addr</span> <span class="p">=</span> <span class="s">192.168.1.2</span>
+
+<span class="py">log.trace.output</span> <span class="p">=</span> <span class="s">off</span>
+<span class="py">log.info.output</span>  <span class="p">=</span> <span class="s">stderr</span>
+<span class="py">log.warn.output</span>  <span class="p">=</span> <span class="s">stderr</span>
+<span class="py">log.error.output</span> <span class="p">=</span> <span class="s">stderr</span>
+
+<span class="c"># Production settings
+</span><span class="nn">[prod]</span>
+<span class="py">results.pretty</span> <span class="p">=</span> <span class="s">false</span>
+<span class="py">watch</span> <span class="p">=</span> <span class="s">false</span>
+<span class="py">http.port</span> <span class="p">=</span> <span class="s">9999</span>
+
+<span class="py">log.trace.output</span> <span class="p">=</span> <span class="s">off</span>
+<span class="py">log.info.output</span>  <span class="p">=</span> <span class="s">off</span>
+<span class="py">log.warn.output</span>  <span class="p">=</span> <span class="s">%(app.name)s.log</span>
+<span class="py">log.error.output</span> <span class="p">=</span> <span class="s">%(app.name)s.log</span>
+</code></pre></div></div>
+
+<p>Config values can be accesed via the <a href="https://godoc.org/github.com/revel/revel#Config">revel.Config</a> variable, more <a href="#customproperties">below</a></p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">driver</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Config</span><span class="o">.</span><span class="n">StringDefault</span><span class="p">(</span><span class="s">"db.driver"</span><span class="p">,</span><span class="x"> </span><span class="s">"mysql"</span><span class="p">)</span><span class="x">
+</span><span class="n">ena</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Config</span><span class="o">.</span><span class="n">BoolDefault</span><span class="p">(</span><span class="s">"myapp.remote.enabled"</span><span class="p">,</span><span class="x"> </span><span class="no">false</span><span class="p">)</span><span class="x">
+</span></code></pre></div></div>
+
+<h2 id="run-modes">Run Modes</h2>
+<p>Each section is a <strong>Run Mode</strong> and selected with the <a href="tool.html#run"><code class="highlighter-rouge">revel run</code></a> command, eg.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>revel run bitbucket.org/mycorp/my-app dev
+</code></pre></div></div>
+
+<ul>
+  <li>The keys at the top level (eg <code class="highlighter-rouge">app</code>, <code class="highlighter-rouge">http</code>) are not within any <code class="highlighter-rouge">[section]</code>  and apply to all run modes (ie default).</li>
+  <li>This allows values to be overridden (or introduced) as required in each run mode <code class="highlighter-rouge">[section]</code>.</li>
+  <li>Also not in the example above,  <em>keys</em> under the <code class="highlighter-rouge">[prod]</code> section applies only to <code class="highlighter-rouge">prod</code> mode.</li>
+  <li>The run mode is chosen at runtime by the argument provided to the <a href="tool.html#run"><code class="highlighter-rouge">revel run</code></a>. eg:
+    <ul>
+      <li><code class="highlighter-rouge">revel run my-app</code>  - will start in <code class="highlighter-rouge">dev</code> mode as the default</li>
+      <li><code class="highlighter-rouge">revel run my-app prod</code> - will start with <code class="highlighter-rouge">prod</code> mode.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Revel creates new apps with <strong>dev</strong> and <strong>prod</strong> run modes defined, but the developer may
+create any sections they wish.</p>
+
+<h3 id="environment-variables">Environment variables</h3>
+
+<p>Besides static configuration, Revel also supports dynamic configuration by injecting
+<strong>environment variables</strong> or the value of other parameters.</p>
+
+<p>In most cases, you’ll want to load sensitive values from environment variables
+rather than storing them in your configuration file. The syntax for including an
+environment variable is similar to the shell syntax: <code class="highlighter-rouge">${ENV_VAR_NAME}</code>.</p>
+
+<h3 id="example-1">Example</h3>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">app.name</span> <span class="p">=</span> <span class="s">chat</span>
+<span class="py">http.port</span> <span class="p">=</span> <span class="s">9000</span>
+
+<span class="py">db.driver</span> <span class="p">=</span> <span class="s">${CHAT_DB_DRIVER}</span>
+<span class="py">db.spec</span> <span class="p">=</span> <span class="s">${CHAT_DB_SPEC}</span>
+</code></pre></div></div>
+<p>Revel will then load the <code class="highlighter-rouge">CHAT_DB_DRIVER</code> and <code class="highlighter-rouge">CHAT_DB_SPEC</code> environment variables
+and inject them into the config at runtime.</p>
+
+<h3 id="composing-other-parameters">Composing other parameters</h3>
+
+<p>To incorporate the value of one parameter into another, you can “unfold” it by using
+the <code class="highlighter-rouge">%(var_name)s</code> syntax (note the ‘s’ at the end).</p>
+
+<h3 id="example-2">Example</h3>
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">app.name</span> <span class="p">=</span> <span class="s">chat</span>
+<span class="py">http.port</span> <span class="p">=</span> <span class="s">9000</span>
+
+<span class="py">log.warn.output</span> <span class="p">=</span> <span class="s">%(app.name)s.log</span>
+<span class="py">log.error.output</span> <span class="p">=</span> <span class="s">%(app.name)s.log</span>
+</code></pre></div></div>
+<p>Will be parsed by revel/config as:</p>
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">app.name</span><span class="p">=</span><span class="s">chat</span>
+<span class="py">http.port</span><span class="p">=</span><span class="s">9000</span>
+
+<span class="py">log.warn.output</span> <span class="p">=</span> <span class="s">chat.log</span>
+<span class="py">log.error.output</span> <span class="p">=</span> <span class="s">chat.log</span>
+</code></pre></div></div>
+
+<p><a name="customproperties"></a></p>
+
+<h2 id="custom-properties">Custom properties</h2>
+
+<p>The developer may define custom keys and access them via the
+<code class="highlighter-rouge">revel.Config</code> variable, which exposes a
+<a href="https://godoc.org/github.com/revel/revel#MergedConfig">simple api</a>.</p>
+
+<h3 id="example-3">Example</h3>
+
+<p>In your <code class="highlighter-rouge">app.conf</code>:</p>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">myapp.remote</span> <span class="p">=</span> <span class="s">120.2.3.5</span>
+<span class="py">myapp.remote.enabled</span> <span class="p">=</span> <span class="s">true</span>
+</code></pre></div></div>
+
+<p>In your Go code:</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span><span class="x"> </span><span class="n">remoteServer</span><span class="x"> </span><span class="kt">string</span><span class="x">
+</span><span class="k">if</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Config</span><span class="o">.</span><span class="n">BoolDefault</span><span class="p">(</span><span class="s">"myapp.remote.enabled"</span><span class="p">,</span><span class="x"> </span><span class="no">false</span><span class="p">)</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="n">remoteServer</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">revel</span><span class="o">.</span><span class="n">Config</span><span class="o">.</span><span class="n">StringDefault</span><span class="p">(</span><span class="s">"myapp.remote"</span><span class="p">,</span><span class="x"> </span><span class="s">"0.0.0.0"</span><span class="p">)</span><span class="x">
+    </span><span class="n">DoSomethingTo</span><span class="p">(</span><span class="x"> </span><span class="n">remoteServer</span><span class="x"> </span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+<h2 id="external-appconf">External app.conf</h2>
+
+<p>Since v0.13, Revel has supported loading a external <code class="highlighter-rouge">app.conf</code> from a given
+directory. It’s a convenient way to override or add config values to the
+application. Please make sure <code class="highlighter-rouge">app.conf</code> is in the given path.</p>
+
+<h3 id="example-4">Example</h3>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">age</span><span class="o">:</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="n">init</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="n">revel</span><span class="o">.</span><span class="n">ConfPaths</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"/etc/myapp/conf"</span><span class="p">}</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+<p><a name="BuiltinProperties"></a></p>
+
+<h2 id="built-in-properties">Built-in properties</h2>
+
+<ul>
+  <li><a href="#application">Application</a></li>
+  <li><a href="#HTTP">HTTP</a></li>
+  <li><a href="#results">Results</a></li>
+  <li><a href="#internationalization">Internationalization</a></li>
+  <li><a href="#watch">Watch</a></li>
+  <li><a href="#cookies">Cookies</a></li>
+  <li><a href="#session">Session</a></li>
+  <li><a href="#templates">Templates</a></li>
+  <li><a href="#formatting">Formatting</a></li>
+  <li><a href="#database">Database</a></li>
+  <li><a href="#build">Build</a></li>
+  <li><a href="#logging">Logging</a></li>
+  <li><a href="#cache">Cache</a></li>
+  <li><a href="#jobs">Jobs</a></li>
+  <li><a href="#modules">Modules</a></li>
+  <li><a href="#error-handling">Error Handling</a></li>
+</ul>
+
+<p><a name="application"></a></p>
+
+<h3 id="application-settings">Application settings</h3>
+
+<h4 id="appname"><code class="highlighter-rouge">app.name</code></h4>
+
+<p>The human-readable application name. This is used for some console output and
+development web pages.</p>
+
+<h3 id="example-5">Example</h3>
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="py">app.name</span> <span class="p">=</span> <span class="s">Booking example application</span>
+</code></pre></div></div>
+
+<p>Default: <code class="highlighter-rouge">Auto Generated</code> For example: github.com/myaccount/myrevelapp, <code class="highlighter-rouge">app.name = myrevelapp</code></p>
+
+<h4 id="appsecret"><code class="highlighter-rouge">app.secret</code></h4>
+
+<p>The secret key used for cryptographic operations, see <a href="https://godoc.org/github.com/revel/revel#Sign"><code class="highlighter-rouge">revel.Sign</code></a>.</p>
+<ul>
+  <li>Revel also uses it internally to sign <a href="session.html">session</a> cookies.</li>
+  <li>Setting it to empty string disables signing and is not recommended.</li>
+  <li>It is set to a random string when initializing a new project with <a href="tool.html#new"><code class="highlighter-rouge">revel new</code></a></li>
+</ul>
+
+<h3 id="example-6">Example</h3>
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="py">app.secret</span> <span class="p">=</span> <span class="s">pJLzyoiDe17L36mytqC912j81PfTiolHm1veQK6Grn1En3YFdB5lvEHVTwFEaWvj</span>
+</code></pre></div></div>
+
+<p>Default: Auto Generated random seed value</p>
+
+<h4 id="appbehindproxy"><code class="highlighter-rouge">app.behind.proxy</code></h4>
+
+<p>If <code class="highlighter-rouge">true</code> Revel will resolve client IP address from HTTP headers <code class="highlighter-rouge">X-Forwarded-For</code> and <code class="highlighter-rouge">X-Real-Ip</code> in the order. By default Revel will get client IP address from http.Request’s RemoteAddr. Set to <code class="highlighter-rouge">true</code> if Revel application is running behind the proxy server like nginx, haproxy, etc.</p>
+
+<h3 id="example-7">Example</h3>
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="py">app.behind.proxy</span> <span class="p">=</span> <span class="s">true</span>
+</code></pre></div></div>
+
+<p>Default: <code class="highlighter-rouge">false</code></p>
+
+<p><a name="HTTP"></a></p>
+
+<h3 id="http-settings">HTTP settings</h3>
+
+<h4 id="httpport"><code class="highlighter-rouge">http.port</code></h4>
+
+<p>The port to listen on.</p>
+
+<h3 id="example-8">Example:</h3>
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="py">http.port</span> <span class="p">=</span> <span class="s">9000</span>
+</code></pre></div></div>
+
+<h4 id="httpaddr"><code class="highlighter-rouge">http.addr</code></h4>
+
+<p>The IP address on which to listen.</p>
+
+<ul>
+  <li>On Linux, an address of 0.0.0.0 will listen on all interfaces assigned to the host</li>
+  <li>on Windows, an empty string is silently converted to <code class="highlighter-rouge">"localhost"</code></li>
+  <li>An empty string is converted to localhost for security reasons.</li>
+</ul>
+
+<p>Default: “localhost”</p>
+
+<h4 id="harnessport"><code class="highlighter-rouge">harness.port</code></h4>
+
+<p>Specifies the port for the application to listen on, when run by the harness.
+For example, when the harness is running, it will listen on <code class="highlighter-rouge">http.port</code>, run the
+application on <code class="highlighter-rouge">harness.port</code>, and reverse-proxy requests.  Without the harness,
+the application listens on <code class="highlighter-rouge">http.port</code> directly.</p>
+
+<p>By default, a random free port will be chosen.  This is only necessary to set
+when running in an environment that restricts socket access by the program.</p>
+
+<p>Default: <code class="highlighter-rouge">0</code></p>
+
+<h4 id="httpssl"><code class="highlighter-rouge">http.ssl</code></h4>
+
+<p>If true, Revel’s web server will configure itself to accept SSL connections. This
+requires an X509 certificate and a key file.</p>
+
+<p>Default: <code class="highlighter-rouge">false</code></p>
+
+<h4 id="httpsslcert"><code class="highlighter-rouge">http.sslcert</code></h4>
+
+<p>Specifies the path to an X509 certificate file.</p>
+
+<p>Default: “”</p>
+
+<h4 id="httpsslkey"><code class="highlighter-rouge">http.sslkey</code></h4>
+
+<p>Specifies the path to an X509 certificate key.</p>
+
+<p>Default: “”</p>
+
+<h4 id="httptimeoutread"><code class="highlighter-rouge">http.timeout.read</code></h4>
+
+<p>Read timeout specifies a time limit for <code class="highlighter-rouge">http.Server.ReadTimeout</code> in seconds
+made by a single client. A Timeout of zero means no timeout.</p>
+
+<h3 id="example-9">Example</h3>
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="py">http.timeout.read</span> <span class="p">=</span> <span class="s">300</span>
+</code></pre></div></div>
+
+<p>Default: <code class="highlighter-rouge">90</code></p>
+
+<h4 id="httptimeoutwrite"><code class="highlighter-rouge">http.timeout.write</code></h4>
+
+<p>Write timeout specifies a time limit for <code class="highlighter-rouge">http.Server.WriteTimeout</code> in seconds
+made by a single client. A Timeout of zero means no timeout.</p>
+
+<h3 id="example-10">Example</h3>
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="py">http.timeout.write</span> <span class="p">=</span> <span class="s">120</span>
+</code></pre></div></div>
+
+<p>Default: <code class="highlighter-rouge">60</code></p>
+
+<p><a name="results"></a></p>
+
+<h3 id="results">Results</h3>
+
+<h4 id="resultschunked"><code class="highlighter-rouge">results.chunked</code></h4>
+
+<p>Determines whether the template rendering should use
+<a href="en.wikipedia.org/wiki/Chunked_transfer_encoding">chunked encoding</a>.  Chunked
+encoding can decrease the time to first byte on the client side by sending data
+before the entire template has been fully rendered.</p>
+
+<p>Default: <code class="highlighter-rouge">false</code></p>
+
+<h4 id="resultspretty"><code class="highlighter-rouge">results.pretty</code></h4>
+
+<p>Configures <a href="https://godoc.org/github.com/revel/revel#Controller.RenderXML"><code class="highlighter-rouge">RenderXML</code></a> 
+and <a href="https://godoc.org/github.com/revel/revel#Controller.RenderJSON"><code class="highlighter-rouge">RenderJSON</code></a> 
+to produce indented XML/JSON.</p>
+
+<h3 id="example-11">Example</h3>
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="py">results.pretty</span> <span class="p">=</span> <span class="s">true</span>
+</code></pre></div></div>
+
+<p>Default: <code class="highlighter-rouge">false</code></p>
+
+<h3 id="internationalization">Internationalization</h3>
+
+<h4 id="i18ndefault_language"><code class="highlighter-rouge">i18n.default_language</code></h4>
+
+<p>Specifies the default language for messages when the requested locale is not
+recognized.  If left unspecified, a dummy message is returned to those requests.</p>
+
+<h3 id="example-12">Example</h3>
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="py">i18n.default_language</span> <span class="p">=</span> <span class="s">en</span>
+</code></pre></div></div>
+
+<p>Default: “”</p>
+
+<h4 id="i18ncookie"><code class="highlighter-rouge">i18n.cookie</code></h4>
+
+<p>Specifies the name of the cookie used to store the user’s locale.</p>
+
+<p>Default: <code class="highlighter-rouge">%(cookie.prefix)_LANG</code> (see cookie.prefix)</p>
+
+<h3 id="watch">Watch</h3>
+
+<p>Revel watches your project and supports hot-reload for a number of types of
+source. To enable watching:</p>
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="py">watch</span> <span class="p">=</span> <span class="s">true</span>
+</code></pre></div></div>
+
+<p>If <code class="highlighter-rouge">false</code>, nothing will be watched, regardless of the other <code class="highlighter-rouge">watch.*</code>
+configuration keys.  (This is appropriate for production deployments)</p>
+
+<p>Default: <code class="highlighter-rouge">true</code></p>
+
+<h4 id="watchmode"><code class="highlighter-rouge">watch.mode</code></h4>
+
+<ul>
+  <li>If <code class="highlighter-rouge">watch.mode = "eager"</code>, the server starts to recompile the application every time the application’s files change.</li>
+  <li>If <code class="highlighter-rouge">watch.mode = "normal"</code>, the server recompiles with a request eg a browser refresh.</li>
+</ul>
+
+<p>Default: <code class="highlighter-rouge">"normal"</code></p>
+
+<h4 id="watchtemplates"><code class="highlighter-rouge">watch.templates</code></h4>
+
+<p>If <code class="highlighter-rouge">true</code>, Revel will watch the <code class="highlighter-rouge">views/</code> template directory (and sub-directories) for changes and reload them as necessary.</p>
+
+<p>Default: <code class="highlighter-rouge">true</code></p>
+
+<h4 id="watchroutes"><code class="highlighter-rouge">watch.routes</code></h4>
+
+<p>If <code class="highlighter-rouge">true</code>, Revel will watch the <a href="routing.html"><code class="highlighter-rouge">app/routes</code></a> file for changes and reload as necessary.</p>
+
+<p>Default: <code class="highlighter-rouge">false</code></p>
+
+<h4 id="watchcode"><code class="highlighter-rouge">watch.code</code></h4>
+
+<p>If <code class="highlighter-rouge">true</code>, Revel will watch the Go code for changes and rebuild your application
+as necessary.  This runs the <a href="#harnessport"><code class="highlighter-rouge">harness</code></a> as a reverse-proxy to the application.</p>
+
+<p>All code within the application’s <code class="highlighter-rouge">app/</code> directory, or any sub-directory is watched.</p>
+
+<p>Default: <code class="highlighter-rouge">true</code></p>
+
+<h3 id="cookies">Cookies</h3>
+
+<p>Revel components use the following cookies by default:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">REVEL_SESSION</code></li>
+  <li><code class="highlighter-rouge">REVEL_LANG</code></li>
+  <li><code class="highlighter-rouge">REVEL_FLASH</code></li>
+  <li><code class="highlighter-rouge">REVEL_ERRORS</code></li>
+</ul>
+
+<h4 id="cookieprefix"><code class="highlighter-rouge">cookie.prefix</code></h4>
+
+<p>Revel uses this property as the prefix for the Revel-produced cookies. This is
+so that multiple REVEL applications can coexist on the same host.</p>
+
+<h3 id="example-13">Example</h3>
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="py">cookie.prefix</span> <span class="p">=</span> <span class="s">MY</span>
+</code></pre></div></div>
+<p>would result in the following cookie names:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">MY_SESSION</code></li>
+  <li><code class="highlighter-rouge">MY_LANG</code></li>
+  <li><code class="highlighter-rouge">MY_FLASH</code></li>
+  <li><code class="highlighter-rouge">MY_ERRORS</code></li>
+</ul>
+
+<p>Default: <code class="highlighter-rouge">REVEL</code></p>
+
+<h4 id="cookiesecure"><code class="highlighter-rouge">cookie.secure</code></h4>
+
+<p>A secure cookie has the secure attribute enabled and is only used via HTTPS,
+ensuring that the cookie is always encrypted when transmitting from client to
+server. This makes the cookie less likely to be exposed to cookie theft via
+eavesdropping.</p>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="py">cookie.secure</span> <span class="p">=</span> <span class="s">false</span>
+</code></pre></div></div>
+
+<p>Default: <code class="highlighter-rouge">false</code> in <code class="highlighter-rouge">dev</code> mode, otherwise <code class="highlighter-rouge">true</code></p>
+
+<h3 id="session">Session</h3>
+
+<h4 id="sessionexpires"><code class="highlighter-rouge">session.expires</code></h4>
+
+<p>Revel uses this property to set the expiration of the <a href="sessionflash.html#session">session</a> cookie.
+Revel uses <a href="http://golang.org/pkg/time/#ParseDuration">ParseDuration</a> to parse the string.
+The default value is 30 days. It can also be set to <code class="highlighter-rouge">"session"</code> to allow session only
+expiry. Please note that the client behaviour is dependent on browser configuration so
+the result is not always guaranteed.</p>
+
+<h3 id="templates">Templates</h3>
+
+<h4 id="templategodelimiters"><code class="highlighter-rouge">template.go.delimiters</code></h4>
+
+<p>Specifies an override for the left and right delimiters used in the templates.<br />
+The delimiters must be specified as “LEFT_DELIMS RIGHT_DELIMS”</p>
+
+<p>Default: {{ }}</p>
+
+<h3 id="formatting">Formatting</h3>
+
+<h4 id="formatdate"><code class="highlighter-rouge">format.date</code></h4>
+
+<p>Specifies the default date format for the application.  Revel uses this in two places:</p>
+
+<ul>
+  <li>Binding dates to a <code class="highlighter-rouge">time.Time</code> (see <a href="parameters.html">parameters</a>)</li>
+  <li>Printing dates using the <code class="highlighter-rouge">date</code> template function (see <a href="templates.html">template funcs</a>)</li>
+</ul>
+
+<p>Default: <code class="highlighter-rouge">2006-01-02</code></p>
+
+<h4 id="formatdatetime"><code class="highlighter-rouge">format.datetime</code></h4>
+
+<p>Specifies the default datetime format for the application.  Revel uses this in two places:</p>
+
+<ul>
+  <li>Binding dates to a <code class="highlighter-rouge">time.Time</code> (see <a href="parameters.html">parameters</a>)</li>
+  <li>Printing dates using the <code class="highlighter-rouge">datetime</code> template function (see <a href="templates.html">template funcs</a>)</li>
+</ul>
+
+<p>Default: <code class="highlighter-rouge">2006-01-02 15:04</code></p>
+
+<h3 id="database">Database</h3>
+
+<h4 id="dbimport"><code class="highlighter-rouge">db.import</code></h4>
+
+<p>Specifies the import path of the desired database/sql driver for the db module.</p>
+
+<p>Default: “”</p>
+
+<h4 id="dbdriver"><code class="highlighter-rouge">db.driver</code></h4>
+
+<p>Specifies the name of the database/sql driver (used in
+<a href="http://golang.org/pkg/database/sql/#Open"><code class="highlighter-rouge">sql.Open</code></a>).</p>
+
+<p>Default: “”</p>
+
+<h4 id="dbspec"><code class="highlighter-rouge">db.spec</code></h4>
+
+<p>Specifies the data source name of your database/sql database (used in
+<a href="http://golang.org/pkg/database/sql/#Open"><code class="highlighter-rouge">sql.Open</code></a>).</p>
+
+<p>Default: “”</p>
+
+<h3 id="build">Build</h3>
+
+<h4 id="buildtags"><code class="highlighter-rouge">build.tags</code></h4>
+
+<p><a href="http://golang.org/cmd/go/#Compile_packages_and_dependencies">Build tags</a> to use
+when building an application.</p>
+
+<p>Default: “”</p>
+
+<h3 id="logging">Logging</h3>
+
+<p>See <a href="logging.html">logging</a> for details.</p>
+
+<h3 id="cache">Cache</h3>
+
+<p>The <a href="cache.html">cache</a> module is a simple interface to a heap or distributed cache.</p>
+
+<h4 id="cacheexpires"><code class="highlighter-rouge">cache.expires</code></h4>
+
+<p>Sets the default duration before cache entries are expired from the cache.  It
+is used when the caller passes the constant <code class="highlighter-rouge">cache.DEFAULT</code>.</p>
+
+<p>It is specified as a duration string acceptable to
+<a href="http://golang.org/pkg/time/#ParseDuration"><code class="highlighter-rouge">time.ParseDuration</code></a></p>
+
+<p>(Presently it is not possible to specify a default of <code class="highlighter-rouge">FOREVER</code>)</p>
+
+<p>Default: <code class="highlighter-rouge">1h</code> (1 hour)</p>
+
+<h4 id="cachememcached"><code class="highlighter-rouge">cache.memcached</code></h4>
+
+<p>If true, the cache module uses <a href="http://memcached.org">memcached</a> instead of the
+in-memory cache.</p>
+
+<p>Default: <code class="highlighter-rouge">false</code></p>
+
+<h4 id="cacheredis"><code class="highlighter-rouge">cache.redis</code></h4>
+
+<p>If true, the cache module uses <a href="http://redis.io">redis</a> instead of the
+in-memory cache.</p>
+
+<p>Default: <code class="highlighter-rouge">false</code></p>
+
+<h4 id="cachehosts"><code class="highlighter-rouge">cache.hosts</code></h4>
+
+<p>A comma-separated list of memcached hosts.  Cache entries are automatically
+sharded among available hosts using a deterministic mapping of cache key to host
+name.  Hosts may be listed multiple times to increase their share of cache
+space.</p>
+
+<p>Default: “”</p>
+
+<p><a name="jobs"></a></p>
+
+<h3 id="scheduled-jobs">Scheduled Jobs</h3>
+
+<p>The <a href="/modules/jobs.html">jobs</a> module allows you to run <a href="/modules/jobs.html#RecurringJobs">scheduled</a> or <a href="/modules/jobs.html#OneOff">ad-hoc</a> jobs.</p>
+
+<h4 id="jobspool"><code class="highlighter-rouge">jobs.pool</code></h4>
+
+<ul>
+  <li>The number of jobs allowed to run concurrently.</li>
+  <li>Default is <code class="highlighter-rouge">10</code>.</li>
+  <li>If zero (<code class="highlighter-rouge">0</code>), then there is no limit imposed.</li>
+</ul>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="py">jobs.pool</span> <span class="p">=</span> <span class="s">4</span>
+</code></pre></div></div>
+
+<h4 id="jobsselfconcurrent"><code class="highlighter-rouge">jobs.selfconcurrent</code></h4>
+
+<p>If <code class="highlighter-rouge">true</code> (default is <code class="highlighter-rouge">false</code>), allows a job to run even if previous instances of that job are still in
+progress.</p>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="py">jobs.selfconcurrent</span> <span class="p">=</span> <span class="s">true</span>
+</code></pre></div></div>
+
+<h4 id="jobsacceptproxyaddress"><code class="highlighter-rouge">jobs.acceptproxyaddress</code></h4>
+
+<p>If <code class="highlighter-rouge">true</code> (default is <code class="highlighter-rouge">false</code>), the status page will accept the <code class="highlighter-rouge">X-Forwarded-For</code> header as the remote
+address used to allow or deny public access. This is diabled by default as the header value can be spoofed
+and therefore is not trustable. You should only use this if you are access your Revel app via a reverse
+proxy (e.g. Nginx). It is not recommended to allow this is production mode due to the security implications.</p>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="py">jobs.acceptproxyaddress</span> <span class="p">=</span> <span class="s">true</span>
+</code></pre></div></div>
+
+<h4 id="named-schedules">Named Schedules</h4>
+
+<p><a href="/modules/jobs.html#NamedSchedules">Named cron schedules</a> may be configured by setting a key of the form:</p>
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="py">cron.schedulename</span> <span class="p">=</span> <span class="s">@hourly</span>
+</code></pre></div></div>
+<p>The names schedule may be referenced upon submission to the job runner. For
+example:</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="x">  </span><span class="n">jobs</span><span class="o">.</span><span class="n">Schedule</span><span class="p">(</span><span class="s">"cron.schedulename"</span><span class="p">,</span><span class="x"> </span><span class="n">job</span><span class="p">)</span><span class="x">
+</span></code></pre></div></div>
+
+<h3 id="modules">Modules</h3>
+
+<ul>
+  <li><a href="modules.html">Modules</a> may be added to an application by specifying their base import path.</li>
+  <li>An empty import path disables the module.
+    <div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">module.testrunner</span> <span class="p">=</span> <span class="s">github.com/revel/modules/testrunner</span>
+
+<span class="c">## FIXME mymodule crashes so disabled for now
+# module.mymodulename = /path/to/mymodule
+</span><span class="py">module.mymodulename</span> <span class="p">=</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="error-handling">Error Handling</h3>
+
+<ul>
+  <li>An optional value to wrap error <code class="highlighter-rouge">path</code> and <code class="highlighter-rouge">line</code> locations with a hyper link.</li>
+  <li>Disabled by default; does not wrap error location with link.</li>
+  <li>An example using Sublime Text’s custom URI scheme:
+    <div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="py">error.link</span> <span class="p">=</span> <span class="s">"subl://open?url=file://{{Path}}&amp;line={{Line}}"</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="areas-for-development">Areas for development</h2>
+
+<ul>
+  <li>Allow inserting command line arguments as config values or otherwise
+specifying config values from the command line.</li>
+</ul>
+
+
+                    
+<div class="revel-godoc-bar">
+  <h6>GoDoc Reference</h6>
+  <ul>
+    <li>
+      
+      <a href="https://godoc.org/github.com/revel/revel#Config" target="_revel_godoc">Config</a>
+      
+    </li>
+  </ul>
+</div>
+
+
+
+                    
+<div class="revel-github-bar">
+  <h6>GitHub Labels</h6>
+  <ul>
+    <li><b>Issues: </b> 
+      
+      <a href="https://github.com/revel/revel/labels/topic-config" target="_revel_issues">topic-config</a> 
+      
+      
+    </li>
+    <li><b>Pull Requests: </b> 
+      
+      <a href="https://github.com/revel/revel/pulls?q=is%3Apr+is%3Aopen+label%3Atopic-config" target="_revel_pull_requests">topic-config</a>
+      
+      
+    </li>
+  </ul>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; Revel Team 2017 - Revel is released under the <a href="https://github.com/revel/revel/blob/master/LICENSE">MIT License</a></p>
+        </footer>
+    </div>
+</body>
+</html>
+
